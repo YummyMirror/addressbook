@@ -3,7 +3,6 @@ package ru.anatoli.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.anatoli.addressbook.models.GroupData;
 import ru.anatoli.addressbook.models.UserData;
 import java.util.concurrent.TimeUnit;
 
@@ -12,13 +11,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
     FirefoxDriver wd;
-
+    private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
 
     public void init() {
         System.setProperty("webdriver.gecko.driver", "E:\\Private\\Programs\\geckodriver\\geckodriver.exe");
         wd = new FirefoxDriver();
         navigationHelper = new NavigationHelper(wd);
+        groupHelper = new GroupHelper(wd);
+
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         UserData userData = new UserData().withUserName("admin")
@@ -28,15 +29,9 @@ public class ApplicationManager {
     }
 
     public void login(UserData userData) {
-        input(By.name("user"), userData.getUserName());
-        input(By.name("pass"), userData.getPassword());
+        groupHelper.input(By.name("user"), userData.getUserName());
+        groupHelper.input(By.name("pass"), userData.getPassword());
         submitLoginForm();
-    }
-
-    public void input(By locator, String value) {
-        wd.findElement(locator).click();
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(value);
     }
 
     public void submitLoginForm() {
@@ -45,24 +40,6 @@ public class ApplicationManager {
 
     public void getUrl(String url) {
         wd.get(url);
-    }
-
-    public void fillGroupForm(GroupData groupData) {
-        input(By.name("group_name"), groupData.getGroupName());
-        input(By.name("group_header"), groupData.getGroupHeader());
-        input(By.name("group_footer"), groupData.getGroupFooter());
-    }
-
-    public void returnToGroupsPage() {
-        wd.findElement(By.linkText("group page")).click();
-    }
-
-    public void submitGroupForm() {
-        wd.findElement(By.name("submit")).click();
-    }
-
-    public void initiateGroupCreation() {
-        wd.findElement(By.name("new")).click();
     }
 
     public void stop() {
@@ -81,5 +58,9 @@ public class ApplicationManager {
     //Getters of Delegates
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
+    }
+
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
     }
 }

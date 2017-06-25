@@ -9,10 +9,11 @@ public class GroupCreationTests extends TestBase {
         GroupData groupData = new GroupData().withGroupName("GroupName")
                                             .withGroupHeader("GroupHeader")
                                             .withGroupFooter("GroupFooter");
+
         applicationManager.getNavigationHelper().goToGroupsPage();
-        applicationManager.initiateGroupCreation();
-        applicationManager.fillGroupForm(groupData);
-        applicationManager.submitGroupForm();
-        applicationManager.returnToGroupsPage();
+        applicationManager.getGroupHelper().initiateGroupCreation();
+        applicationManager.getGroupHelper().fillGroupForm(groupData);
+        applicationManager.getGroupHelper().submitGroupForm();
+        applicationManager.getGroupHelper().returnToGroupsPage();
     }
 }
