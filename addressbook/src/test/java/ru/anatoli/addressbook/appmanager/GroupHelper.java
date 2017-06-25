@@ -7,22 +7,14 @@ import ru.anatoli.addressbook.models.GroupData;
 /**
  * Created by anatoli.anukevich on 6/25/2017.
  */
-public class GroupHelper {
-    private FirefoxDriver wd;
-
+public class GroupHelper extends HelperBase {
     //Constructor
     public GroupHelper(FirefoxDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void initiateGroupCreation() {
-        wd.findElement(By.name("new")).click();
-    }
-
-    public void input(By locator, String value) {
-        wd.findElement(locator).click();
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(value);
+        click(By.name("new"));
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -32,10 +24,10 @@ public class GroupHelper {
     }
 
     public void submitGroupForm() {
-        wd.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void returnToGroupsPage() {
-        wd.findElement(By.linkText("group page")).click();
+        click(By.linkText("group page"));
     }
 }

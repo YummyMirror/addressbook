@@ -7,18 +7,12 @@ import ru.anatoli.addressbook.models.UserData;
 /**
  * Created by anatoli.anukevich on 6/25/2017.
  */
-public class SessionHelper {
+public class SessionHelper extends HelperBase {
     private FirefoxDriver wd;
 
     //Constructor
     public SessionHelper(FirefoxDriver wd) {
-        this.wd = wd;
-    }
-
-    public void input(By locator, String value) {
-        wd.findElement(locator).click();
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(value);
+        super(wd);
     }
 
     public void login(UserData userData) {
@@ -28,6 +22,6 @@ public class SessionHelper {
     }
 
     public void submitLoginForm() {
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+        click(By.xpath("//form[@id='LoginForm']/input[3]"));
     }
 }
