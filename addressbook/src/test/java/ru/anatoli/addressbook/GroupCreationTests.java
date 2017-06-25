@@ -17,9 +17,16 @@ public class GroupCreationTests {
         System.setProperty("webdriver.gecko.driver", "E:\\Private\\Programs\\geckodriver\\geckodriver.exe");
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+        UserData userData = new UserData().withUserName("admin")
+                                            .withPassword("secret");
         getUrl("http://localhost/addressbook/");
-        input(By.name("user"), "admin");
-        input(By.name("pass"), "secret");
+        login(userData);
+    }
+
+    private void login(UserData userData) {
+        input(By.name("user"), userData.getUserName());
+        input(By.name("pass"), userData.getPassword());
         submitLoginForm();
     }
 
