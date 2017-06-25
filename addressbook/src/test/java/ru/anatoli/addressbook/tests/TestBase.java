@@ -1,7 +1,8 @@
-package ru.anatoli.addressbook;
+package ru.anatoli.addressbook.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ru.anatoli.addressbook.appmanager.ApplicationManager;
 
 /**
  * Created by anatoli.anukevich on 6/25/2017.

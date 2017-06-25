@@ -1,6 +1,7 @@
-package ru.anatoli.addressbook;
+package ru.anatoli.addressbook.tests;
 
 import org.testng.annotations.Test;
+import ru.anatoli.addressbook.models.GroupData;
 
 public class GroupCreationTests extends TestBase {
     @Test

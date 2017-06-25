@@ -1,4 +1,4 @@
-package ru.anatoli.addressbook;
+package ru.anatoli.addressbook.models;
 
 /**
  * Created by anatoli.anukevich on 6/25/2017.

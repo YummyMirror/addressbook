@@ -1,8 +1,11 @@
-package ru.anatoli.addressbook;
+package ru.anatoli.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.anatoli.addressbook.models.GroupData;
+import ru.anatoli.addressbook.models.UserData;
+
 import java.util.concurrent.TimeUnit;
 
 /**
