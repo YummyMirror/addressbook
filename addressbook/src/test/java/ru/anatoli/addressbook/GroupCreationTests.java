@@ -8,10 +8,10 @@ public class GroupCreationTests extends TestBase {
         GroupData groupData = new GroupData().withGroupName("GroupName")
                                             .withGroupHeader("GroupHeader")
                                             .withGroupFooter("GroupFooter");
-        goToGroupsPage();
-        initiateGroupCreation();
-        fillGroupForm(groupData);
-        submitGroupForm();
-        returnToGroupsPage();
+        applicationManager.goToGroupsPage();
+        applicationManager.initiateGroupCreation();
+        applicationManager.fillGroupForm(groupData);
+        applicationManager.submitGroupForm();
+        applicationManager.returnToGroupsPage();
     }
 }
