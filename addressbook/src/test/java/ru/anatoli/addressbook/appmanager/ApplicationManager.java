@@ -5,7 +5,6 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.anatoli.addressbook.models.GroupData;
 import ru.anatoli.addressbook.models.UserData;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,9 +13,12 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
     FirefoxDriver wd;
 
+    private NavigationHelper navigationHelper;
+
     public void init() {
         System.setProperty("webdriver.gecko.driver", "E:\\Private\\Programs\\geckodriver\\geckodriver.exe");
         wd = new FirefoxDriver();
+        navigationHelper = new NavigationHelper(wd);
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         UserData userData = new UserData().withUserName("admin")
@@ -63,10 +65,6 @@ public class ApplicationManager {
         wd.findElement(By.name("new")).click();
     }
 
-    public void goToGroupsPage() {
-        wd.findElement(By.linkText("groups")).click();
-    }
-
     public void stop() {
         wd.quit();
     }
@@ -78,5 +76,10 @@ public class ApplicationManager {
         } catch (NoAlertPresentException e) {
             return false;
         }
+    }
+
+    //Getters of Delegates
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
