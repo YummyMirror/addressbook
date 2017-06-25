@@ -39,13 +39,20 @@ public class GroupCreationTests {
 
     @Test
     public void testGroupCreation() {
+        GroupData groupData = new GroupData().withGroupName("GroupName")
+                                            .withGroupHeader("GroupHeader")
+                                            .withGroupFooter("GroupFooter");
         goToGroupsPage();
         initiateGroupCreation();
-        input(By.name("group_name"), "111");
-        input(By.name("group_header"), "222");
-        input(By.name("group_footer"), "333");
+        fillGroupForm(groupData);
         submitGroupForm();
         returnToGroupsPage();
+    }
+
+    private void fillGroupForm(GroupData groupData) {
+        input(By.name("group_name"), groupData.getGroupName());
+        input(By.name("group_header"), groupData.getGroupHeader());
+        input(By.name("group_footer"), groupData.getGroupFooter());
     }
 
     private void returnToGroupsPage() {
