@@ -1,1 +1,14 @@
 apply plugin: 'java'
+
+//Repository and dependencies for TestNG
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Including TestNG framework
+    compile 'org.testng:testng:6.11'
+
+    //Including WebDriver 3+ version
+    compile 'org.seleniumhq.selenium:selenium-java:3.3.1'
+}
