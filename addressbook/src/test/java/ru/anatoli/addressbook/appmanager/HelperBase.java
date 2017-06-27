@@ -19,10 +19,13 @@ public class HelperBase {
     }
 
     public void input(By locator, String value) {
+        click(locator);
         if (value != null) {
-            click(locator);
-            wd.findElement(locator).clear();
-            wd.findElement(locator).sendKeys(value);
+            String existingValue = wd.findElement(locator).getAttribute("value");
+            if (!value.equals(existingValue)) {
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(value);
+            }
         }
     }
 }

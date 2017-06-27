@@ -24,11 +24,23 @@ public class GroupHelper extends HelperBase {
         input(By.name("group_footer"), groupData.getGroupFooter());
     }
 
-    public void submitGroupForm() {
+    public void submitGroupCreationForm() {
         click(By.name("submit"));
     }
 
     public void returnToGroupsPage() {
         click(By.linkText("group page"));
+    }
+
+    public void selectGroup() {
+        click(By.name("selected[]"));
+    }
+
+    public void initiateGroupModification() {
+        click(By.name("edit"));
+    }
+
+    public void submitGroupModificationForm() {
+        click(By.name("update"));
     }
 }
