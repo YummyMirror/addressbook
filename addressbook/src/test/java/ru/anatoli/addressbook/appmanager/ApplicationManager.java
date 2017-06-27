@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
     FirefoxDriver wd;
+    private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
@@ -20,6 +21,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         groupHelper = new GroupHelper(wd);
         sessionHelper = new SessionHelper(wd);
+        contactHelper = new ContactHelper(wd);
 
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
@@ -57,5 +59,9 @@ public class ApplicationManager {
 
     public SessionHelper getSessionHelper() {
         return sessionHelper;
+    }
+
+    public ContactHelper getContactHelper() {
+        return contactHelper;
     }
 }
