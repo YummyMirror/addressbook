@@ -14,7 +14,11 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToGroupsPage() {
-        click(By.linkText("groups"));
+        if (wd.findElement(By.tagName("h1")).getText().equals("Groups") && isElementPresent(By.name("new"))) {
+            return;
+        } else {
+            click(By.linkText("groups"));
+        }
     }
 
     public void goToHomePage() {
