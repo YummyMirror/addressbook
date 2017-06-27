@@ -19,8 +19,10 @@ public class HelperBase {
     }
 
     public void input(By locator, String value) {
-        click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(value);
+        if (value != null) {
+            click(locator);
+            wd.findElement(locator).clear();
+            wd.findElement(locator).sendKeys(value);
+        }
     }
 }

@@ -8,7 +8,7 @@ public class GroupCreationTests extends TestBase {
     public void testGroupCreation() {
         GroupData groupData = new GroupData().withGroupName("GroupName")
                                             .withGroupHeader("GroupHeader")
-                                            .withGroupFooter("GroupFooter");
+                                            .withGroupFooter(null);
 
         applicationManager.getNavigationHelper().goToGroupsPage();
         applicationManager.getGroupHelper().initiateGroupCreation();
