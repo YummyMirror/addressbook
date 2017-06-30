@@ -10,7 +10,7 @@ public class GroupData {
     private String groupFooter;
 
     //Getters
-    public int getId() {
+    public int getGroupId() {
         return id;
     }
 
@@ -27,7 +27,7 @@ public class GroupData {
     }
 
     //Setters
-    public GroupData withId(int id) {
+    public GroupData withGroupId(int id) {
         this.id = id;
         return this;
     }

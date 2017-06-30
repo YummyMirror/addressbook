@@ -3,7 +3,6 @@ package ru.anatoli.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.anatoli.addressbook.models.GroupData;
 
 import java.util.HashSet;
@@ -55,7 +54,7 @@ public class GroupHelper extends HelperBase {
         for (int i = 0; i < webElements.size(); i++) {
             int id = Integer.parseInt(webElements.get(i).findElement(By.tagName("input")).getAttribute("value"));
             String groupName = webElements.get(i).getText();
-            GroupData group = new GroupData().withId(id)
+            GroupData group = new GroupData().withGroupId(id)
                                             .withGroupName(groupName);
             groups.add(group);
         }
