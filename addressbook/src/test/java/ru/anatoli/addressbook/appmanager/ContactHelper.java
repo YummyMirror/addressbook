@@ -14,7 +14,11 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initiateContactCreation() {
-        click(By.linkText("add new"));
+        if (wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry") && isElementPresent(By.name("submit"))) {
+            return;
+        } else {
+            click(By.linkText("add new"));
+        }
     }
 
     public void inputContactForm(ContactData contactData) {
