@@ -15,10 +15,7 @@ public class GroupCreationTests extends TestBase {
         applicationManager.getNavigationHelper().goToGroupsPage();
 
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupsHash();
-        applicationManager.getGroupHelper().initiateGroupCreation();
-        applicationManager.getGroupHelper().fillGroupForm(groupData);
-        applicationManager.getGroupHelper().submitGroupCreationForm();
-        applicationManager.getGroupHelper().returnToGroupsPage();
+        applicationManager.getGroupHelper().createGroup(groupData);
 
         Set<GroupData> after = applicationManager.getGroupHelper().getGroupsHash();
 
