@@ -18,6 +18,7 @@ public class GroupHelper extends HelperBase {
         super(wd);
     }
 
+    //Additional methods
     public void initiateGroupCreation() {
         click(By.name("new"));
     }
@@ -34,10 +35,6 @@ public class GroupHelper extends HelperBase {
 
     public void returnToGroupsPage() {
         click(By.linkText("group page"));
-    }
-
-    public void selectGroup() {
-        click(By.name("selected[]"));
     }
 
     public void initiateGroupModification() {
@@ -71,6 +68,7 @@ public class GroupHelper extends HelperBase {
         return groups;
     }
 
+    //Manipulations with GROUPS
     public void createGroup(GroupData groupData) {
         initiateGroupCreation();
         fillGroupForm(groupData);
@@ -81,6 +79,14 @@ public class GroupHelper extends HelperBase {
     public void deleteGroup(GroupData removedGroup) {
         selectGroupById(removedGroup.getGroupId());
         deleteSelectedGroup();
+        returnToGroupsPage();
+    }
+
+    public void modifyGroup(GroupData groupData) {
+        selectGroupById(groupData.getGroupId());
+        initiateGroupModification();
+        fillGroupForm(groupData);
+        submitGroupModificationForm();
         returnToGroupsPage();
     }
 }
