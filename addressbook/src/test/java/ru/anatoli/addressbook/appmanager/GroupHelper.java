@@ -58,12 +58,14 @@ public class GroupHelper extends HelperBase {
 
     public Set<GroupData> getGroupSet() {
         Set<GroupData> groups = new HashSet<GroupData>();
-        List<WebElement> webElements = wd.findElements(By.className("group"));
+        List<WebElement> webElements = wd.findElements(By.cssSelector("span.group"));
         for (int i = 0; i < webElements.size(); i++) {
             int id = Integer.parseInt(webElements.get(i).findElement(By.tagName("input")).getAttribute("value"));
             String groupName = webElements.get(i).getText();
             GroupData group = new GroupData().withGroupId(id)
-                                            .withGroupName(groupName);
+                                            .withGroupName(groupName)
+                                            .withGroupHeader(null)
+                                            .withGroupFooter(null);
             groups.add(group);
         }
         return groups;
