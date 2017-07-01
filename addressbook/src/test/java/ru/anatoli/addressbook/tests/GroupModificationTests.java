@@ -15,7 +15,7 @@ public class GroupModificationTests extends TestBase {
         applicationManager.getNavigationHelper().goToGroupsPage();
         if (applicationManager.getGroupHelper().getGroupSet().size() == 0) {
             GroupData groupData = new GroupData().withGroupName("Temp name")
-                                                .withGroupHeader(null)
+                                                .withGroupHeader("Temp header")
                                                 .withGroupFooter(null);
             applicationManager.getGroupHelper().createGroup(groupData);
         }
@@ -40,5 +40,11 @@ public class GroupModificationTests extends TestBase {
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
+
+        before.remove(modifiedGroup);
+        before.add(groupData);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
