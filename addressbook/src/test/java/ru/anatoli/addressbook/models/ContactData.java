@@ -4,6 +4,7 @@ package ru.anatoli.addressbook.models;
  * Created by anatoli.anukevich on 6/27/2017.
  */
 public class ContactData {
+    private int id = Integer.MAX_VALUE;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -13,6 +14,10 @@ public class ContactData {
     private String address;
 
     //Getters
+    public int getContactId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -42,6 +47,12 @@ public class ContactData {
     }
 
     //Setters
+
+    public ContactData withContactId(int id) {
+        this.id = id;
+        return this;
+    }
+
     public ContactData withFirstName(String firstName) {
         this.firstName = firstName;
         return this;
