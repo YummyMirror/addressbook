@@ -1,5 +1,6 @@
 package ru.anatoli.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.GroupData;
 import java.util.Set;
@@ -9,9 +10,19 @@ import static org.testng.Assert.assertEquals;
  * Created by anatoli.anukevich on 6/27/2017.
  */
 public class GroupModificationTests extends TestBase {
+    @BeforeMethod
+    public void ensurePrecondition() {
+        applicationManager.getNavigationHelper().goToGroupsPage();
+        if (applicationManager.getGroupHelper().getGroupSet().size() == 0) {
+            GroupData groupData = new GroupData().withGroupName("Temp name")
+                                                .withGroupHeader(null)
+                                                .withGroupFooter(null);
+            applicationManager.getGroupHelper().createGroup(groupData);
+        }
+    }
+
     @Test
     public void testGroupModification() {
-        applicationManager.getNavigationHelper().goToGroupsPage();
         //Getting Set of GroupData object model BEFORE modification
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
 
