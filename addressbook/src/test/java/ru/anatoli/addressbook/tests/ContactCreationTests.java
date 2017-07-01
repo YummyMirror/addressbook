@@ -13,9 +13,6 @@ public class ContactCreationTests extends TestBase {
                                                     .withMiddleName("middleName")
                                                     .withLastName("lastName");
 
-        applicationManager.getContactHelper().initiateContactCreation();
-        applicationManager.getContactHelper().inputContactForm(contactData);
-        applicationManager.getContactHelper().submitContactForm();
-        applicationManager.getContactHelper().returnToHomePage();
+        applicationManager.getContactHelper().createContact(contactData);
     }
 }
