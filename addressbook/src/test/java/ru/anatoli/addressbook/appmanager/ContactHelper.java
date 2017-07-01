@@ -41,21 +41,26 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home page"));
     }
 
+    private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
-        Set<ContactData> contacts = new HashSet<ContactData>();
-        List<WebElement> rows = wd.findElements(By.xpath("//tr[@name = 'entry']"));
-        for (int i = 0; i < rows.size(); i++) {
-            List<WebElement> cells = rows.get(i).findElements(By.tagName("td"));
-            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
-            String firstName = cells.get(2).getText();
-            String lastName = cells.get(1).getText();
-            ContactData contact = new ContactData().withContactId(id)
-                                                    .withFirstName(firstName)
-                                                    .withLastName(lastName);
-            contacts.add(contact);
+        if (contactCache != null) {
+            return new HashSet<ContactData>(contactCache);
+        } else {
+            Set<ContactData> contactCache = new HashSet<ContactData>();
+            List<WebElement> rows = wd.findElements(By.xpath("//tr[@name = 'entry']"));
+            for (int i = 0; i < rows.size(); i++) {
+                List<WebElement> cells = rows.get(i).findElements(By.tagName("td"));
+                int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
+                String firstName = cells.get(2).getText();
+                String lastName = cells.get(1).getText();
+                ContactData contact = new ContactData().withContactId(id)
+                        .withFirstName(firstName)
+                        .withLastName(lastName);
+                contactCache.add(contact);
+            }
+            return new HashSet<ContactData>(contactCache);
         }
-        return contacts;
     }
 
     //Manipulations with CONTACTS
@@ -63,6 +68,7 @@ public class ContactHelper extends HelperBase {
         initiateContactCreation();
         inputContactForm(contactData);
         submitContactForm();
+        contactCache = null;
         returnToHomePage();
     }
 }
