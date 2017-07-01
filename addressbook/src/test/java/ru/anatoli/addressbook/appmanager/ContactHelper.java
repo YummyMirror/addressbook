@@ -46,7 +46,7 @@ public class ContactHelper extends HelperBase {
         Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> rows = wd.findElements(By.xpath("//tr[@name = 'entry']"));
         for (int i = 0; i < rows.size(); i++) {
-            List<WebElement> cells = rows.get(i).findElements(By.xpath("td"));
+            List<WebElement> cells = rows.get(i).findElements(By.tagName("td"));
             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
             String firstName = cells.get(2).getText();
             String lastName = cells.get(1).getText();

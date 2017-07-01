@@ -27,5 +27,15 @@ public class ContactCreationTests extends TestBase {
 
         //Asserting collections by SIZE
         assertEquals(before.size() + 1, after.size());
+
+        contactData.withContactId(after
+                                    .stream()
+                                    .max((contact1, contact2) -> Integer.compare(contact1.getContactId(), contact2.getContactId()))
+                                    .get()
+                                    .getContactId());
+        before.add(contactData);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
