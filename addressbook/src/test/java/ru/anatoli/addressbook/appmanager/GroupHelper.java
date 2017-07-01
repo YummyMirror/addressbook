@@ -48,7 +48,15 @@ public class GroupHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public Set<GroupData> getGroupsHash() {
+    public void selectGroupById(int id) {
+        wd.findElement(By.xpath("//input[@value = '" + id + "']")).click();
+    }
+
+    public void deleteSelectedGroup() {
+        click(By.name("delete"));
+    }
+
+    public Set<GroupData> getGroupSet() {
         Set<GroupData> groups = new HashSet<GroupData>();
         List<WebElement> webElements = wd.findElements(By.className("group"));
         for (int i = 0; i < webElements.size(); i++) {
@@ -65,6 +73,12 @@ public class GroupHelper extends HelperBase {
         initiateGroupCreation();
         fillGroupForm(groupData);
         submitGroupCreationForm();
+        returnToGroupsPage();
+    }
+
+    public void deleteGroup(GroupData removedGroup) {
+        selectGroupById(removedGroup.getGroupId());
+        deleteSelectedGroup();
         returnToGroupsPage();
     }
 }

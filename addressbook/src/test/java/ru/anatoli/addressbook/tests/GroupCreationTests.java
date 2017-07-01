@@ -15,7 +15,7 @@ public class GroupCreationTests extends TestBase {
     @Test
     public void testGroupCreation() {
         //Getting Set of GroupData object model BEFORE creation
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupsHash();
+        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
 
         //Creating new GROUP
         GroupData groupData = new GroupData().withGroupName("GroupName")
@@ -24,7 +24,7 @@ public class GroupCreationTests extends TestBase {
         applicationManager.getGroupHelper().createGroup(groupData);
 
         //Getting Set of GroupData object model AFTER creation
-        Set<GroupData> after = applicationManager.getGroupHelper().getGroupsHash();
+        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
 
         //Asserting collections by SIZE
         assertEquals(after.size(), before.size() + 1);
