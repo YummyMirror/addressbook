@@ -12,22 +12,20 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         applicationManager.getNavigationHelper().goToHomePage();
 
-        //Getting Set of ContactData object model BEFORE deletion
+        //Getting Set of ContactData object model BEFORE modification
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
         //Choosing the random Contact that will be modified
         ContactData modifiedContact = before.iterator().next();
 
-        ContactData contactData = new ContactData().withFirstName("Modified FirstName")
+        ContactData contactData = new ContactData().withContactId(modifiedContact.getContactId())
+                                                    .withFirstName("Modified FirstName")
                                                     .withMiddleName(null)
                                                     .withLastName("Modified LastName");
 
-        applicationManager.getContactHelper().selectModifiedContactById(modifiedContact.getContactId());
-        applicationManager.getContactHelper().inputContactForm(contactData);
-        applicationManager.getContactHelper().submitModifiedContactForm();
-        applicationManager.getContactHelper().returnToHomePage();
+        applicationManager.getContactHelper().modifyContact(contactData);
 
-        //Getting Set of ContactData object model AFTER deletion
+        //Getting Set of ContactData object model AFTER modification
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
     }
 }

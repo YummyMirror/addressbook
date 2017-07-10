@@ -101,4 +101,11 @@ public class ContactHelper extends HelperBase {
         confirmContactDeletion();
         goToHomePage();
     }
+
+    public void modifyContact(ContactData contactData) {
+        selectModifiedContactById(contactData.getContactId());
+        inputContactForm(contactData);
+        submitModifiedContactForm();
+        returnToHomePage();
+    }
 }
