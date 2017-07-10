@@ -68,6 +68,10 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.id("MassCB")).click();
     }
 
+    public void confirmSelectAllAlert() {
+        wd.switchTo().alert().accept();
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
