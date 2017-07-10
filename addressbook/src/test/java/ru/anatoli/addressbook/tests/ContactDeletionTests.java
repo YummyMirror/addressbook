@@ -13,6 +13,7 @@ import static org.testng.Assert.*;
 public class ContactDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
+        applicationManager.getNavigationHelper().goToHomePage();
         if (applicationManager.getContactHelper().getContactSet().size() == 0) {
             ContactData contactData = new ContactData().withFirstName("Temp first name")
                                                         .withMiddleName(null)
@@ -23,8 +24,6 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
     public void testContactDeletion() {
-        applicationManager.getNavigationHelper().goToHomePage();
-
         //Getting Set of ContactData object model BEFORE deletion
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
