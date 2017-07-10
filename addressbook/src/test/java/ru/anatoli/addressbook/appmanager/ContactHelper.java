@@ -64,6 +64,10 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("//input[@value='Update']")).click();
     }
 
+    public void selectAllContacts() {
+        wd.findElement(By.id("MassCB")).click();
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
