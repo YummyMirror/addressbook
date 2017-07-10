@@ -18,6 +18,10 @@ public class ContactHelper extends HelperBase {
     }
 
     //Additional methods
+    public void goToHomePage() {
+        click(By.linkText("home"));
+    }
+
     public void initiateContactCreation() {
         if (wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry") && isElementPresent(By.name("submit"))) {
             return;
@@ -81,5 +85,12 @@ public class ContactHelper extends HelperBase {
         submitContactForm();
         contactCache = null;
         returnToHomePage();
+    }
+
+    public void removeContact(ContactData removedContact) {
+        selectRemovedContactById(removedContact.getContactId());
+        deleteSelectedContact();
+        confirmContactDeletion();
+        goToHomePage();
     }
 }
