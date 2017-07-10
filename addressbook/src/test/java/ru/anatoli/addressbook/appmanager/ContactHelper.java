@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.anatoli.addressbook.models.ContactData;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,8 +54,8 @@ public class ContactHelper extends HelperBase {
                 String firstName = cells.get(2).getText();
                 String lastName = cells.get(1).getText();
                 ContactData contact = new ContactData().withContactId(id)
-                        .withFirstName(firstName)
-                        .withLastName(lastName);
+                                                        .withFirstName(firstName)
+                                                        .withLastName(lastName);
                 contactCache.add(contact);
             }
             return new HashSet<ContactData>(contactCache);
