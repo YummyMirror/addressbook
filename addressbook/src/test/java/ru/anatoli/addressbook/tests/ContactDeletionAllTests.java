@@ -1,20 +1,31 @@
 package ru.anatoli.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.anatoli.addressbook.models.ContactData;
+
 import static org.testng.Assert.assertTrue;
 
 /**
  * Created by anatoli.anukevich on 7/10/2017.
  */
 public class ContactDeletionAllTests extends TestBase {
+    @BeforeMethod
+    public void ensurePrecondition() {
+        applicationManager.getNavigationHelper().goToHomePage();
+        if (applicationManager.getContactHelper().getContactSet().size() == 0) {
+            ContactData contactData = new ContactData().withFirstName("FirstName")
+                                                        .withMiddleName("MiddleName")
+                                                        .withLastName("LastName");
+            applicationManager.getContactHelper().createContact(contactData);
+            applicationManager.getContactHelper().createContact(contactData);
+            applicationManager.getContactHelper().createContact(contactData);
+        }
+    }
+
     @Test
     public void testContactDeletionAll() {
-        applicationManager.getNavigationHelper().goToHomePage();
-
-        applicationManager.getContactHelper().selectAllContacts();
-        applicationManager.getContactHelper().deleteSelectedContact();
-        applicationManager.getContactHelper().confirmContactDeletion();
-        applicationManager.getNavigationHelper().goToHomePage();
+        applicationManager.getContactHelper().deleteAllSelectedContacts();
 
         int after = applicationManager.getContactHelper().getContactSet().size();
 

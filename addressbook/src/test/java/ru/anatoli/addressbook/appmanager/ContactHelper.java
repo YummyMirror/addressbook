@@ -112,4 +112,11 @@ public class ContactHelper extends HelperBase {
         submitModifiedContactForm();
         returnToHomePage();
     }
+
+    public void deleteAllSelectedContacts() {
+        selectAllContacts();
+        deleteSelectedContact();
+        confirmContactDeletion();
+        goToHomePage();
+    }
 }
