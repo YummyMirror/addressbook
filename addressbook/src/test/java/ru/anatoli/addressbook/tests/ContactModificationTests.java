@@ -3,6 +3,7 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import java.util.Set;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by anatoli.anukevich on 7/10/2017.
@@ -27,5 +28,8 @@ public class ContactModificationTests extends TestBase {
 
         //Getting Set of ContactData object model AFTER modification
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size(), after.size());
     }
 }
