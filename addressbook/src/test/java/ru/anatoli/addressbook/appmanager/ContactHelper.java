@@ -56,6 +56,14 @@ public class ContactHelper extends HelperBase {
         wd.switchTo().alert().accept();
     }
 
+    public void selectModifiedContactById(int id) {
+        wd.findElement(By.xpath("//a[@href='edit.php?id=" + id + "']")).click();
+    }
+
+    public void submitModifiedContactForm() {
+        wd.findElement(By.xpath("//input[@value='Update']")).click();
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
