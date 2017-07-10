@@ -21,7 +21,7 @@ public class GroupDeletionTests extends TestBase {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void testGroupDeletion() {
         //Getting Set of GroupData object model BEFORE deletion
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
@@ -38,6 +38,23 @@ public class GroupDeletionTests extends TestBase {
         assertEquals(before.size() - 1, after.size());
 
         before.remove(removedGroup);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
+    }
+
+    @Test(enabled = true)
+    public void testGroupDeletionWithoutSelection() {
+        //Getting Set of GroupData object model BEFORE deletion
+        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+
+        applicationManager.getGroupHelper().deleteGroupWithoutSeletion();
+
+        //Getting Set of GroupData object model AFTER deletion
+        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size(), after.size());
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);

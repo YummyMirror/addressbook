@@ -97,4 +97,9 @@ public class GroupHelper extends HelperBase {
         groupCache = null;
         returnToGroupsPage();
     }
+
+    public void deleteGroupWithoutSeletion() {
+        deleteSelectedGroup();
+        returnToGroupsPage();
+    }
 }
