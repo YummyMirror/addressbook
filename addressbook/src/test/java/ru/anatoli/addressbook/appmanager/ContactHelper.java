@@ -40,6 +40,18 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home page"));
     }
 
+    public void selectRemovedContactById(int id) {
+        wd.findElement(By.xpath("//input[@id='" + id + "']")).click();
+    }
+
+    public void deleteSelectedContact() {
+        wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    }
+
+    public void confirmContactDeletion() {
+        wd.switchTo().alert().accept();
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
