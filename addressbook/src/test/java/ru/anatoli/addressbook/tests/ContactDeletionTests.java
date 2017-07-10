@@ -27,5 +27,10 @@ public class ContactDeletionTests extends TestBase {
 
         //Asserting collections by SIZE
         assertEquals(before.size() - 1, after.size());
+
+        before.remove(removedContact);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
