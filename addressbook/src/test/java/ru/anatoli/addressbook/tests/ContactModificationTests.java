@@ -31,5 +31,11 @@ public class ContactModificationTests extends TestBase {
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
+
+        before.remove(modifiedContact);
+        before.add(contactData);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
