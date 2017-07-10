@@ -21,7 +21,7 @@ public class GroupDeletionTests extends TestBase {
         }
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testGroupDeletion() {
         //Getting Set of GroupData object model BEFORE deletion
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
@@ -48,7 +48,13 @@ public class GroupDeletionTests extends TestBase {
         //Getting Set of GroupData object model BEFORE deletion
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
 
-        applicationManager.getGroupHelper().deleteGroupWithoutSeletion();
+        applicationManager.getGroupHelper().deleteSelectedGroup();
+        String errorMessageDuringDeletion = applicationManager.getGroupHelper().getErrorMessageDuringDeletion();
+
+        //Asserting by NOTICE title
+        assertEquals(errorMessageDuringDeletion, "Notice");
+
+        applicationManager.getGroupHelper().returnToGroupsPage();
 
         //Getting Set of GroupData object model AFTER deletion
         Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();

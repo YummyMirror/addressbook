@@ -52,6 +52,10 @@ public class GroupHelper extends HelperBase {
         click(By.name("delete"));
     }
 
+    public String getErrorMessageDuringDeletion() {
+        return wd.findElement(By.xpath("//*[@id='content']/b[1]")).getText();
+    }
+
     private Set<GroupData> groupCache = null;
 
     public Set<GroupData> getGroupSet() {
@@ -95,11 +99,6 @@ public class GroupHelper extends HelperBase {
         fillGroupForm(groupData);
         submitGroupModificationForm();
         groupCache = null;
-        returnToGroupsPage();
-    }
-
-    public void deleteGroupWithoutSeletion() {
-        deleteSelectedGroup();
         returnToGroupsPage();
     }
 }
