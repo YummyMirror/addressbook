@@ -123,4 +123,9 @@ public class ContactHelper extends HelperBase {
         confirmContactDeletion();
         goToHomePage();
     }
+
+    public void deleteAllContactsWithoutSelection() {
+        deleteSelectedContact();
+        confirmSelectAllAlert();
+    }
 }
