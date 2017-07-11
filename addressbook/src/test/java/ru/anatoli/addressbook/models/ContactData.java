@@ -23,6 +23,12 @@ public class ContactData {
     private String email2;
     private String email3;
     private String homepage;
+    private String birthDay;
+    private String birthMonth;
+    private String birthYear;
+    private String anniversaryDay;
+    private String anniversaryMonth;
+    private String anniversaryYear;
     private String secondaryAddress;
     private String secondaryHome;
     private String secondaryNotes;
@@ -94,6 +100,30 @@ public class ContactData {
 
     public String getHomepage() {
         return homepage;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public String getBirthMonth() {
+        return birthMonth;
+    }
+
+    public String getBirthYear() {
+        return birthYear;
+    }
+
+    public String getAnniversaryDay() {
+        return anniversaryDay;
+    }
+
+    public String getAnniversaryMonth() {
+        return anniversaryMonth;
+    }
+
+    public String getAnniversaryYear() {
+        return anniversaryYear;
     }
 
     public String getSecondaryAddress() {
@@ -191,6 +221,36 @@ public class ContactData {
 
     public ContactData withHomepage(String homepage) {
         this.homepage = homepage;
+        return this;
+    }
+
+    public ContactData withBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+        return this;
+    }
+
+    public ContactData withBirthMonth(String birthMonth) {
+        this.birthMonth = birthMonth;
+        return this;
+    }
+
+    public ContactData withBirthYear(String birthYear) {
+        this.birthYear = birthYear;
+        return this;
+    }
+
+    public ContactData withAnniversaryDay(String anniversaryDay) {
+        this.anniversaryDay = anniversaryDay;
+        return this;
+    }
+
+    public ContactData withAnniversaryMonth(String anniversaryMonth) {
+        this.anniversaryMonth = anniversaryMonth;
+        return this;
+    }
+
+    public ContactData withAnniversaryYear(String anniversaryYear) {
+        this.anniversaryYear = anniversaryYear;
         return this;
     }
 
