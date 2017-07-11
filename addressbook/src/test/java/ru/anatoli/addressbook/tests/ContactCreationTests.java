@@ -49,8 +49,10 @@ public class ContactCreationTests extends TestBase {
                                                     .withHomepage("www.google.com")
                                                     .withBirthDay(daysInMonth[18])
                                                     .withBirthMonth(monthsInYear[5])
+                                                    .withBirthYear("1900")
                                                     .withAnniversaryDay(daysInMonth[25])
                                                     .withAnniversaryMonth(monthsInYear[8])
+                                                    .withAnniversaryYear("1950")
                                                     .withSecondaryAddress("secondary Address")
                                                     .withSecondaryHome("secondary Home")
                                                     .withSecondaryNotes("secondary Notes");

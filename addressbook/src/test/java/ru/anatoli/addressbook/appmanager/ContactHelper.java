@@ -49,8 +49,10 @@ public class ContactHelper extends HelperBase {
         input(By.name("homepage"), contactData.getHomepage());
         select(By.name("bday"), contactData.getBirthDay());
         select(By.name("bmonth"), contactData.getBirthMonth());
+        input(By.name("byear"), contactData.getBirthYear());
         select(By.name("aday"), contactData.getAnniversaryDay());
         select(By.name("amonth"), contactData.getAnniversaryMonth());
+        input(By.name("ayear"), contactData.getAnniversaryYear());
         input(By.name("address2"), contactData.getSecondaryAddress());
         input(By.name("phone2"), contactData.getSecondaryHome());
         input(By.name("notes"), contactData.getSecondaryNotes());
