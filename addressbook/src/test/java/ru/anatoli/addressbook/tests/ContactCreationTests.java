@@ -27,6 +27,9 @@ public class ContactCreationTests extends TestBase {
                             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
                             "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 
+        String monthsInYear[] = {"-", "January", "February", "March", "April", "May", "June",
+                                "July", "August", "September", "October", "November", "December"};
+
         //Creating new CONTACT
         ContactData contactData = new ContactData().withFirstName("firstName")
                                                     .withMiddleName("middleName")
@@ -45,7 +48,9 @@ public class ContactCreationTests extends TestBase {
                                                     .withEmail3("3@mail.ru")
                                                     .withHomepage("www.google.com")
                                                     .withBirthDay(daysInMonth[18])
+                                                    .withBirthMonth(monthsInYear[5])
                                                     .withAnniversaryDay(daysInMonth[25])
+                                                    .withAnniversaryMonth(monthsInYear[8])
                                                     .withSecondaryAddress("secondary Address")
                                                     .withSecondaryHome("secondary Home")
                                                     .withSecondaryNotes("secondary Notes");
