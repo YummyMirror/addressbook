@@ -3,6 +3,8 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
+
+import java.io.File;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
@@ -25,6 +27,7 @@ public class ContactCreationTests extends TestBase {
                                                     .withMiddleName("middleName")
                                                     .withLastName("lastName")
                                                     .withNickname("nickname")
+                                                    .withPhoto(new File("src/test/resources/NBA.jpeg"))
                                                     .withTitle("Lead department")
                                                     .withCompany("Google")
                                                     .withAddress("California, LA")

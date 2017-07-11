@@ -1,5 +1,7 @@
 package ru.anatoli.addressbook.models;
 
+import java.io.File;
+
 /**
  * Created by anatoli.anukevich on 6/27/2017.
  */
@@ -9,6 +11,7 @@ public class ContactData {
     private String middleName;
     private String lastName;
     private String nickname;
+    private String photo;
     private String title;
     private String company;
     private String address;
@@ -40,6 +43,10 @@ public class ContactData {
 
     public String getNickname() {
         return nickname;
+    }
+
+    public File getPhoto() {
+        return new File(photo);
     }
 
     public String getTitle() {
@@ -109,6 +116,11 @@ public class ContactData {
 
     public ContactData withNickname(String nickname) {
         this.nickname = nickname;
+        return this;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo.getPath();
         return this;
     }
 
