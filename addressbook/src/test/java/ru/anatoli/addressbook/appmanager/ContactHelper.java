@@ -34,6 +34,18 @@ public class ContactHelper extends HelperBase {
         input(By.name("firstname"), contactData.getFirstName());
         input(By.name("middlename"), contactData.getMiddleName());
         input(By.name("lastname"), contactData.getLastName());
+        input(By.name("nickname"), contactData.getNickname());
+        input(By.name("title"), contactData.getTitle());
+        input(By.name("company"), contactData.getCompany());
+        input(By.name("address"), contactData.getAddress());
+        input(By.name("home"), contactData.getHomePhone());
+        input(By.name("mobile"), contactData.getMobilePhone());
+        input(By.name("work"), contactData.getWorkPhone());
+        input(By.name("fax"), contactData.getFax());
+        input(By.name("email"), contactData.getEmail());
+        input(By.name("email2"), contactData.getEmail2());
+        input(By.name("email3"), contactData.getEmail3());
+        input(By.name("homepage"), contactData.getHomepage());
     }
 
     public void submitContactForm() {

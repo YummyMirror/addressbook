@@ -22,8 +22,20 @@ public class ContactCreationTests extends TestBase {
 
         //Creating new CONTACT
         ContactData contactData = new ContactData().withFirstName("firstName")
-                                                    .withMiddleName(null)
-                                                    .withLastName("lastName");
+                                                    .withMiddleName("middleName")
+                                                    .withLastName("lastName")
+                                                    .withNickname("nickname")
+                                                    .withTitle("Lead department")
+                                                    .withCompany("Google")
+                                                    .withAddress("California, LA")
+                                                    .withHomePhone("111-222-333")
+                                                    .withMobilePhone("123/123/123")
+                                                    .withWorkPhone("123-456-789")
+                                                    .withFax("111222333")
+                                                    .withEmail("1@mail.ru")
+                                                    .withEmail2("2@mail.ru")
+                                                    .withEmail3("3@mail.ru")
+                                                    .withHomepage("www.google.com");
         applicationManager.getContactHelper().createContact(contactData);
 
         //Getting Set of ContactData object model AFTER creation
