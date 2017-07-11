@@ -59,6 +59,10 @@ public class GroupModificationTests extends TestBase {
         //Asserting by NOTICE title
         assertEquals(noticeTitle, "Notice");
 
+        GroupData groupData = new GroupData().withGroupName("Test Name")
+                                                .withGroupHeader("Test Header")
+                                                .withGroupFooter("Test Footer");
+        applicationManager.getGroupHelper().fillGroupForm(groupData);
         applicationManager.getGroupHelper().submitGroupModificationForm();
         String invalidIdMessage = applicationManager.getGroupHelper().getErrorTextAfterClickingUpdate();
 
