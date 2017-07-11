@@ -21,7 +21,7 @@ public class GroupModificationTests extends TestBase {
         }
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testGroupModification() {
         //Getting Set of GroupData object model BEFORE modification
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
@@ -65,7 +65,15 @@ public class GroupModificationTests extends TestBase {
         //Asserting by INVALID ID error message
         assertEquals(invalidIdMessage, "Invalid ID.");
 
+        applicationManager.getGroupHelper().returnToGroupsPage();
+
         //Getting Set of GroupData object model AFTER modification
         Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size(), after.size());
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
