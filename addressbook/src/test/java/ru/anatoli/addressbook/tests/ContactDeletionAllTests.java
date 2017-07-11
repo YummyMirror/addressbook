@@ -24,7 +24,7 @@ public class ContactDeletionAllTests extends TestBase {
         }
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testContactDeletionAll() {
         applicationManager.getContactHelper().deleteAllSelectedContacts();
 
@@ -34,7 +34,7 @@ public class ContactDeletionAllTests extends TestBase {
         assertTrue(after == 0);
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testContactDeletionAllWithoutSelection() {
         //Getting Set of ContactData object model BEFORE clicking 'Select ALL'
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -60,5 +60,11 @@ public class ContactDeletionAllTests extends TestBase {
 
         //Getting Set of ContactData object model AFTER clicking 'Select ALL'
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size(), after.size());
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
