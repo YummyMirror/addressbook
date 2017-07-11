@@ -72,6 +72,10 @@ public class ContactHelper extends HelperBase {
         wd.switchTo().alert().accept();
     }
 
+    public void cancelContactDeletion() {
+        wd.switchTo().alert().dismiss();
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {

@@ -1,12 +1,9 @@
 package ru.anatoli.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
-
 import java.util.Set;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -27,7 +24,7 @@ public class ContactDeletionAllTests extends TestBase {
         }
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testContactDeletionAll() {
         applicationManager.getContactHelper().deleteAllSelectedContacts();
 
@@ -37,7 +34,7 @@ public class ContactDeletionAllTests extends TestBase {
         assertTrue(after == 0);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testContactDeletionAllWithoutSelection() {
         //Getting Set of ContactData object model BEFORE clicking 'Select ALL'
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -52,5 +49,18 @@ public class ContactDeletionAllTests extends TestBase {
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);
+    }
+
+    @Test(enabled = true)
+    public void testContactDeletionAllCancel() {
+        //Getting Set of ContactData object model BEFORE clicking 'Select ALL'
+        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+
+        applicationManager.getContactHelper().selectAllContacts();
+        applicationManager.getContactHelper().deleteSelectedContact();
+        applicationManager.getContactHelper().cancelContactDeletion();
+
+        //Getting Set of ContactData object model AFTER clicking 'Select ALL'
+        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
     }
 }
