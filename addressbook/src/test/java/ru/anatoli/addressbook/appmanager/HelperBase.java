@@ -40,7 +40,10 @@ public class HelperBase {
 
     public void select(By locator, String value) {
         if (value != null) {
-            new Select(wd.findElement(locator)).selectByVisibleText(value);
+            String existingValue = wd.findElement(locator).getAttribute("value");
+            if (!value.equals(existingValue)) {
+                new Select(wd.findElement(locator)).selectByVisibleText(value);
+            }
         }
 
     }
