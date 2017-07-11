@@ -47,6 +47,9 @@ public class ContactHelper extends HelperBase {
         input(By.name("email2"), contactData.getEmail2());
         input(By.name("email3"), contactData.getEmail3());
         input(By.name("homepage"), contactData.getHomepage());
+        input(By.name("address2"), contactData.getSecondaryAddress());
+        input(By.name("phone2"), contactData.getSecondaryHome());
+        input(By.name("notes"), contactData.getSecondaryNotes());
     }
 
     public void submitContactForm() {

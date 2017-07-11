@@ -38,7 +38,10 @@ public class ContactCreationTests extends TestBase {
                                                     .withEmail("1@mail.ru")
                                                     .withEmail2("2@mail.ru")
                                                     .withEmail3("3@mail.ru")
-                                                    .withHomepage("www.google.com");
+                                                    .withHomepage("www.google.com")
+                                                    .withSecondaryAddress("secondary Address")
+                                                    .withSecondaryHome("secondary Home")
+                                                    .withSecondaryNotes("secondary Notes");
         applicationManager.getContactHelper().createContact(contactData);
 
         //Getting Set of ContactData object model AFTER creation
