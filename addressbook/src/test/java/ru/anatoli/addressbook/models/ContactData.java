@@ -23,6 +23,9 @@ public class ContactData {
     private String email2;
     private String email3;
     private String homepage;
+    private String secondaryAddress;
+    private String secondaryHome;
+    private String secondaryNotes;
 
     //Getters
     public int getContactId() {
@@ -91,6 +94,18 @@ public class ContactData {
 
     public String getHomepage() {
         return homepage;
+    }
+
+    public String getSecondaryAddress() {
+        return secondaryAddress;
+    }
+
+    public String getSecondaryHome() {
+        return secondaryHome;
+    }
+
+    public String getSecondaryNotes() {
+        return secondaryNotes;
     }
 
     //Setters
@@ -176,6 +191,21 @@ public class ContactData {
 
     public ContactData withHomepage(String homepage) {
         this.homepage = homepage;
+        return this;
+    }
+
+    public ContactData withSecondaryAddress(String secondaryAddress) {
+        this.secondaryAddress = secondaryAddress;
+        return this;
+    }
+
+    public ContactData withSecondaryHome(String secondaryHome) {
+        this.secondaryHome = secondaryHome;
+        return this;
+    }
+
+    public ContactData withSecondaryNotes(String secondaryNotes) {
+        this.secondaryNotes = secondaryNotes;
         return this;
     }
 
