@@ -52,8 +52,14 @@ public class GroupHelper extends HelperBase {
         click(By.name("delete"));
     }
 
-    public String getErrorMessageDuringDeletion() {
+    public String getErrorMessageDuringDeletionAndModification() {
         return wd.findElement(By.xpath("//*[@id='content']/b[1]")).getText();
+    }
+
+    public String getErrorTextAfterClickingUpdate() {
+        String errorMessage = wd.findElement(By.cssSelector("div.msgbox")).getText();
+        String splitErrorMessage[] = errorMessage.split("\n");
+        return splitErrorMessage[0];
     }
 
     private Set<GroupData> groupCache = null;

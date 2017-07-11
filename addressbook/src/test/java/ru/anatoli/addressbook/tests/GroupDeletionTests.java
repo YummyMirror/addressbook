@@ -49,10 +49,10 @@ public class GroupDeletionTests extends TestBase {
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
 
         applicationManager.getGroupHelper().deleteSelectedGroup();
-        String errorMessageDuringDeletion = applicationManager.getGroupHelper().getErrorMessageDuringDeletion();
+        String noticeTitle = applicationManager.getGroupHelper().getErrorMessageDuringDeletionAndModification();
 
         //Asserting by NOTICE title
-        assertEquals(errorMessageDuringDeletion, "Notice");
+        assertEquals(noticeTitle, "Notice");
 
         applicationManager.getGroupHelper().returnToGroupsPage();
 
