@@ -62,6 +62,18 @@ public class GroupHelper extends HelperBase {
         return splitErrorMessage[0];
     }
 
+    public String getGroupNameFromEditForm() {
+        return wd.findElement(By.name("group_name")).getAttribute("value");
+    }
+
+    public String getGroupHeaderFromEditForm() {
+        return wd.findElement(By.name("group_header")).getText();
+    }
+
+    public String getGroupFooterFromEditForm() {
+        return wd.findElement(By.name("group_footer")).getText();
+    }
+
     private Set<GroupData> groupCache = null;
 
     public Set<GroupData> getGroupSet() {
@@ -106,5 +118,18 @@ public class GroupHelper extends HelperBase {
         submitGroupModificationForm();
         groupCache = null;
         returnToGroupsPage();
+    }
+
+    public GroupData getGroupDataFromEditForm(GroupData outsideData) {
+        selectGroupById(outsideData.getGroupId());
+        initiateGroupModification();
+        String groupNameInside = getGroupNameFromEditForm();
+        String groupHeaderInside = getGroupHeaderFromEditForm();
+        String groupFooterInside = getGroupFooterFromEditForm();
+        GroupData groupData = new GroupData().withGroupName(groupNameInside)
+                                                .withGroupHeader(groupHeaderInside)
+                                                .withGroupFooter(groupFooterInside);
+        wd.navigate().back();
+        return groupData;
     }
 }
