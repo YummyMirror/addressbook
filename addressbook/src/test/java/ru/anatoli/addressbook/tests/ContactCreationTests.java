@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
@@ -21,6 +22,10 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() {
         //Getting Set of ContactData object model BEFORE creation
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+
+        String daysInMonth[] = {"", "-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                            "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 
         //Creating new CONTACT
         ContactData contactData = new ContactData().withFirstName("firstName")
@@ -39,6 +44,8 @@ public class ContactCreationTests extends TestBase {
                                                     .withEmail2("2@mail.ru")
                                                     .withEmail3("3@mail.ru")
                                                     .withHomepage("www.google.com")
+                                                    .withBirthDay(daysInMonth[8])
+                                                    .withAnniversaryDay(daysInMonth[25])
                                                     .withSecondaryAddress("secondary Address")
                                                     .withSecondaryHome("secondary Home")
                                                     .withSecondaryNotes("secondary Notes");

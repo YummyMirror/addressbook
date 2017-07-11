@@ -3,6 +3,8 @@ package ru.anatoli.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+
 import java.io.File;
 
 /**
@@ -34,6 +36,13 @@ public class HelperBase {
         if (photo != null) {
             wd.findElement(locator).sendKeys(photo.getAbsolutePath());
         }
+    }
+
+    public void select(By locator, String value) {
+        if (value != null) {
+            new Select(wd.findElement(locator)).selectByVisibleText(value);
+        }
+
     }
 
     public boolean isElementPresent(By locator) {
