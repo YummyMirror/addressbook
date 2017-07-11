@@ -56,9 +56,7 @@ public class ContactDeletionAllTests extends TestBase {
         //Getting Set of ContactData object model BEFORE clicking 'Select ALL'
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
-        applicationManager.getContactHelper().selectAllContacts();
-        applicationManager.getContactHelper().deleteSelectedContact();
-        applicationManager.getContactHelper().cancelContactDeletion();
+        applicationManager.getContactHelper().cancelDeletionAllSelectedContacts();
 
         //Getting Set of ContactData object model AFTER clicking 'Select ALL'
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();

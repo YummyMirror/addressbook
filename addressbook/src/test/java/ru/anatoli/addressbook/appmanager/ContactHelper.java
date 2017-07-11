@@ -132,4 +132,10 @@ public class ContactHelper extends HelperBase {
         deleteSelectedContact();
         confirmSelectAllAlert();
     }
+
+    public void cancelDeletionAllSelectedContacts() {
+        selectAllContacts();
+        deleteSelectedContact();
+        cancelContactDeletion();
+    }
 }
