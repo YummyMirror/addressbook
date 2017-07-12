@@ -57,5 +57,13 @@ public class ContactDeletionTests extends TestBase {
 
         //Getting Set of ContactData object model AFTER deletion
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size() - 1, after.size());
+
+        before.remove(removedContact);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
