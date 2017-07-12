@@ -66,7 +66,7 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home page"));
     }
 
-    public void addNextContact() {
+    public void clickAddNextButton() {
         click(By.linkText("add next"));
     }
 
@@ -100,6 +100,12 @@ public class ContactHelper extends HelperBase {
 
     public void cancelContactDeletion() {
         wd.switchTo().alert().dismiss();
+    }
+
+    public void addNextContact(ContactData contactData) {
+        clickAddNextButton();
+        inputContactForm(contactData);
+        submitContactForm();
     }
 
     private Set<ContactData> contactCache = null;
@@ -175,9 +181,7 @@ public class ContactHelper extends HelperBase {
         initiateContactCreation();
         inputContactForm(contactData);
         submitContactForm();
-        addNextContact();
-        inputContactForm(contactData);
-        submitContactForm();
+        addNextContact(contactData);
         returnToHomePage();
     }
 }
