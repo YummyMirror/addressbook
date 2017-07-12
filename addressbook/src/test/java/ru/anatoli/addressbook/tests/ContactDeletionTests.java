@@ -51,9 +51,7 @@ public class ContactDeletionTests extends TestBase {
         //Choosing the random Contact that will be removed
         ContactData removedContact = before.iterator().next();
 
-        applicationManager.getContactHelper().selectModifiedContactById(removedContact.getContactId());
-        applicationManager.getContactHelper().deleteSelectedContact();
-        applicationManager.getNavigationHelper().goToHomePage();
+        applicationManager.getContactHelper().removeContactFromUpdateForm(removedContact);
 
         //Getting Set of ContactData object model AFTER deletion
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();

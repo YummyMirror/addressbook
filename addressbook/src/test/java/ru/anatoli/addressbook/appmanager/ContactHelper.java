@@ -160,4 +160,10 @@ public class ContactHelper extends HelperBase {
         deleteSelectedContact();
         cancelContactDeletion();
     }
+
+    public void removeContactFromUpdateForm(ContactData removedContact) {
+        selectModifiedContactById(removedContact.getContactId());
+        deleteSelectedContact();
+        goToHomePage();
+    }
 }
