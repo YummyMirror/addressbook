@@ -66,6 +66,10 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home page"));
     }
 
+    public void addNextContact() {
+        click(By.linkText("add next"));
+    }
+
     public void selectRemovedContactById(int id) {
         wd.findElement(By.xpath("//input[@id='" + id + "']")).click();
     }

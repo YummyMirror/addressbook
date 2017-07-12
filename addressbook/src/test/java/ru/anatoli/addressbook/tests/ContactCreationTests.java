@@ -18,7 +18,7 @@ public class ContactCreationTests extends TestBase {
         applicationManager.getNavigationHelper().goToHomePage();
     }
 
-    @Test
+    @Test(enabled = false)
     public void testContactCreation() {
         //Getting Set of ContactData object model BEFORE creation
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -77,5 +77,48 @@ public class ContactCreationTests extends TestBase {
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);
+    }
+
+    @Test(enabled = true)
+    public void testContactCreationOneByOne() {
+        //Getting Set of ContactData object model BEFORE creation
+        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+
+        //Creating new CONTACT
+        ContactData contactData = new ContactData().withFirstName("firstName")
+                                                    .withMiddleName(null)
+                                                    .withLastName("lastName")
+                                                    .withNickname(null)
+                                                    .withPhoto(new File("src/test/resources/NBA.jpeg"))
+                                                    .withTitle(null)
+                                                    .withCompany(null)
+                                                    .withAddress(null)
+                                                    .withHomePhone(null)
+                                                    .withMobilePhone(null)
+                                                    .withWorkPhone(null)
+                                                    .withFax(null)
+                                                    .withEmail(null)
+                                                    .withEmail2(null)
+                                                    .withEmail3(null)
+                                                    .withHomepage(null)
+                                                    .withBirthDay(null)
+                                                    .withBirthMonth(null)
+                                                    .withBirthYear(null)
+                                                    .withAnniversaryDay(null)
+                                                    .withAnniversaryMonth(null)
+                                                    .withAnniversaryYear(null)
+                                                    .withSecondaryAddress(null)
+                                                    .withSecondaryHome(null)
+                                                    .withSecondaryNotes(null);
+        applicationManager.getContactHelper().initiateContactCreation();
+        applicationManager.getContactHelper().inputContactForm(contactData);
+        applicationManager.getContactHelper().submitContactForm();
+        applicationManager.getContactHelper().addNextContact();
+        applicationManager.getContactHelper().inputContactForm(contactData);
+        applicationManager.getContactHelper().submitContactForm();
+        applicationManager.getContactHelper().returnToHomePage();
+
+        //Getting Set of ContactData object model AFTER creation
+        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
     }
 }
