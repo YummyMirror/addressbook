@@ -21,7 +21,7 @@ public class ContactDeletionTests extends TestBase {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void testContactDeletion() {
         //Getting Set of ContactData object model BEFORE deletion
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -41,5 +41,21 @@ public class ContactDeletionTests extends TestBase {
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);
+    }
+
+    @Test(enabled = true)
+    public void testContactDeletionFromUpdateForm() {
+        //Getting Set of ContactData object model BEFORE deletion
+        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+
+        //Choosing the random Contact that will be removed
+        ContactData removedContact = before.iterator().next();
+
+        applicationManager.getContactHelper().selectModifiedContactById(removedContact.getContactId());
+        applicationManager.getContactHelper().deleteSelectedContact();
+        applicationManager.getNavigationHelper().goToHomePage();
+
+        //Getting Set of ContactData object model AFTER deletion
+        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
     }
 }
