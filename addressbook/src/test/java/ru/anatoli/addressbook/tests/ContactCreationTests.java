@@ -114,5 +114,8 @@ public class ContactCreationTests extends TestBase {
 
         //Getting Set of ContactData object model AFTER creation
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size() + 2, after.size());
     }
 }
