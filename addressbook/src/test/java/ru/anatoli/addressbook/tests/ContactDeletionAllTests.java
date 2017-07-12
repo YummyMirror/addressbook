@@ -3,6 +3,8 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
+
+import java.io.File;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -17,7 +19,29 @@ public class ContactDeletionAllTests extends TestBase {
         if (applicationManager.getContactHelper().getContactSet().size() == 0) {
             ContactData contactData = new ContactData().withFirstName("FirstName")
                                                         .withMiddleName("MiddleName")
-                                                        .withLastName("LastName");
+                                                        .withLastName("LastName")
+                                                        .withNickname(null)
+                                                        .withPhoto(new File("src/test/resources/NBA.jpeg"))
+                                                        .withTitle(null)
+                                                        .withCompany(null)
+                                                        .withAddress(null)
+                                                        .withHomePhone(null)
+                                                        .withMobilePhone(null)
+                                                        .withWorkPhone(null)
+                                                        .withFax(null)
+                                                        .withEmail(null)
+                                                        .withEmail2(null)
+                                                        .withEmail3(null)
+                                                        .withHomepage(null)
+                                                        .withBirthDay(null)
+                                                        .withBirthMonth(null)
+                                                        .withBirthYear(null)
+                                                        .withAnniversaryDay(null)
+                                                        .withAnniversaryMonth(null)
+                                                        .withAnniversaryYear(null)
+                                                        .withSecondaryAddress(null)
+                                                        .withSecondaryHome(null)
+                                                        .withSecondaryNotes(null);
             applicationManager.getContactHelper().createContact(contactData);
             applicationManager.getContactHelper().createContact(contactData);
             applicationManager.getContactHelper().createContact(contactData);
