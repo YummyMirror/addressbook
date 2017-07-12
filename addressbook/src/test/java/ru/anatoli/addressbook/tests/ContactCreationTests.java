@@ -110,13 +110,7 @@ public class ContactCreationTests extends TestBase {
                                                     .withSecondaryAddress(null)
                                                     .withSecondaryHome(null)
                                                     .withSecondaryNotes(null);
-        applicationManager.getContactHelper().initiateContactCreation();
-        applicationManager.getContactHelper().inputContactForm(contactData);
-        applicationManager.getContactHelper().submitContactForm();
-        applicationManager.getContactHelper().addNextContact();
-        applicationManager.getContactHelper().inputContactForm(contactData);
-        applicationManager.getContactHelper().submitContactForm();
-        applicationManager.getContactHelper().returnToHomePage();
+        applicationManager.getContactHelper().createContactsOneByOne(contactData);
 
         //Getting Set of ContactData object model AFTER creation
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();

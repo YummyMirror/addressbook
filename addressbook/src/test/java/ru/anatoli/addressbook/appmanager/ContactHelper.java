@@ -170,4 +170,14 @@ public class ContactHelper extends HelperBase {
         deleteSelectedContact();
         goToHomePage();
     }
+
+    public void createContactsOneByOne(ContactData contactData) {
+        initiateContactCreation();
+        inputContactForm(contactData);
+        submitContactForm();
+        addNextContact();
+        inputContactForm(contactData);
+        submitContactForm();
+        returnToHomePage();
+    }
 }
