@@ -7,7 +7,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -28,7 +27,6 @@ public class ContactCreationTests extends TestBase {
         List<String> daysInMonth = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                                                 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
                                                 "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31");
-
         List<String> monthsInYear = Arrays.asList("January", "February", "March", "April", "May", "June",
                                                     "July", "August", "September", "October", "November", "December");
 
