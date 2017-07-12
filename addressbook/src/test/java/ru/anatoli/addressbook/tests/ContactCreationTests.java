@@ -3,10 +3,11 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
-
 import java.io.File;
-import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
+
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -23,12 +24,17 @@ public class ContactCreationTests extends TestBase {
         //Getting Set of ContactData object model BEFORE creation
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
-        String daysInMonth[] = {"-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-                            "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+        //Lists with DAYS and MONTHS
+        List<String> daysInMonth = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                                                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                                                "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31");
 
-        String monthsInYear[] = {"-", "January", "February", "March", "April", "May", "June",
-                                "July", "August", "September", "October", "November", "December"};
+        List<String> monthsInYear = Arrays.asList("January", "February", "March", "April", "May", "June",
+                                                    "July", "August", "September", "October", "November", "December");
+
+        //Getting random item for DAYS and MONTHS
+        String randomDay = daysInMonth.iterator().next();
+        String randomMonth = monthsInYear.iterator().next();
 
         //Creating new CONTACT
         ContactData contactData = new ContactData().withFirstName("firstName")
@@ -47,11 +53,11 @@ public class ContactCreationTests extends TestBase {
                                                     .withEmail2("2@mail.ru")
                                                     .withEmail3("3@mail.ru")
                                                     .withHomepage("www.google.com")
-                                                    .withBirthDay(daysInMonth[18])
-                                                    .withBirthMonth(monthsInYear[5])
+                                                    .withBirthDay(randomDay)
+                                                    .withBirthMonth(randomMonth)
                                                     .withBirthYear("1900")
-                                                    .withAnniversaryDay(daysInMonth[25])
-                                                    .withAnniversaryMonth(monthsInYear[8])
+                                                    .withAnniversaryDay(randomDay)
+                                                    .withAnniversaryMonth(randomMonth)
                                                     .withAnniversaryYear("1950")
                                                     .withSecondaryAddress("secondary Address")
                                                     .withSecondaryHome("secondary Home")
