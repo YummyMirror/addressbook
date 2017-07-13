@@ -12,13 +12,19 @@ import static org.testng.Assert.assertEquals;
 public class GroupAllDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
+        GroupData groupData = new GroupData().withGroupName("Test name")
+                                            .withGroupHeader(null)
+                                            .withGroupFooter(null);
+
         applicationManager.getNavigationHelper().goToGroupsPage();
         if (applicationManager.getGroupHelper().getGroupSet().size() == 0) {
-            GroupData groupData = new GroupData().withGroupName("Test name")
-                                                .withGroupHeader(null)
-                                                .withGroupFooter(null);
             applicationManager.getGroupHelper().createGroup(groupData);
             applicationManager.getGroupHelper().createGroup(groupData);
+            applicationManager.getGroupHelper().createGroup(groupData);
+        } else if (applicationManager.getGroupHelper().getGroupSet().size() == 1) {
+            applicationManager.getGroupHelper().createGroup(groupData);
+            applicationManager.getGroupHelper().createGroup(groupData);
+        } else if (applicationManager.getGroupHelper().getGroupSet().size() == 2) {
             applicationManager.getGroupHelper().createGroup(groupData);
         }
     }
