@@ -111,6 +111,14 @@ public class GroupHelper extends HelperBase {
         returnToGroupsPage();
     }
 
+    public void deleteAllSelectedGroups(Set<GroupData> before) {
+        for (GroupData group : before) {
+            selectGroupById(group.getGroupId());
+        }
+        deleteSelectedGroup();
+        returnToGroupsPage();
+    }
+
     public void modifyGroup(GroupData groupData) {
         selectGroupById(groupData.getGroupId());
         initiateGroupModification();

@@ -27,11 +27,7 @@ public class GroupAllDeletionTests extends TestBase {
         //Getting Set of GroupData object model BEFORE deletion
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
 
-        for (GroupData group : before) {
-            applicationManager.getGroupHelper().selectGroupById(group.getGroupId());
-        }
-        applicationManager.getGroupHelper().deleteSelectedGroup();
-        applicationManager.getGroupHelper().returnToGroupsPage();
+        applicationManager.getGroupHelper().deleteAllSelectedGroups(before);
 
         //Getting Set of GroupData object model AFTER deletion
         Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
