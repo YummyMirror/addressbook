@@ -12,20 +12,21 @@ import static org.testng.Assert.assertEquals;
 public class GroupAllDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
+        applicationManager.getNavigationHelper().goToGroupsPage();
+
         GroupData groupData = new GroupData().withGroupName("Test name")
                                             .withGroupHeader(null)
                                             .withGroupFooter(null);
 
-        applicationManager.getNavigationHelper().goToGroupsPage();
-        if (applicationManager.getGroupHelper().getGroupSet().size() == 0) {
-            applicationManager.getGroupHelper().createGroup(groupData);
-            applicationManager.getGroupHelper().createGroup(groupData);
-            applicationManager.getGroupHelper().createGroup(groupData);
-        } else if (applicationManager.getGroupHelper().getGroupSet().size() == 1) {
-            applicationManager.getGroupHelper().createGroup(groupData);
-            applicationManager.getGroupHelper().createGroup(groupData);
-        } else if (applicationManager.getGroupHelper().getGroupSet().size() == 2) {
-            applicationManager.getGroupHelper().createGroup(groupData);
+        int groupNumber = applicationManager.getGroupHelper().getGroupSet().size();
+        if (groupNumber == 0) {
+            for (int i = 0; i < 3; i++) {
+                applicationManager.getGroupHelper().createGroup(groupData);
+            }
+        } else if (groupNumber < 3) {
+            for (int i = 0; i < 2; i++) {
+                applicationManager.getGroupHelper().createGroup(groupData);
+            }
         }
     }
 
