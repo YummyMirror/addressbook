@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.GroupData;
 import java.util.Set;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by anatoli.anukevich on 7/13/2017.
@@ -31,5 +32,8 @@ public class GroupAllDeletionTests extends TestBase {
 
         //Getting Set of GroupData object model AFTER deletion
         Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size(), after.size() + before.size());
     }
 }
