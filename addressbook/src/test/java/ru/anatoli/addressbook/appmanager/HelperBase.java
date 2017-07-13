@@ -12,12 +12,17 @@ import java.io.File;
 public class HelperBase {
     protected WebDriver wd;
 
+    //Constructor
     public HelperBase(WebDriver wd) {
         this.wd = wd;
     }
 
     public void click(By locator) {
         wd.findElement(locator).click();
+    }
+
+    public String getText(By locator) {
+        return wd.findElement(locator).getText();
     }
 
     public void input(By locator, String value) {
@@ -44,7 +49,6 @@ public class HelperBase {
                 new Select(wd.findElement(locator)).selectByVisibleText(value);
             }
         }
-
     }
 
     public boolean isElementPresent(By locator) {

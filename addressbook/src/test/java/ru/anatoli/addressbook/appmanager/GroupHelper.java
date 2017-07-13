@@ -45,7 +45,7 @@ public class GroupHelper extends HelperBase {
     }
 
     public void selectGroupById(int id) {
-        wd.findElement(By.xpath("//input[@value = '" + id + "']")).click();
+        click(By.xpath("//input[@value = '" + id + "']"));
     }
 
     public void deleteSelectedGroup() {
@@ -53,11 +53,11 @@ public class GroupHelper extends HelperBase {
     }
 
     public String getErrorMessageDuringDeletionAndModification() {
-        return wd.findElement(By.xpath("//*[@id='content']/b[1]")).getText();
+        return getText(By.xpath("//*[@id='content']/b[1]"));
     }
 
     public String getErrorTextAfterClickingUpdate() {
-        String errorMessage = wd.findElement(By.cssSelector("div.msgbox")).getText();
+        String errorMessage = getText(By.cssSelector("div.msgbox"));
         String splitErrorMessage[] = errorMessage.split("\n");
         return splitErrorMessage[0];
     }
@@ -67,11 +67,15 @@ public class GroupHelper extends HelperBase {
     }
 
     public String getGroupHeaderFromEditForm() {
-        return wd.findElement(By.name("group_header")).getText();
+        return getText(By.name("group_header"));
     }
 
     public String getGroupFooterFromEditForm() {
-        return wd.findElement(By.name("group_footer")).getText();
+        return getText(By.name("group_footer"));
+    }
+
+    public void back() {
+        wd.navigate().back();
     }
 
     private Set<GroupData> groupCache = null;
@@ -137,7 +141,7 @@ public class GroupHelper extends HelperBase {
         GroupData groupData = new GroupData().withGroupName(groupNameInside)
                                                 .withGroupHeader(groupHeaderInside)
                                                 .withGroupFooter(groupFooterInside);
-        wd.navigate().back();
+        back();
         return groupData;
     }
 }
