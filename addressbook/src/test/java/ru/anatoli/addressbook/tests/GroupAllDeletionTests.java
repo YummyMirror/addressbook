@@ -35,5 +35,10 @@ public class GroupAllDeletionTests extends TestBase {
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size() + before.size());
+
+        before.removeAll(before);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
