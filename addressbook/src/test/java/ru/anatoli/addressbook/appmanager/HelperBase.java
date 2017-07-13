@@ -59,4 +59,16 @@ public class HelperBase {
             return false;
         }
     }
+
+    public void confirmAlert() {
+        wd.switchTo().alert().accept();
+    }
+
+    public void cancelAlert() {
+        wd.switchTo().alert().dismiss();
+    }
+
+    public void back() {
+        wd.navigate().back();
+    }
 }

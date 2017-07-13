@@ -71,41 +71,35 @@ public class ContactHelper extends HelperBase {
     }
 
     public void selectRemovedContactById(int id) {
-        wd.findElement(By.xpath("//input[@id='" + id + "']")).click();
+        click(By.xpath("//input[@id='" + id + "']"));
     }
 
     public void deleteSelectedContact() {
-        wd.findElement(By.xpath("//input[@value='Delete']")).click();
+        click(By.xpath("//input[@value='Delete']"));
     }
 
     public void confirmContactDeletion() {
-        wd.switchTo().alert().accept();
+        confirmAlert();
     }
 
     public void selectModifiedContactById(int id) {
-        wd.findElement(By.xpath("//a[@href='edit.php?id=" + id + "']")).click();
+        click(By.xpath("//a[@href='edit.php?id=" + id + "']"));
     }
 
     public void submitModifiedContactForm() {
-        wd.findElement(By.xpath("//input[@value='Update']")).click();
+        click(By.xpath("//input[@value='Update']"));
     }
 
     public void selectAllContacts() {
-        wd.findElement(By.id("MassCB")).click();
+        click(By.id("MassCB"));
     }
 
     public void confirmSelectAllAlert() {
-        wd.switchTo().alert().accept();
+        confirmAlert();
     }
 
     public void cancelContactDeletion() {
-        wd.switchTo().alert().dismiss();
-    }
-
-    public void addNextContact(ContactData contactData) {
-        clickAddNextButton();
-        inputContactForm(contactData);
-        submitContactForm();
+        cancelAlert();
     }
 
     private Set<ContactData> contactCache = null;
@@ -183,5 +177,11 @@ public class ContactHelper extends HelperBase {
         submitContactForm();
         addNextContact(contactData2);
         returnToHomePage();
+    }
+
+    public void addNextContact(ContactData contactData) {
+        clickAddNextButton();
+        inputContactForm(contactData);
+        submitContactForm();
     }
 }

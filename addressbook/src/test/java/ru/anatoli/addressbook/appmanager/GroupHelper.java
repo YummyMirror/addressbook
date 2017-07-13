@@ -74,10 +74,6 @@ public class GroupHelper extends HelperBase {
         return getText(By.name("group_footer"));
     }
 
-    public void back() {
-        wd.navigate().back();
-    }
-
     private Set<GroupData> groupCache = null;
 
     public Set<GroupData> getGroupSet() {
