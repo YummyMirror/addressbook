@@ -177,11 +177,11 @@ public class ContactHelper extends HelperBase {
         goToHomePage();
     }
 
-    public void createContactsOneByOne(ContactData contactData) {
+    public void createContactsOneByOne(ContactData contactData, ContactData contactData2) {
         initiateContactCreation();
         inputContactForm(contactData);
         submitContactForm();
-        addNextContact(contactData);
+        addNextContact(contactData2);
         returnToHomePage();
     }
 }

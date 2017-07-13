@@ -110,12 +110,56 @@ public class ContactCreationTests extends TestBase {
                                                     .withSecondaryAddress(null)
                                                     .withSecondaryHome(null)
                                                     .withSecondaryNotes(null);
-        applicationManager.getContactHelper().createContactsOneByOne(contactData);
+
+        ContactData contactData2 = new ContactData().withFirstName("111")
+                                                    .withMiddleName(null)
+                                                    .withLastName("222")
+                                                    .withNickname(null)
+                                                    .withPhoto(new File("src/test/resources/Kobe.jpg"))
+                                                    .withTitle(null)
+                                                    .withCompany(null)
+                                                    .withAddress(null)
+                                                    .withHomePhone(null)
+                                                    .withMobilePhone(null)
+                                                    .withWorkPhone(null)
+                                                    .withFax(null)
+                                                    .withEmail(null)
+                                                    .withEmail2(null)
+                                                    .withEmail3(null)
+                                                    .withHomepage(null)
+                                                    .withBirthDay(null)
+                                                    .withBirthMonth(null)
+                                                    .withBirthYear(null)
+                                                    .withAnniversaryDay(null)
+                                                    .withAnniversaryMonth(null)
+                                                    .withAnniversaryYear(null)
+                                                    .withSecondaryAddress(null)
+                                                    .withSecondaryHome(null)
+                                                    .withSecondaryNotes(null);
+        applicationManager.getContactHelper().createContactsOneByOne(contactData, contactData2);
 
         //Getting Set of ContactData object model AFTER creation
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size() + 2, after.size());
+
+        //Getting the MAX ID from AFTER collection
+        int maxId = after
+                    .stream()
+                    .max((contact1, contact2) -> Integer.compare(contact1.getContactId(), contact2.getContactId()))
+                    .get()
+                    .getContactId();
+
+        //Adding the PENULTIMATE ID to the Object model + Adding Object model to the BEFORE collection
+        contactData.withContactId(maxId - 1);
+        before.add(contactData);
+
+        //Adding the MAX ID to the Object model + Adding Object model to the BEFORE collection
+        contactData2.withContactId(maxId);
+        before.add(contactData2);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
