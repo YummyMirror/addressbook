@@ -18,7 +18,7 @@ public class ContactCreationTests extends TestBase {
         applicationManager.getNavigationHelper().goToHomePage();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testContactCreation() {
         //Getting Set of ContactData object model BEFORE creation
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
