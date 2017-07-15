@@ -24,5 +24,11 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
 
         //Asserting by contactFirstName
         assertEquals(outsideData.getFirstName(), insideData.getFirstName());
+
+        //Asserting by contactLastName
+        assertEquals(outsideData.getLastName(), insideData.getLastName());
+
+        //Asserting by Address
+        assertEquals(outsideData.getAddress(), insideData.getAddress());
     }
 }

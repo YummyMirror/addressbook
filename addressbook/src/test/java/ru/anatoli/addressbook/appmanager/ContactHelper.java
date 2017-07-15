@@ -207,9 +207,11 @@ public class ContactHelper extends HelperBase {
                 int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
                 String firstName = cells.get(2).getText();
                 String lastName = cells.get(1).getText();
+                String address = cells.get(3).getText();
                 ContactData contact = new ContactData().withContactId(id)
                                                         .withFirstName(firstName)
-                                                        .withLastName(lastName);
+                                                        .withLastName(lastName)
+                                                        .withAddress(address);
                 contactCache.add(contact);
             }
             return new HashSet<ContactData>(contactCache);
