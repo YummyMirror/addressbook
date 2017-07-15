@@ -25,6 +25,10 @@ public class HelperBase {
         return wd.findElement(locator).getText();
     }
 
+    public String getAttribute(By locator, String value) {
+        return wd.findElement(locator).getAttribute(value);
+    }
+
     public void input(By locator, String value) {
         click(locator);
         if (value != null) {

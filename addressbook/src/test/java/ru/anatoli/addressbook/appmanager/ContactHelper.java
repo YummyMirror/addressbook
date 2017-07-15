@@ -103,95 +103,95 @@ public class ContactHelper extends HelperBase {
     }
 
     public String getFirstName() {
-        return wd.findElement(By.name("firstname")).getAttribute("value");
+        return getAttribute(By.name("firstname"), "value");
     }
 
     public String getMiddleName() {
-        return wd.findElement(By.name("middlename")).getAttribute("value");
+        return getAttribute(By.name("middlename"), "value");
     }
 
     public String getLastName() {
-        return wd.findElement(By.name("lastname")).getAttribute("value");
+        return getAttribute(By.name("lastname"), "value");
     }
 
     public String getNickname() {
-        return wd.findElement(By.name("nickname")).getAttribute("value");
+        return getAttribute(By.name("nickname"), "value");
     }
 
     public String getCompany() {
-        return wd.findElement(By.name("company")).getAttribute("value");
+        return getAttribute(By.name("company"), "value");
     }
 
     public String getTitle() {
-        return wd.findElement(By.name("title")).getAttribute("value");
+        return getAttribute(By.name("title"), "value");
     }
 
     public String getAddress() {
-        return wd.findElement(By.name("address")).getText();
+        return getText(By.name("address"));
     }
 
     public String getHomePhone() {
-        return wd.findElement(By.name("home")).getAttribute("value");
+        return getAttribute(By.name("home"), "value");
     }
 
     public String getMobilePhone() {
-        return wd.findElement(By.name("mobile")).getAttribute("value");
+        return getAttribute(By.name("mobile"), "value");
     }
 
     public String getWorkPhone() {
-        return wd.findElement(By.name("work")).getAttribute("value");
+        return getAttribute(By.name("work"), "value");
     }
 
     public String getFax() {
-        return wd.findElement(By.name("fax")).getAttribute("value");
+        return getAttribute(By.name("fax"), "value");
     }
 
     public String getEmail1() {
-        return wd.findElement(By.name("email")).getAttribute("value");
+        return getAttribute(By.name("email"), "value");
     }
 
     public String getEmail2() {
-        return wd.findElement(By.name("email2")).getAttribute("value");
+        return getAttribute(By.name("email2"), "value");
     }
 
     public String getEmail3() {
-        return wd.findElement(By.name("email3")).getAttribute("value");
+        return getAttribute(By.name("email3"), "value");
     }
 
     public String getBirthDay() {
-        return wd.findElement(By.name("bday")).getAttribute("value");
+        return getAttribute(By.name("bday"), "value");
     }
 
     public String getBirthMonth() {
-        return wd.findElement(By.name("bmonth")).getAttribute("value");
+        return getAttribute(By.name("bmonth"), "value");
     }
 
     public String getBirthYear() {
-        return wd.findElement(By.name("byear")).getAttribute("value");
+        return getAttribute(By.name("byear"), "value");
     }
 
     public String getAnniversaryDay() {
-        return wd.findElement(By.name("aday")).getAttribute("value");
+        return getAttribute(By.name("aday"), "value");
     }
 
     public String getAnniversaryMonth() {
-        return wd.findElement(By.name("amonth")).getAttribute("value");
+        return getAttribute(By.name("amonth"), "value");
     }
 
     public String getAnniversaryYear() {
-        return wd.findElement(By.name("ayear")).getAttribute("value");
+        return getAttribute(By.name("ayear"), "value");
     }
 
     public String getSecondaryAddress() {
-        return wd.findElement(By.name("address2")).getText();
+        return getText(By.name("address2"));
     }
 
     public String getSecondaryHome() {
-        return wd.findElement(By.name("phone2")).getAttribute("value");
+        return getAttribute(By.name("phone2"), "value");
     }
 
     public String getSecondaryNotes() {
-        return wd.findElement(By.name("notes")).getText();
+        return getText(By.name("notes"));
     }
 
     private Set<ContactData> contactCache = null;
