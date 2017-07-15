@@ -102,6 +102,98 @@ public class ContactHelper extends HelperBase {
         cancelAlert();
     }
 
+    public String getFirstName() {
+        return wd.findElement(By.name("firstname")).getAttribute("value");
+    }
+
+    public String getMiddleName() {
+        return wd.findElement(By.name("middlename")).getAttribute("value");
+    }
+
+    public String getLastName() {
+        return wd.findElement(By.name("lastname")).getAttribute("value");
+    }
+
+    public String getNickname() {
+        return wd.findElement(By.name("nickname")).getAttribute("value");
+    }
+
+    public String getCompany() {
+        return wd.findElement(By.name("company")).getAttribute("value");
+    }
+
+    public String getTitle() {
+        return wd.findElement(By.name("title")).getAttribute("value");
+    }
+
+    public String getAddress() {
+        return wd.findElement(By.name("address")).getText();
+    }
+
+    public String getHomePhone() {
+        return wd.findElement(By.name("home")).getAttribute("value");
+    }
+
+    public String getMobilePhone() {
+        return wd.findElement(By.name("mobile")).getAttribute("value");
+    }
+
+    public String getWorkPhone() {
+        return wd.findElement(By.name("work")).getAttribute("value");
+    }
+
+    public String getFax() {
+        return wd.findElement(By.name("fax")).getAttribute("value");
+    }
+
+    public String getEmail1() {
+        return wd.findElement(By.name("email")).getAttribute("value");
+    }
+
+    public String getEmail2() {
+        return wd.findElement(By.name("email2")).getAttribute("value");
+    }
+
+    public String getEmail3() {
+        return wd.findElement(By.name("email3")).getAttribute("value");
+    }
+
+    public String getBirthDay() {
+        return wd.findElement(By.name("bday")).getAttribute("value");
+    }
+
+    public String getBirthMonth() {
+        return wd.findElement(By.name("bmonth")).getAttribute("value");
+    }
+
+    public String getBirthYear() {
+        return wd.findElement(By.name("byear")).getAttribute("value");
+    }
+
+    public String getAnniversaryDay() {
+        return wd.findElement(By.name("aday")).getAttribute("value");
+    }
+
+    public String getAnniversaryMonth() {
+        return wd.findElement(By.name("amonth")).getAttribute("value");
+    }
+
+    public String getAnniversaryYear() {
+        return wd.findElement(By.name("ayear")).getAttribute("value");
+    }
+
+    public String getSecondaryAddress() {
+        return wd.findElement(By.name("address2")).getText();
+    }
+
+    public String getSecondaryHome() {
+        return wd.findElement(By.name("phone2")).getAttribute("value");
+    }
+
+    public String getSecondaryNotes() {
+        return wd.findElement(By.name("notes")).getText();
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
@@ -183,5 +275,58 @@ public class ContactHelper extends HelperBase {
         clickAddNextButton();
         inputContactForm(contactData);
         submitContactForm();
+    }
+
+    public ContactData getContactDataFromEditForm(ContactData comparedContact) {
+        selectModifiedContactById(comparedContact.getContactId());
+        String firstName = getFirstName();
+        String middleName = getMiddleName();
+        String lastName = getLastName();
+        String nickname = getNickname();
+        String company = getCompany();
+        String title = getTitle();
+        String address = getAddress();
+        String homePhone = getHomePhone();
+        String mobilePhone = getMobilePhone();
+        String workPhone = getWorkPhone();
+        String fax = getFax();
+        String email1 = getEmail1();
+        String email2 = getEmail2();
+        String email3 = getEmail3();
+        String birthDay = getBirthDay();
+        String birthMonth = getBirthMonth();
+        String birthYear = getBirthYear();
+        String anniversaryDay = getAnniversaryDay();
+        String anniversaryMonth = getAnniversaryMonth();
+        String anniversaryYear = getAnniversaryYear();
+        String secondaryAddress = getSecondaryAddress();
+        String secondaryHome = getSecondaryHome();
+        String secondaryNotes = getSecondaryNotes();
+
+        ContactData contactData = new ContactData().withFirstName(firstName)
+                                                    .withMiddleName(middleName)
+                                                    .withLastName(lastName)
+                                                    .withNickname(nickname)
+                                                    .withCompany(company)
+                                                    .withTitle(title)
+                                                    .withAddress(address)
+                                                    .withHomePhone(homePhone)
+                                                    .withMobilePhone(mobilePhone)
+                                                    .withWorkPhone(workPhone)
+                                                    .withFax(fax)
+                                                    .withEmail(email1)
+                                                    .withEmail2(email2)
+                                                    .withEmail3(email3)
+                                                    .withBirthDay(birthDay)
+                                                    .withBirthMonth(birthMonth)
+                                                    .withBirthYear(birthYear)
+                                                    .withAnniversaryDay(anniversaryDay)
+                                                    .withAnniversaryMonth(anniversaryMonth)
+                                                    .withAnniversaryYear(anniversaryYear)
+                                                    .withSecondaryAddress(secondaryAddress)
+                                                    .withSecondaryHome(secondaryHome)
+                                                    .withSecondaryNotes(secondaryNotes);
+        back();
+        return contactData;
     }
 }
