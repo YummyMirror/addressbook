@@ -63,7 +63,7 @@ public class GroupHelper extends HelperBase {
     }
 
     public String getGroupNameFromEditForm() {
-        return wd.findElement(By.name("group_name")).getAttribute("value");
+        return getAttribute(By.name("group_name"), "value");
     }
 
     public String getGroupHeaderFromEditForm() {
