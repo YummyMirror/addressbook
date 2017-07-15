@@ -54,17 +54,34 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
         } else if (insideEmail1.equals("") && insideEmail2.equals("") && insideEmail3.equals("")) {
         assertEquals(outsideData.getAllEmails(), mergeAllEmptyEmails(insideEmail1, insideEmail2, insideEmail3));
         } else {
-            System.out.println("ERROR with conditions occurs. Investigation is needed!!!");
+            System.out.println("ERROR with EMAILS' conditions occurs. Investigation is needed!!!");
         }
 
         //Getting INSIDE's phones
-        String outsidePhones = outsideData.getAllPhones();
         String insideHomePhone = insideData.getHomePhone();
         String insideMobilePhone = insideData.getMobilePhone();
         String insideWorkPhone = insideData.getWorkPhone();
 
         //Asserting by Phones
-        assertEquals(outsideData.getAllPhones(), mergeAllInsideEmails(insideHomePhone, insideMobilePhone, insideWorkPhone));
+        if (insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), mergeSecondThirdEmails(insideMobilePhone, insideWorkPhone));
+        } else if (insideMobilePhone.equals("") && !insideHomePhone.equals("") && !insideWorkPhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), mergeFirstThirdEmails(insideHomePhone, insideWorkPhone));
+        } else if (insideWorkPhone.equals("") && !insideHomePhone.equals("") && !insideMobilePhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), mergeFirstSecondEmails(insideHomePhone, insideMobilePhone));
+        } else if (insideHomePhone.equals("") && insideWorkPhone.equals("") && !insideMobilePhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), insideMobilePhone);
+        } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), insideWorkPhone);
+        } else if (insideMobilePhone.equals("") && insideWorkPhone.equals("") && !insideHomePhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), insideHomePhone);
+        } else if (!insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), mergeAllInsideEmails(insideHomePhone, insideMobilePhone, insideWorkPhone));
+        } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && insideWorkPhone.equals("")) {
+            assertEquals(outsideData.getAllPhones(), mergeAllEmptyEmails(insideHomePhone, insideMobilePhone, insideWorkPhone));
+        } else {
+            System.out.println("ERROR with PHONES' conditions occurs. Investigation is needed!!!");
+        }
     }
 
     public String mergeAllInsideEmails(String email, String email2, String email3) {
