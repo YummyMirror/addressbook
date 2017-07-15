@@ -30,5 +30,14 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
 
         //Asserting by Address
         assertEquals(outsideData.getAddress(), insideData.getAddress());
+
+        //Asserting by Emails
+        assertEquals(outsideData.getAllEmails(), mergeInsideEmails(insideData.getEmail(), insideData.getEmail2(), insideData.getEmail3()));
+    }
+
+    public String mergeInsideEmails(String email, String email2, String email3) {
+        String mergedEmails = email + " " + email2 + " " + email3;
+        String replaced = mergedEmails.replaceAll(" ", "\n");
+        return replaced;
     }
 }
