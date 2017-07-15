@@ -208,12 +208,14 @@ public class ContactHelper extends HelperBase {
                 String firstName = cells.get(2).getText();
                 String lastName = cells.get(1).getText();
                 String address = cells.get(3).getText();
-                String email = cells.get(4).getText();
+                String emails = cells.get(4).getText();
+                String phones = cells.get(5).getText();
                 ContactData contact = new ContactData().withContactId(id)
                                                         .withFirstName(firstName)
                                                         .withLastName(lastName)
                                                         .withAddress(address)
-                                                        .withAllEmails(email);
+                                                        .withAllEmails(emails)
+                                                        .withAllPhones(phones);
                 contactCache.add(contact);
             }
             return new HashSet<ContactData>(contactCache);

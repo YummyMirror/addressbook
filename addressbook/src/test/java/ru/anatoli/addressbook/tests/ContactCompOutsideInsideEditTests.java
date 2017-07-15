@@ -56,6 +56,15 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
         } else {
             System.out.println("ERROR with conditions occurs. Investigation is needed!!!");
         }
+
+        //Getting INSIDE's phones
+        String outsidePhones = outsideData.getAllPhones();
+        String insideHomePhone = insideData.getHomePhone();
+        String insideMobilePhone = insideData.getMobilePhone();
+        String insideWorkPhone = insideData.getWorkPhone();
+
+        //Asserting by Phones
+        assertEquals(outsideData.getAllPhones(), mergeAllInsideEmails(insideHomePhone, insideMobilePhone, insideWorkPhone));
     }
 
     public String mergeAllInsideEmails(String email, String email2, String email3) {
