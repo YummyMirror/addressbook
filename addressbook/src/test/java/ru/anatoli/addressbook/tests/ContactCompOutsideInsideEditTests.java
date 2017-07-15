@@ -38,11 +38,11 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
 
         //Asserting by Emails
         if (insideEmail1.equals("") && !insideEmail2.equals("") && !insideEmail3.equals("")) {
-            assertEquals(outsideData.getAllEmails(), mergeSecondThirdEmails(insideEmail2, insideEmail3));
+            assertEquals(outsideData.getAllEmails(), mergeSecondThirdItems(insideEmail2, insideEmail3));
         } else if (insideEmail2.equals("") && !insideEmail1.equals("") && !insideEmail3.equals("")) {
-            assertEquals(outsideData.getAllEmails(), mergeFirstThirdEmails(insideEmail1, insideEmail3));
+            assertEquals(outsideData.getAllEmails(), mergeFirstThirdItems(insideEmail1, insideEmail3));
         } else if (insideEmail3.equals("") && !insideEmail1.equals("") && !insideEmail2.equals("")) {
-            assertEquals(outsideData.getAllEmails(), mergeFirstSecondEmails(insideEmail1, insideEmail2));
+            assertEquals(outsideData.getAllEmails(), mergeFirstSecondItems(insideEmail1, insideEmail2));
         } else if (insideEmail1.equals("") && insideEmail3.equals("") && !insideEmail2.equals("")) {
             assertEquals(outsideData.getAllEmails(), insideEmail2);
         } else if (insideEmail1.equals("") && insideEmail2.equals("") && !insideEmail3.equals("")) {
@@ -50,9 +50,9 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
         } else if (insideEmail2.equals("") && insideEmail3.equals("") && !insideEmail1.equals("")) {
             assertEquals(outsideData.getAllEmails(), insideEmail1);
         } else if (!insideEmail1.equals("") && !insideEmail2.equals("") && !insideEmail3.equals("")) {
-            assertEquals(outsideData.getAllEmails(), mergeAllInsideEmails(insideEmail1, insideEmail2, insideEmail3));
+            assertEquals(outsideData.getAllEmails(), mergeAllInsideItems(insideEmail1, insideEmail2, insideEmail3));
         } else if (insideEmail1.equals("") && insideEmail2.equals("") && insideEmail3.equals("")) {
-        assertEquals(outsideData.getAllEmails(), mergeAllEmptyEmails(insideEmail1, insideEmail2, insideEmail3));
+        assertEquals(outsideData.getAllEmails(), mergeAllEmptyItems(insideEmail1, insideEmail2, insideEmail3));
         } else {
             System.out.println("ERROR with EMAILS' conditions occurs. Investigation is needed!!!");
         }
@@ -64,11 +64,11 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
 
         //Asserting by Phones
         if (insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeSecondThirdEmails(insideMobilePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeSecondThirdItems(insideMobilePhone, insideWorkPhone));
         } else if (insideMobilePhone.equals("") && !insideHomePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeFirstThirdEmails(insideHomePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeFirstThirdItems(insideHomePhone, insideWorkPhone));
         } else if (insideWorkPhone.equals("") && !insideHomePhone.equals("") && !insideMobilePhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeFirstSecondEmails(insideHomePhone, insideMobilePhone));
+            assertEquals(outsideData.getAllPhones(), mergeFirstSecondItems(insideHomePhone, insideMobilePhone));
         } else if (insideHomePhone.equals("") && insideWorkPhone.equals("") && !insideMobilePhone.equals("")) {
             assertEquals(outsideData.getAllPhones(), insideMobilePhone);
         } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
@@ -76,41 +76,36 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
         } else if (insideMobilePhone.equals("") && insideWorkPhone.equals("") && !insideHomePhone.equals("")) {
             assertEquals(outsideData.getAllPhones(), insideHomePhone);
         } else if (!insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeAllInsideEmails(insideHomePhone, insideMobilePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeAllInsideItems(insideHomePhone, insideMobilePhone, insideWorkPhone));
         } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeAllEmptyEmails(insideHomePhone, insideMobilePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeAllEmptyItems(insideHomePhone, insideMobilePhone, insideWorkPhone));
         } else {
             System.out.println("ERROR with PHONES' conditions occurs. Investigation is needed!!!");
         }
     }
 
-    public String mergeAllInsideEmails(String email, String email2, String email3) {
-        String mergedEmails = email + " " + email2 + " " + email3;
-        String replaced = mergedEmails.replaceAll(" ", "\n");
-        return replaced;
+    public String mergeAllInsideItems(String item, String item2, String item3) {
+        String mergedItems = item + " " + item2 + " " + item3;
+        return mergedItems.replaceAll(" ", "\n");
     }
 
-    public String mergeFirstSecondEmails(String email, String email2) {
-        String mergedEmails = email + " " + email2;
-        String replaced = mergedEmails.replaceAll(" ", "\n");
-        return replaced;
+    public String mergeFirstSecondItems(String item, String item2) {
+        String mergedItems = item + " " + item2;
+        return mergedItems.replaceAll(" ", "\n");
     }
 
-    public String mergeFirstThirdEmails(String email, String email3) {
-        String mergedEmails = email + " " + email3;
-        String replaced = mergedEmails.replaceAll(" ", "\n");
-        return replaced;
+    public String mergeFirstThirdItems(String item, String item3) {
+        String mergedItems = item + " " + item3;
+        return mergedItems.replaceAll(" ", "\n");
     }
 
-    public String mergeSecondThirdEmails(String email2, String email3) {
-        String mergedEmails = email2 + " " + email3;
-        String replaced = mergedEmails.replaceAll(" ", "\n");
-        return replaced;
+    public String mergeSecondThirdItems(String item2, String item3) {
+        String mergedItems = item2 + " " + item3;
+        return mergedItems.replaceAll(" ", "\n");
     }
 
-    public String mergeAllEmptyEmails(String email, String email2, String email3) {
-        String mergedEmails = email + " " + email2 + " " + email3;
-        String replaced = mergedEmails.replaceAll(" ", "");
-        return replaced;
+    public String mergeAllEmptyItems(String item, String item2, String item3) {
+        String mergedItems = item + " " + item2 + " " + item3;
+        return mergedItems.replaceAll(" ", "");
     }
 }
