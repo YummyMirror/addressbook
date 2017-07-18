@@ -64,21 +64,21 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
 
         //Asserting by Phones
         if (insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeSecondThirdItems(insideMobilePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeSecondThirdItems(removeUnnecessarySpecChars(insideMobilePhone), removeUnnecessarySpecChars(insideWorkPhone)));
         } else if (insideMobilePhone.equals("") && !insideHomePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeFirstThirdItems(insideHomePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeFirstThirdItems(removeUnnecessarySpecChars(insideHomePhone), removeUnnecessarySpecChars(insideWorkPhone)));
         } else if (insideWorkPhone.equals("") && !insideHomePhone.equals("") && !insideMobilePhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeFirstSecondItems(insideHomePhone, insideMobilePhone));
+            assertEquals(outsideData.getAllPhones(), mergeFirstSecondItems(removeUnnecessarySpecChars(insideHomePhone), removeUnnecessarySpecChars(insideMobilePhone)));
         } else if (insideHomePhone.equals("") && insideWorkPhone.equals("") && !insideMobilePhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), insideMobilePhone);
+            assertEquals(outsideData.getAllPhones(), removeUnnecessarySpecChars(insideMobilePhone));
         } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), insideWorkPhone);
+            assertEquals(outsideData.getAllPhones(), removeUnnecessarySpecChars(insideWorkPhone));
         } else if (insideMobilePhone.equals("") && insideWorkPhone.equals("") && !insideHomePhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), insideHomePhone);
+            assertEquals(outsideData.getAllPhones(), removeUnnecessarySpecChars(insideHomePhone));
         } else if (!insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeAllInsideItems(insideHomePhone, insideMobilePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeAllInsideItems(removeUnnecessarySpecChars(insideHomePhone), removeUnnecessarySpecChars(insideMobilePhone), removeUnnecessarySpecChars(insideWorkPhone)));
         } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && insideWorkPhone.equals("")) {
-            assertEquals(outsideData.getAllPhones(), mergeAllEmptyItems(insideHomePhone, insideMobilePhone, insideWorkPhone));
+            assertEquals(outsideData.getAllPhones(), mergeAllEmptyItems(removeUnnecessarySpecChars(insideHomePhone), removeUnnecessarySpecChars(insideMobilePhone), removeUnnecessarySpecChars(insideWorkPhone)));
         } else {
             System.out.println("ERROR with PHONES' conditions occurs. Investigation is needed!!!");
         }
@@ -107,5 +107,10 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
     public String mergeAllEmptyItems(String item, String item2, String item3) {
         String mergedItems = item + " " + item2 + " " + item3;
         return mergedItems.replaceAll(" ", "");
+    }
+
+    public String removeUnnecessarySpecChars(String item ) {
+        return item.replaceAll("[-./\\s]", "");
+        //return item.replaceAll("[\\s]|[-]|[.]|[/]", "");
     }
 }
