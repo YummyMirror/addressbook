@@ -1,7 +1,9 @@
 package ru.anatoli.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
+import java.io.File;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
@@ -9,10 +11,41 @@ import static org.testng.Assert.assertEquals;
  * Created by anatoli.anukevich on 7/14/2017.
  */
 public class ContactCompOutsideInsideEditTests extends TestBase {
+    @BeforeMethod
+    public void ensurePrecondition() {
+        applicationManager.getNavigationHelper().goToHomePage();
+        if (applicationManager.getContactHelper().getContactSet().size() == 0) {
+            ContactData contactData = new ContactData().withFirstName("FirstName")
+                                                        .withMiddleName(null)
+                                                        .withLastName("LastName")
+                                                        .withNickname(null)
+                                                        .withPhoto(new File("src/test/resources/Kobe.jpg"))
+                                                        .withCompany("Google")
+                                                        .withTitle("Lead")
+                                                        .withAddress("Test Address")
+                                                        .withHomePhone("111-111-111")
+                                                        .withMobilePhone("222.222.222")
+                                                        .withWorkPhone("111.222-333/444 555")
+                                                        .withFax(null)
+                                                        .withEmail("1@mail.ru")
+                                                        .withEmail2("2_2@gmail.com")
+                                                        .withEmail3("3@yandex.ru")
+                                                        .withHomepage(null)
+                                                        .withBirthDay("1")
+                                                        .withBirthMonth(null)
+                                                        .withBirthYear(null)
+                                                        .withAnniversaryDay(null)
+                                                        .withAnniversaryMonth(null)
+                                                        .withAnniversaryYear(null)
+                                                        .withSecondaryAddress(null)
+                                                        .withSecondaryHome(null)
+                                                        .withSecondaryNotes(null);
+            applicationManager.getContactHelper().createContact(contactData);
+        }
+    }
+
     @Test(enabled = true)
     public void testContactCompOutsideInsideUpdate() {
-        applicationManager.getNavigationHelper().goToHomePage();
-
         //Getting Set of ContactData object model BEFORE test execution
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
