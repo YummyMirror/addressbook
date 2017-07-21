@@ -38,7 +38,7 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
                                                         .withAnniversaryMonth(null)
                                                         .withAnniversaryYear(null)
                                                         .withSecondaryAddress(null)
-                                                        .withSecondaryHome(null)
+                                                        .withSecondaryPhone(null)
                                                         .withSecondaryNotes(null);
             applicationManager.getContactHelper().createContact(contactData);
         }
@@ -69,77 +69,64 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
         String insideEmail1 = insideData.getEmail();
         String insideEmail2 = insideData.getEmail2();
         String insideEmail3 = insideData.getEmail3();
-        String mergeAllEmailsInside = mergeAllItemsInside(insideEmail1, insideEmail2, insideEmail3);
+        String insideEmail4 = "";
+        String mergeAllEmailsInside = mergeAllItemsInside(insideEmail1, insideEmail2, insideEmail3, insideEmail4);
 
         //Asserting by Emails
-        if (insideEmail1.equals("") && !insideEmail2.equals("") && !insideEmail3.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else if (insideEmail2.equals("") && !insideEmail1.equals("") && !insideEmail3.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else if (insideEmail3.equals("") && !insideEmail1.equals("") && !insideEmail2.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else if (insideEmail1.equals("") && insideEmail3.equals("") && !insideEmail2.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else if (insideEmail1.equals("") && insideEmail2.equals("") && !insideEmail3.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else if (insideEmail2.equals("") && insideEmail3.equals("") && !insideEmail1.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else if (!insideEmail1.equals("") && !insideEmail2.equals("") && !insideEmail3.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else if (insideEmail1.equals("") && insideEmail2.equals("") && insideEmail3.equals("")) {
-            assertEquals(outsideAllEmails, mergeAllEmailsInside);
-        } else {
-            System.out.println("ERROR with EMAILS' conditions occurs. Investigation is needed!!!");
-        }
+        assertEquals(outsideAllEmails, mergeAllEmailsInside);
 
         //Getting OUTSIDE's and INSIDE's phones
         String outsideAllPhones = outsideData.getAllPhones();
         String insideHomePhone = insideData.getHomePhone();
         String insideMobilePhone = insideData.getMobilePhone();
         String insideWorkPhone = insideData.getWorkPhone();
-        String mergeAllPhonesInside = mergeAllItemsInside(removeUnnecessarySpecChars(insideHomePhone), removeUnnecessarySpecChars(insideMobilePhone), removeUnnecessarySpecChars(insideWorkPhone));
+        String insideSecondaryPhone = insideData.getSecondaryPhone();
+        String mergeAllPhonesInside = mergeAllItemsInside(removeUnnecessarySpecChars(insideHomePhone),
+                                                            removeUnnecessarySpecChars(insideMobilePhone),
+                                                            removeUnnecessarySpecChars(insideWorkPhone),
+                                                            removeUnnecessarySpecChars(insideSecondaryPhone));
 
         //Asserting by Phones
-        if (insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else if (insideMobilePhone.equals("") && !insideHomePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else if (insideWorkPhone.equals("") && !insideHomePhone.equals("") && !insideMobilePhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else if (insideHomePhone.equals("") && insideWorkPhone.equals("") && !insideMobilePhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else if (insideMobilePhone.equals("") && insideWorkPhone.equals("") && !insideHomePhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else if (!insideHomePhone.equals("") && !insideMobilePhone.equals("") && !insideWorkPhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else if (insideHomePhone.equals("") && insideMobilePhone.equals("") && insideWorkPhone.equals("")) {
-            assertEquals(outsideAllPhones, mergeAllPhonesInside);
-        } else {
-            System.out.println("ERROR with PHONES' conditions occurs. Investigation is needed!!!");
-        }
+        assertEquals(outsideAllPhones, mergeAllPhonesInside);
     }
 
-    public String mergeAllItemsInside(String item, String item2, String item3) {
+    public String mergeAllItemsInside(String item, String item2, String item3, String item4) {
         String mergedItems = "";
 
-        if (!item.equals("") && !item2.equals("") && !item3.equals("")) {
+        if (!item.equals("") && !item2.equals("") && !item3.equals("") && !item4.equals("")) {
+            mergedItems = item + " " + item2 + " " + item3 + " " + item4;
+        } else if (item.equals("") && !item2.equals("") && !item3.equals("") && !item4.equals("")) {
+            mergedItems = item2 + " " + item3 + " " + item4;
+        } else if (item2.equals("") && !item.equals("") && !item3.equals("") && !item4.equals("")) {
+            mergedItems = item + " " + item3 + " " + item4;
+        } else if (item3.equals("") && !item.equals("") && !item2.equals("") && !item4.equals("")) {
+            mergedItems = item + " " + item2 + " " + item4;
+        } else if (item4.equals("") && !item.equals("") && !item2.equals("") && !item3.equals("")) {
             mergedItems = item + " " + item2 + " " + item3;
-        } else if (item.equals("") && !item2.equals("") && !item3.equals("")) {
-            mergedItems = item2 + " " + item3;
-        } else if (item2.equals("") && !item.equals("") && !item3.equals("")) {
-            mergedItems = item + " " + item3;
-        } else if (item3.equals("") && !item.equals("") && !item2.equals("")) {
+        } else if (item.equals("") && item2.equals("") && !item3.equals("") && !item4.equals("")) {
+            mergedItems = item3 + " " + item4;
+        } else if (item.equals("") && item3.equals("") && !item2.equals("") && !item4.equals("")) {
+            mergedItems = item2 + " " + item4;
+        } else if (item3.equals("") && item4.equals("") && !item.equals("") && !item2.equals("")) {
             mergedItems = item + " " + item2;
-        } else if (item.equals("") && item2.equals("") && !item3.equals("")) {
-            mergedItems = item3;
-        } else if (item.equals("") && item3.equals("") && !item2.equals("")) {
-            mergedItems = item2;
-        } else if (item2.equals("") && item3.equals("") && !item.equals("")) {
+        } else if (item2.equals("") && item4.equals("") && !item.equals("") && !item3.equals("")) {
+            mergedItems = item + " " + item3;
+        } else if (item2.equals("") && item3.equals("") && !item.equals("") && !item4.equals("")) {
+            mergedItems = item + " " + item4;
+        } else if (item.equals("") && item4.equals("") && !item2.equals("") && !item3.equals("")) {
+            mergedItems = item2 + " " + item3;
+        } else if (item2.equals("") && item3.equals("") && item4.equals("") && !item.equals("")) {
             mergedItems = item;
-        } else if (item.equals("") && item2.equals("") && item3.equals("")) {
+        } else if (item.equals("") && item3.equals("") && item4.equals("") && !item2.equals("")) {
+            mergedItems = item2;
+        } else if (item.equals("") && item2.equals("") && item4.equals("") && !item3.equals("")) {
+            mergedItems = item3;
+        } else if (item.equals("") && item2.equals("") && item3.equals("") && !item4.equals("")) {
+            mergedItems = item4;
+        } else if (item.equals("") && item2.equals("") && item3.equals("") && item4.equals("")) {
             mergedItems = "";
+        } else {
+            System.out.println("ERROR occurred. Investigation is needed!");
         }
         String replaced = mergedItems.replaceAll(" ", "\n");
         return replaced;

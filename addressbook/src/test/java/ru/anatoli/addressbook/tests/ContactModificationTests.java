@@ -39,7 +39,7 @@ public class ContactModificationTests extends TestBase {
                                                         .withAnniversaryMonth(null)
                                                         .withAnniversaryYear(null)
                                                         .withSecondaryAddress(null)
-                                                        .withSecondaryHome(null)
+                                                        .withSecondaryPhone(null)
                                                         .withSecondaryNotes(null);
             applicationManager.getContactHelper().createContact(contactData);
         }
@@ -77,7 +77,7 @@ public class ContactModificationTests extends TestBase {
                                                     .withAnniversaryMonth(null)
                                                     .withAnniversaryYear(null)
                                                     .withSecondaryAddress(null)
-                                                    .withSecondaryHome(null)
+                                                    .withSecondaryPhone(null)
                                                     .withSecondaryNotes(null);
 
         applicationManager.getContactHelper().modifyContact(contactData);

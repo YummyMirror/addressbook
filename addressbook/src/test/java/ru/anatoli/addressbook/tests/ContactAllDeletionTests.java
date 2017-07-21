@@ -39,7 +39,7 @@ public class ContactAllDeletionTests extends TestBase {
                                                     .withAnniversaryMonth(null)
                                                     .withAnniversaryYear(null)
                                                     .withSecondaryAddress(null)
-                                                    .withSecondaryHome(null)
+                                                    .withSecondaryPhone(null)
                                                     .withSecondaryNotes(null);
 
         int contactNumber = applicationManager.getContactHelper().getContactSet().size();

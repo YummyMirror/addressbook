@@ -32,7 +32,7 @@ public class ContactData {
     private String anniversaryMonth;
     private String anniversaryYear;
     private String secondaryAddress;
-    private String secondaryHome;
+    private String secondaryPhone;
     private String secondaryNotes;
 
     //Getters
@@ -140,8 +140,8 @@ public class ContactData {
         return secondaryAddress;
     }
 
-    public String getSecondaryHome() {
-        return secondaryHome;
+    public String getSecondaryPhone() {
+        return secondaryPhone;
     }
 
     public String getSecondaryNotes() {
@@ -279,8 +279,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withSecondaryHome(String secondaryHome) {
-        this.secondaryHome = secondaryHome;
+    public ContactData withSecondaryPhone(String secondaryPhone) {
+        this.secondaryPhone = secondaryPhone;
         return this;
     }
 

@@ -54,7 +54,7 @@ public class ContactHelper extends HelperBase {
         select(By.name("amonth"), contactData.getAnniversaryMonth());
         input(By.name("ayear"), contactData.getAnniversaryYear());
         input(By.name("address2"), contactData.getSecondaryAddress());
-        input(By.name("phone2"), contactData.getSecondaryHome());
+        input(By.name("phone2"), contactData.getSecondaryPhone());
         input(By.name("notes"), contactData.getSecondaryNotes());
     }
 
@@ -330,7 +330,7 @@ public class ContactHelper extends HelperBase {
                                                     .withAnniversaryMonth(anniversaryMonth)
                                                     .withAnniversaryYear(anniversaryYear)
                                                     .withSecondaryAddress(secondaryAddress)
-                                                    .withSecondaryHome(secondaryHome)
+                                                    .withSecondaryPhone(secondaryHome)
                                                     .withSecondaryNotes(secondaryNotes);
         back();
         return contactData;

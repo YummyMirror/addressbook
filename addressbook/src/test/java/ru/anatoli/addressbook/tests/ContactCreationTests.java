@@ -58,7 +58,7 @@ public class ContactCreationTests extends TestBase {
                                                     .withAnniversaryMonth(randomMonth)
                                                     .withAnniversaryYear("1950")
                                                     .withSecondaryAddress("secondary Address")
-                                                    .withSecondaryHome("secondary Home")
+                                                    .withSecondaryPhone("secondary Home")
                                                     .withSecondaryNotes("secondary Notes");
         applicationManager.getContactHelper().createContact(contactData);
 
@@ -108,7 +108,7 @@ public class ContactCreationTests extends TestBase {
                                                     .withAnniversaryMonth(null)
                                                     .withAnniversaryYear(null)
                                                     .withSecondaryAddress(null)
-                                                    .withSecondaryHome(null)
+                                                    .withSecondaryPhone(null)
                                                     .withSecondaryNotes(null);
 
         ContactData contactData2 = new ContactData().withFirstName("111")
@@ -134,7 +134,7 @@ public class ContactCreationTests extends TestBase {
                                                     .withAnniversaryMonth(null)
                                                     .withAnniversaryYear(null)
                                                     .withSecondaryAddress(null)
-                                                    .withSecondaryHome(null)
+                                                    .withSecondaryPhone(null)
                                                     .withSecondaryNotes(null);
         applicationManager.getContactHelper().createContactsOneByOne(contactData, contactData2);
 
