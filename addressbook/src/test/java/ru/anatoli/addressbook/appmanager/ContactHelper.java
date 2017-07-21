@@ -102,6 +102,14 @@ public class ContactHelper extends HelperBase {
         cancelAlert();
     }
 
+    public void openDetailsPageById(int id) {
+        click(By.xpath("//a[@href='view.php?id=" + id + "']"));
+    }
+
+    public void initiateContactModificationFromDetailsPage() {
+        click(By.name("modifiy"));
+    }
+
     public String getFirstName() {
         return getAttribute(By.name("firstname"), "value");
     }

@@ -3,7 +3,6 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
-
 import java.io.File;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
@@ -45,7 +44,7 @@ public class ContactModificationTests extends TestBase {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void testContactModification() {
         //Getting Set of ContactData object model BEFORE modification
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -93,5 +92,50 @@ public class ContactModificationTests extends TestBase {
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);
+    }
+
+    @Test(enabled = true)
+    public void testContactModificationFromDetailsPage() {
+        //Getting Set of ContactData object model BEFORE modification
+        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+
+        //Choosing the random Contact that will be modified
+        ContactData modifiedContact = before.iterator().next();
+
+        ContactData contactData = new ContactData().withContactId(modifiedContact.getContactId())
+                                                    .withFirstName("Modified FirstName")
+                                                    .withMiddleName(null)
+                                                    .withLastName("Modified LastName")
+                                                    .withNickname(null)
+                                                    .withPhoto(new File("src/test/resources/Kobe.jpg"))
+                                                    .withTitle(null)
+                                                    .withCompany(null)
+                                                    .withAddress(null)
+                                                    .withHomePhone(null)
+                                                    .withMobilePhone(null)
+                                                    .withWorkPhone(null)
+                                                    .withFax(null)
+                                                    .withEmail(null)
+                                                    .withEmail2(null)
+                                                    .withEmail3(null)
+                                                    .withHomepage(null)
+                                                    .withBirthDay(null)
+                                                    .withBirthMonth(null)
+                                                    .withBirthYear(null)
+                                                    .withAnniversaryDay(null)
+                                                    .withAnniversaryMonth(null)
+                                                    .withAnniversaryYear(null)
+                                                    .withSecondaryAddress(null)
+                                                    .withSecondaryPhone(null)
+                                                    .withSecondaryNotes(null);
+
+        applicationManager.getContactHelper().openDetailsPageById(modifiedContact.getContactId());
+        applicationManager.getContactHelper().initiateContactModificationFromDetailsPage();
+        applicationManager.getContactHelper().inputContactForm(contactData);
+        applicationManager.getContactHelper().submitModifiedContactForm();
+        applicationManager.getContactHelper().returnToHomePage();
+
+        //Getting Set of ContactData object model AFTER modification
+        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
     }
 }
