@@ -129,11 +129,7 @@ public class ContactModificationTests extends TestBase {
                                                     .withSecondaryPhone(null)
                                                     .withSecondaryNotes(null);
 
-        applicationManager.getContactHelper().openDetailsPageById(modifiedContact.getContactId());
-        applicationManager.getContactHelper().initiateContactModificationFromDetailsPage();
-        applicationManager.getContactHelper().inputContactForm(contactData);
-        applicationManager.getContactHelper().submitModifiedContactForm();
-        applicationManager.getContactHelper().returnToHomePage();
+        applicationManager.getContactHelper().modifyContactFromDetailsPage(contactData);
 
         //Getting Set of ContactData object model AFTER modification
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();

@@ -253,6 +253,14 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public void modifyContactFromDetailsPage(ContactData contactData) {
+        openDetailsPageById(contactData.getContactId());
+        initiateContactModificationFromDetailsPage();
+        inputContactForm(contactData);
+        submitModifiedContactForm();
+        returnToHomePage();
+    }
+
     public void deleteAllSelectedContacts() {
         selectAllContacts();
         deleteSelectedContact();
