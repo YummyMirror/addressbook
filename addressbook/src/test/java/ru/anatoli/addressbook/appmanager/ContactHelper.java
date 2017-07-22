@@ -166,6 +166,10 @@ public class ContactHelper extends HelperBase {
         return getAttribute(By.name("email3"), "value");
     }
 
+    public String getHomepage() {
+        return getAttribute(By.name("homepage"), "value");
+    }
+
     public String getBirthDay() {
         return getAttribute(By.name("bday"), "value");
     }
@@ -315,6 +319,7 @@ public class ContactHelper extends HelperBase {
         String email1 = getEmail1();
         String email2 = getEmail2();
         String email3 = getEmail3();
+        String homepage = getHomepage();
         String birthDay = getBirthDay();
         String birthMonth = getBirthMonth();
         String birthYear = getBirthYear();
@@ -339,6 +344,7 @@ public class ContactHelper extends HelperBase {
                                                     .withEmail(email1)
                                                     .withEmail2(email2)
                                                     .withEmail3(email3)
+                                                    .withHomepage(homepage)
                                                     .withBirthDay(birthDay)
                                                     .withBirthMonth(birthMonth)
                                                     .withBirthYear(birthYear)
@@ -347,6 +353,82 @@ public class ContactHelper extends HelperBase {
                                                     .withAnniversaryYear(anniversaryYear)
                                                     .withSecondaryAddress(secondaryAddress)
                                                     .withSecondaryPhone(secondaryHome)
+                                                    .withSecondaryNotes(secondaryNotes);
+        back();
+        return contactData;
+    }
+
+    public ContactData getContactDataFromDetailsForm(ContactData outsideData) {
+        openDetailsPageById(outsideData.getContactId());
+
+        //Getting all content on the Details page
+        String content = wd.findElement(By.id("content")).getText();
+        String parsed[] = content.split("\n");
+
+        //Dirty data
+        String names = parsed[0];
+        String namesArray[] = names.split(" ");
+        String homePhoneDirty = parsed[7];
+        String mobilePhoneDirty = parsed[8];
+        String workPhoneDirty = parsed[9];
+        String faxDirty = parsed[10];
+        String birthDataDirty = parsed[18];
+        String anniversaryDataDirty = parsed[19];
+        String birthArray[] = birthDataDirty.split(" ");
+        String birthDayDirty = birthArray[1];
+        String anniversaryArray[] = anniversaryDataDirty.split(" ");
+        String anniversaryDayDirty = anniversaryArray[1];
+        String secondaryPhoneDirty = parsed[23];
+
+        //Pure data
+        String firstName = namesArray[0];
+        String middleName = namesArray[1];
+        String lastName = namesArray[2];
+        String nickname = parsed[1];
+        String title = parsed[3];
+        String company = parsed[4];
+        String address = parsed[5];
+        String homePhone = homePhoneDirty.replaceAll("H: ", "");
+        String mobilePhone = mobilePhoneDirty.replaceAll("M: ", "");
+        String workPhone = workPhoneDirty.replaceAll("W: ", "");
+        String fax = faxDirty.replaceAll("F: ", "");
+        String email = parsed[12];
+        String email2 = parsed[13];
+        String email3 = parsed[14];
+        String homepage = parsed[16];
+        String birthDay = birthDayDirty.replaceAll("\\.", "");
+        String birthMonth = birthArray[2];
+        String birthYear = birthArray[3];
+        String anniversaryDay = anniversaryDayDirty.replaceAll("\\.", "");
+        String anniversaryMonth = anniversaryArray[2];
+        String anniversaryYear = anniversaryArray[3];
+        String secondaryAddress = parsed[21];
+        String secondaryPhone = secondaryPhoneDirty.replaceAll("P: ", "");
+        String secondaryNotes = parsed[25];
+
+        ContactData contactData = new ContactData().withFirstName(firstName)
+                                                    .withMiddleName(middleName)
+                                                    .withLastName(lastName)
+                                                    .withNickname(nickname)
+                                                    .withTitle(title)
+                                                    .withCompany(company)
+                                                    .withAddress(address)
+                                                    .withHomePhone(homePhone)
+                                                    .withMobilePhone(mobilePhone)
+                                                    .withWorkPhone(workPhone)
+                                                    .withFax(fax)
+                                                    .withEmail(email)
+                                                    .withEmail2(email2)
+                                                    .withEmail3(email3)
+                                                    .withHomepage(homepage)
+                                                    .withBirthDay(birthDay)
+                                                    .withBirthMonth(birthMonth)
+                                                    .withBirthYear(birthYear)
+                                                    .withAnniversaryDay(anniversaryDay)
+                                                    .withAnniversaryMonth(anniversaryMonth)
+                                                    .withAnniversaryYear(anniversaryYear)
+                                                    .withSecondaryAddress(secondaryAddress)
+                                                    .withSecondaryPhone(secondaryPhone)
                                                     .withSecondaryNotes(secondaryNotes);
         back();
         return contactData;

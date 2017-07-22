@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by anatoli.anukevich on 7/14/2017.
  */
-public class ContactCompOutsideInsideEditTests extends TestBase {
+public class ContactCompOutsideInsideTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToHomePage();
@@ -44,7 +44,7 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
         }
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testContactCompOutsideInsideUpdate() {
         //Getting Set of ContactData object model BEFORE test execution
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -88,6 +88,58 @@ public class ContactCompOutsideInsideEditTests extends TestBase {
 
         //Asserting by Phones
         assertEquals(outsideAllPhones, mergeAllPhonesInside);
+    }
+
+    @Test(enabled = true)
+    public void testContactCompEditFormDataWithDetailsPageData() {
+        //Getting Set of ContactData object model BEFORE test execution
+        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+
+        //Choosing the random Contact that will be compared as OUTSIDE data
+        ContactData outsideData = before.iterator().next();
+
+        //Getting INSIDE data from details page
+        ContactData dataFromDetailsPage = applicationManager.getContactHelper().getContactDataFromDetailsForm(outsideData);
+
+        //Getting INSIDE data from edit form
+        ContactData dataFromEditPage = applicationManager.getContactHelper().getContactDataFromEditForm(outsideData);
+
+        //Asserting by FirstName, MiddleName, LastName
+        assertEquals(dataFromDetailsPage.getFirstName(), dataFromEditPage.getFirstName());
+        assertEquals(dataFromDetailsPage.getMiddleName(), dataFromEditPage.getMiddleName());
+        assertEquals(dataFromDetailsPage.getLastName(), dataFromEditPage.getLastName());
+
+        //Asserting by Nickname, Company, Title, Address, Homepage
+        assertEquals(dataFromDetailsPage.getNickname(), dataFromEditPage.getNickname());
+        assertEquals(dataFromDetailsPage.getCompany(), dataFromEditPage.getCompany());
+        assertEquals(dataFromDetailsPage.getTitle(), dataFromEditPage.getTitle());
+        assertEquals(dataFromDetailsPage.getAddress(), dataFromEditPage.getAddress());
+        assertEquals(dataFromDetailsPage.getHomepage(), dataFromEditPage.getHomepage());
+
+        //Asserting by Phones
+        assertEquals(dataFromDetailsPage.getHomePhone(), dataFromEditPage.getHomePhone());
+        assertEquals(dataFromDetailsPage.getMobilePhone(), dataFromEditPage.getMobilePhone());
+        assertEquals(dataFromDetailsPage.getWorkPhone(), dataFromEditPage.getWorkPhone());
+
+        //Asserting by Emails
+        assertEquals(dataFromDetailsPage.getEmail(), dataFromEditPage.getEmail());
+        assertEquals(dataFromDetailsPage.getEmail2(), dataFromEditPage.getEmail2());
+        assertEquals(dataFromDetailsPage.getEmail3(), dataFromEditPage.getEmail3());
+
+        //Asserting by Birth Info
+        assertEquals(dataFromDetailsPage.getBirthDay(), dataFromEditPage.getBirthDay());
+        assertEquals(dataFromDetailsPage.getBirthMonth(), dataFromEditPage.getBirthMonth());
+        assertEquals(dataFromDetailsPage.getBirthYear(), dataFromEditPage.getBirthYear());
+
+        //Asserting by Anniversary Info
+        assertEquals(dataFromDetailsPage.getAnniversaryDay(), dataFromEditPage.getAnniversaryDay());
+        //assertEquals(dataFromDetailsPage.getAnniversaryMonth(), dataFromEditPage.getAnniversaryMonth());
+        assertEquals(dataFromDetailsPage.getAnniversaryYear(), dataFromEditPage.getAnniversaryYear());
+
+        //Asserting by Secondary Info
+        assertEquals(dataFromDetailsPage.getSecondaryAddress(), dataFromEditPage.getSecondaryAddress());
+        assertEquals(dataFromDetailsPage.getSecondaryPhone(), dataFromEditPage.getSecondaryPhone());
+        assertEquals(dataFromDetailsPage.getSecondaryNotes(), dataFromEditPage.getSecondaryNotes());
     }
 
     public String mergeAllItemsInside(String item, String item2, String item3, String item4) {
