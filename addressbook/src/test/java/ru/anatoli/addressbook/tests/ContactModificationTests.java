@@ -44,7 +44,7 @@ public class ContactModificationTests extends TestBase {
         }
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testContactModification() {
         //Getting Set of ContactData object model BEFORE modification
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -133,5 +133,14 @@ public class ContactModificationTests extends TestBase {
 
         //Getting Set of ContactData object model AFTER modification
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size(), after.size());
+
+        before.remove(modifiedContact);
+        before.add(contactData);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
     }
 }
