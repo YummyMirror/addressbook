@@ -44,8 +44,8 @@ public class ContactCompOutsideInsideTests extends TestBase {
         }
     }
 
-    @Test(enabled = false)
-    public void testContactCompOutsideInsideUpdate() {
+    @Test(enabled = true)
+    public void testContactCompOutsideInsideUpdateAllFields() {
         //Getting Set of ContactData object model BEFORE test execution
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
@@ -97,6 +97,9 @@ public class ContactCompOutsideInsideTests extends TestBase {
 
         //Choosing the random Contact that will be compared as OUTSIDE data
         ContactData outsideData = before.iterator().next();
+
+        //If at least one field is empty in the Edit form - Ignore Test execution
+        applicationManager.getContactHelper().skipTestIfFormNotAllFilled(outsideData);
 
         //Getting INSIDE data from details page
         ContactData dataFromDetailsPage = applicationManager.getContactHelper().getContactDataFromDetailsForm(outsideData);

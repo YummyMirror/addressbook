@@ -3,6 +3,7 @@ package ru.anatoli.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.SkipException;
 import ru.anatoli.addressbook.models.ContactData;
 import java.util.HashSet;
 import java.util.List;
@@ -432,5 +433,50 @@ public class ContactHelper extends HelperBase {
                                                     .withSecondaryNotes(secondaryNotes);
         back();
         return contactData;
+    }
+
+    public boolean isContactEditFormAllFilled(ContactData comparedContact) {
+        selectModifiedContactById(comparedContact.getContactId());
+        String firstName = getFirstName();
+        String middleName = getMiddleName();
+        String lastName = getLastName();
+        String nickname = getNickname();
+        String company = getCompany();
+        String title = getTitle();
+        String address = getAddress();
+        String homePhone = getHomePhone();
+        String mobilePhone = getMobilePhone();
+        String workPhone = getWorkPhone();
+        String fax = getFax();
+        String email1 = getEmail1();
+        String email2 = getEmail2();
+        String email3 = getEmail3();
+        String homepage = getHomepage();
+        String birthDay = getBirthDay();
+        String birthMonth = getBirthMonth();
+        String birthYear = getBirthYear();
+        String anniversaryDay = getAnniversaryDay();
+        String anniversaryMonth = getAnniversaryMonth();
+        String anniversaryYear = getAnniversaryYear();
+        String secondaryAddress = getSecondaryAddress();
+        String secondaryHome = getSecondaryHome();
+        String secondaryNotes = getSecondaryNotes();
+        back();
+
+        if (!firstName.equals("") && !middleName.equals("") && !lastName.equals("") && !nickname.equals("") && !company.equals("") && !title.equals("") && !address.equals("")
+                && !homePhone.equals("") && !mobilePhone.equals("") && !workPhone.equals("") && !fax.equals("") && !email1.equals("") && !email2.equals("") && !email3.equals("")
+                && !homepage.equals("") && !birthDay.equals("") && !birthMonth.equals("") && !birthYear.equals("") && !anniversaryDay.equals("") && !anniversaryMonth.equals("")
+                && !anniversaryYear.equals("") && !secondaryAddress.equals("") && !secondaryHome.equals("") && !secondaryNotes.equals("")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void skipTestIfFormNotAllFilled(ContactData comparedContact) {
+        if (!isContactEditFormAllFilled(comparedContact)) {
+            System.out.println("Test is ignored due to the not all fields are filled in");
+            throw new SkipException("Test is ignored due to the not all fields are filled in");
+        }
     }
 }
