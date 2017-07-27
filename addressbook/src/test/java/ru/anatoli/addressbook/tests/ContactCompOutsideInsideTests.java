@@ -217,7 +217,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
     }
 
     public String removeUnnecessarySpecChars(String item ) {
-        return item.replaceAll("[-./\\s]", "");
+        return item.replaceAll("[-./\\s()]", "");
         //return item.replaceAll("[\\s]|[-]|[.]|[/]", "");
     }
 }
