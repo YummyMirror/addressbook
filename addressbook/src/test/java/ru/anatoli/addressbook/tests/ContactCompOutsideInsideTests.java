@@ -99,7 +99,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
         ContactData outsideData = before.iterator().next();
 
         //If at least one field is empty in the Edit form - Ignore Test execution
-        applicationManager.getContactHelper().skipTestIfFormNotAllFilled(outsideData);
+        //applicationManager.getContactHelper().skipTestIfFormNotAllFilled(outsideData);
 
         //Getting INSIDE data from details page
         ContactData dataFromDetailsPage = applicationManager.getContactHelper().getContactDataFromDetailsForm(outsideData);
@@ -136,7 +136,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
 
         //Asserting by Anniversary Info
         assertEquals(dataFromDetailsPage.getAnniversaryDay(), dataFromEditPage.getAnniversaryDay());
-        //assertEquals(dataFromDetailsPage.getAnniversaryMonth(), dataFromEditPage.getAnniversaryMonth());
+        assertEquals(dataFromDetailsPage.getAnniversaryMonth(), dataFromEditPage.getAnniversaryMonth());
         assertEquals(dataFromDetailsPage.getAnniversaryYear(), dataFromEditPage.getAnniversaryYear());
 
         //Asserting by Secondary Info

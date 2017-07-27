@@ -344,6 +344,11 @@ public class ContactHelper extends HelperBase {
         String secondaryHome = getSecondaryHome();
         String secondaryNotes = getSecondaryNotes();
 
+        //Switch first letter from LowerCase to UpperCase for AnniversaryMonth
+        String firstCharInUpperCase = anniversaryMonth.substring(0, 1).toUpperCase();
+        String withRemovedFirstChar = anniversaryMonth.substring(1);
+        String anniversaryMonthWithUpperCaseFirstChar = firstCharInUpperCase + withRemovedFirstChar;
+
         ContactData contactData = new ContactData().withFirstName(firstName)
                                                     .withMiddleName(middleName)
                                                     .withLastName(lastName)
@@ -363,7 +368,7 @@ public class ContactHelper extends HelperBase {
                                                     .withBirthMonth(birthMonth)
                                                     .withBirthYear(birthYear)
                                                     .withAnniversaryDay(anniversaryDay)
-                                                    .withAnniversaryMonth(anniversaryMonth)
+                                                    .withAnniversaryMonth(anniversaryMonthWithUpperCaseFirstChar)
                                                     .withAnniversaryYear(anniversaryYear)
                                                     .withSecondaryAddress(secondaryAddress)
                                                     .withSecondaryPhone(secondaryHome)
