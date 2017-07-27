@@ -208,8 +208,15 @@ public class ContactHelper extends HelperBase {
 
     public void skipTestIfFormNotAllFilled(ContactData comparedContact) {
         if (!isContactEditFormAllFilled(comparedContact)) {
-            System.out.println("Test is ignored due to the not all fields are filled in");
-            throw new SkipException("Test is ignored due to the not all fields are filled in");
+            System.out.println("Test is ignored due to the not all fields are filled in Edit form");
+            throw new SkipException("Test is ignored due to the not all fields are filled in Edit form");
+        }
+    }
+
+    public void skipTestIfFormIsAllFilled(ContactData comparedContact) {
+        if (isContactEditFormAllFilled(comparedContact)) {
+            System.out.println("Test is ignored due to the ALL fields are filled in Edit form");
+            throw new SkipException("Test is ignored due to the ALL fields are filled in Edit form");
         }
     }
 
