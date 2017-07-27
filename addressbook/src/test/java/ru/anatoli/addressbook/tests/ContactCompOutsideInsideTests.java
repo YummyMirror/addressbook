@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import java.io.File;
-import java.util.Set;
+import java.util.*;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -44,7 +44,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
         }
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testContactCompOutsideInsideUpdateAllFields() {
         //Getting Set of ContactData object model BEFORE test execution
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
@@ -90,8 +90,8 @@ public class ContactCompOutsideInsideTests extends TestBase {
         assertEquals(outsideAllPhones, mergeAllPhonesInside);
     }
 
-    @Test(enabled = true)
-    public void testContactCompEditFormDataWithDetailsPageData() {
+    @Test(enabled = false)
+    public void testContactCompEditFormDataWithDetailsPageDataByAllFields() {
         //Getting Set of ContactData object model BEFORE test execution
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
@@ -143,6 +143,32 @@ public class ContactCompOutsideInsideTests extends TestBase {
         assertEquals(dataFromDetailsPage.getSecondaryAddress(), dataFromEditPage.getSecondaryAddress());
         assertEquals(dataFromDetailsPage.getSecondaryPhone(), dataFromEditPage.getSecondaryPhone());
         assertEquals(dataFromDetailsPage.getSecondaryNotes(), dataFromEditPage.getSecondaryNotes());
+    }
+
+    @Test(enabled = true)
+    public void testContactCompEditFormWithDetailsPageDataByNames() {
+        //Getting Set of ContactData object model BEFORE test execution
+        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+
+        //Choosing the random Contact
+        ContactData randomContact = before.iterator().next();
+
+        //Getting INSIDE data from Edit form
+        ContactData contactDataFromEditForm = applicationManager.getContactHelper().getContactDataFromEditForm(randomContact);
+
+        //Create Collection with FirstName, MiddleName, LastName
+        Set<String> insideDataEditForm = new HashSet<String>(Arrays.asList(contactDataFromEditForm.getFirstName(),
+                                                                            contactDataFromEditForm.getMiddleName(),
+                                                                            contactDataFromEditForm.getLastName()));
+        //Remove empty elements from Collection
+        insideDataEditForm.removeAll(Collections.singleton(""));
+        //insideDataEditForm.removeAll(Arrays.asList("", null));
+
+        //Getting Collection with FirstName, MiddleName, LastName from Details page
+        Set<String> insideDataDetailsForm = applicationManager.getContactHelper().getContactNamesFromDetailsForm(randomContact);
+
+        //Asserting collections by SIZE
+        assertEquals(insideDataEditForm.size(), insideDataDetailsForm.size());
     }
 
     public String mergeAllItemsInside(String item, String item2, String item3, String item4) {

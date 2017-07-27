@@ -5,9 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.SkipException;
 import ru.anatoli.addressbook.models.ContactData;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 /**
  * Created by anatoli.anukevich on 6/27/2017.
@@ -207,6 +206,13 @@ public class ContactHelper extends HelperBase {
         return getText(By.name("notes"));
     }
 
+    public void skipTestIfFormNotAllFilled(ContactData comparedContact) {
+        if (!isContactEditFormAllFilled(comparedContact)) {
+            System.out.println("Test is ignored due to the not all fields are filled in");
+            throw new SkipException("Test is ignored due to the not all fields are filled in");
+        }
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
@@ -363,7 +369,7 @@ public class ContactHelper extends HelperBase {
         openDetailsPageById(outsideData.getContactId());
 
         //Getting all content on the Details page
-        String content = wd.findElement(By.id("content")).getText();
+        String content = getText(By.id("content"));
         String parsed[] = content.split("\n");
 
         //Dirty data
@@ -473,10 +479,22 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-    public void skipTestIfFormNotAllFilled(ContactData comparedContact) {
-        if (!isContactEditFormAllFilled(comparedContact)) {
-            System.out.println("Test is ignored due to the not all fields are filled in");
-            throw new SkipException("Test is ignored due to the not all fields are filled in");
+    public Set<String> getContactNamesFromDetailsForm(ContactData outsideData) {
+        openDetailsPageById(outsideData.getContactId());
+
+        //Getting all content on the Details page
+        String content = getText(By.id("content"));
+
+        //Parse got content
+        String parsed[] = content.split("\n");
+        String names = parsed[0];
+        String namesArray[] = names.split(" ");
+
+        //Create Collection with FirstName, MiddleName, LastName
+        Set<String> nameSet = new HashSet<String>();
+        for (String element : namesArray) {
+            nameSet.add(element);
         }
+        return nameSet;
     }
 }
