@@ -110,6 +110,10 @@ public class ContactHelper extends HelperBase {
         click(By.name("modifiy"));
     }
 
+    public void performSearch(String firstName) {
+        input(By.name("searchstring"), firstName);
+    }
+
     public String getFirstName() {
         return getAttribute(By.name("firstname"), "value");
     }
