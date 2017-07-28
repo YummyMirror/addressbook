@@ -22,27 +22,17 @@ public class ContactSearchTests extends TestBase {
 
         //Creating Collections with FirstNames, LastNames, Addresses, Emails, Phones
         List<String> listFirstNames = new ArrayList<String>();
+        List<String> listLastNames = new ArrayList<String>();
+        List<String> listAddresses = new ArrayList<String>();
+        List<String> listEmails = new ArrayList<String>();
+        List<String> listPhones = new ArrayList<String>();
+
+        //Filling Collections by the data
         for (ContactData contact : before) {
             listFirstNames.add(contact.getFirstName());
-        }
-
-        List<String> listLastNames = new ArrayList<String>();
-        for (ContactData contact : before) {
             listLastNames.add(contact.getLastName());
-        }
-
-        List<String> listAddresses = new ArrayList<String>();
-        for (ContactData contact : before) {
             listAddresses.add(contact.getAddress());
-        }
-
-        List<String> listEmails = new ArrayList<String>();
-        for (ContactData contact : before) {
             listEmails.add(contact.getAllEmails());
-        }
-
-        List<String> listPhones = new ArrayList<String>();
-        for (ContactData contact : before) {
             listPhones.add(contact.getAllPhones());
         }
 
