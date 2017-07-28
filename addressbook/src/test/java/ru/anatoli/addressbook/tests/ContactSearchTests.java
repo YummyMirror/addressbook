@@ -20,80 +20,28 @@ public class ContactSearchTests extends TestBase {
         //Getting Set of ContactData object model BEFORE search
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
-        //Creating Collections with FirstNames, LastNames, Addresses, Emails, Phones
-        List<String> listFirstNames = new ArrayList<String>();
-        List<String> listLastNames = new ArrayList<String>();
-        List<String> listAddresses = new ArrayList<String>();
-        List<String> listEmails = new ArrayList<String>();
-        List<String> listPhones = new ArrayList<String>();
+        //Getting random FirstName as Search query
+        String randomFirstName = before.iterator().next().getFirstName();
 
-        //Filling Collections by the data
+        //Finding 'numberOfMatching' between data and Search query
+        int numberOfMatching = 0;
         for (ContactData contact : before) {
-            listFirstNames.add(contact.getFirstName());
-            listLastNames.add(contact.getLastName());
-            listAddresses.add(contact.getAddress());
-            listEmails.add(contact.getAllEmails());
-            listPhones.add(contact.getAllPhones());
-        }
-
-        //Getting search string by random FirstName
-        String randomFirstName = listFirstNames.iterator().next();
-
-        //Initializing number of matching between 'Search query' with 'Collections' of FirstName, LastName, Addressees, Emails, Phones
-        int matchNumberFirstName = 0;
-        int matchNumberLastName = 0;
-        int matchNumberAddress = 0;
-        int matchNumberEmail = 0;
-        int matchNumberPhone = 0;
-
-        //Matching 'Search query' with 'Collections' of FirstName, LastName, Addressees, Emails, Phones
-        for (String elem : listFirstNames) {
-            if (elem.contains(randomFirstName)) {
-                matchNumberFirstName += 1;
+            if (contact.getFirstName().contains(randomFirstName) || contact.getLastName().contains(randomFirstName) || contact.getAddress().contains(randomFirstName)
+                    || contact.getAllEmails().contains(randomFirstName) || contact.getAllPhones().contains(randomFirstName)) {
+                numberOfMatching += 1;
             }
         }
-
-        for (String elem : listLastNames) {
-            if (elem.contains(randomFirstName)) {
-                matchNumberLastName += 1;
-            }
-        }
-
-        for (String elem : listAddresses) {
-            if (elem.contains(randomFirstName)) {
-                matchNumberAddress += 1;
-            }
-        }
-
-        for (String elem : listEmails) {
-            if (elem.contains(randomFirstName)) {
-                matchNumberEmail += 1;
-            }
-        }
-
-        for (String elem : listPhones) {
-            if (elem.contains(randomFirstName)) {
-                matchNumberPhone += 1;
-            }
-        }
-
-        //Getting the MAX value from matched values of Collections
-        List<Integer> listWithMatchNumbers = Arrays.asList(matchNumberFirstName, matchNumberLastName, matchNumberAddress, matchNumberEmail, matchNumberPhone);
-        Integer maxMatchValue = listWithMatchNumbers
-                                .stream()
-                                .max(Comparator.comparingInt(value -> value))
-                                .get();
 
         applicationManager.getContactHelper().performSearch(randomFirstName);
 
         //Getting Set of ContactData object model AFTER search
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
 
-        //Asserting by SIZE of 'Collection' with 'maxMatchValue'
-        if (after.size() == maxMatchValue) {
-            assertEquals(maxMatchValue.intValue(), after.size());
-        } else if (after.size() > maxMatchValue) {
-            assertNotEquals(maxMatchValue, after.size());
+        //Asserting by SIZE of 'Collection' with 'numberOfMatching'
+        if (after.size() == numberOfMatching) {
+            assertEquals(numberOfMatching, after.size());
+        } else if (after.size() > numberOfMatching) {
+            assertNotEquals(numberOfMatching, after.size());
         } else {
             System.out.println("ERROR occurred in logic with comparing maxMatchValue and after.size()");
         }
