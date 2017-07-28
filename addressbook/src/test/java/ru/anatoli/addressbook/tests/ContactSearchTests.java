@@ -1,5 +1,6 @@
 package ru.anatoli.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import java.util.*;
@@ -10,10 +11,12 @@ import static org.testng.Assert.assertNotEquals;
  * Created by anatoli.anukevich on 7/27/2017.
  */
 public class ContactSearchTests extends TestBase {
+    @BeforeMethod
+    public void ensurePrecondition() {
+        applicationManager.getNavigationHelper().goToHomePage();
+    }
     @Test
     public void testContactSearchByFirstName() {
-        applicationManager.getNavigationHelper().goToHomePage();
-
         //Getting Set of ContactData object model BEFORE search
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
