@@ -517,23 +517,38 @@ public class ContactHelper extends HelperBase {
     public String getRandomSearchQuery(ContactData randomContact) {
         List<String> listWithRandomData = null;
         String allEmails = randomContact.getAllEmails();
-        if (!allEmails.equals("")) {
-            String arrayEmails[] = allEmails.split("\n");
-            if (arrayEmails.length == 1) {
-                listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
-                                                    arrayEmails[0], randomContact.getAllPhones());
-            } else if (arrayEmails.length == 2) {
-                listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
-                                                    arrayEmails[0], arrayEmails[1], randomContact.getAllPhones());
-            } else if (arrayEmails.length == 3) {
-                listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
-                                                    arrayEmails[0], arrayEmails[1], arrayEmails[2], randomContact.getAllPhones());
-            }
+        String allPhones = randomContact.getAllPhones();
+
+        if (!allEmails.equals("") && !allPhones.equals("")) {
+            //Getting random Email
+            int numberOfEmails = allEmails.split("\n").length;
+            int getEmailById = new SecureRandom().nextInt(numberOfEmails - 1);
+            String randomEmail = allEmails.split("\n")[getEmailById];
+
+            //Getting random Phone
+            int numberOfPhones = allPhones.split("\n").length;
+            int getPhoneById = new SecureRandom().nextInt(numberOfPhones - 1);
+            String randomPhone = allPhones.split("\n")[getPhoneById];
+
+            listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomEmail, randomPhone);
+        } else if (!allEmails.equals("") && allPhones.equals("")) {
+            int numberOfEmails = allEmails.split("\n").length;
+            int getEmailById = new SecureRandom().nextInt(numberOfEmails - 1);
+            String randomEmail = allEmails.split("\n")[getEmailById];
+
+            listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomEmail);
+        } else if (allEmails.equals("") && !allPhones.equals("")) {
+            int numberOfPhones = allPhones.split("\n").length;
+            int getPhoneById = new SecureRandom().nextInt(numberOfPhones - 1);
+            String randomPhone = allPhones.split("\n")[getPhoneById];
+
+            listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomPhone);
+        } else if (allEmails.equals("") && allPhones.equals("")){
+            listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress());
         } else {
-            listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomContact.getAllPhones());
+            System.out.println("ERROR occurred in logic with Emails and Phones");
         }
-        SecureRandom random = new SecureRandom();
-        int identifier = random.nextInt(listWithRandomData.size() - 1);
+        int identifier = new SecureRandom().nextInt(listWithRandomData.size() - 1);
         return listWithRandomData.get(identifier);
     }
 
