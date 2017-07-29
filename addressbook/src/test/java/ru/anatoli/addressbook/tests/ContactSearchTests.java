@@ -3,8 +3,7 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
-import java.security.SecureRandom;
-import java.util.*;
+import java.util.Set;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
@@ -23,20 +22,12 @@ public class ContactSearchTests extends TestBase {
 
         //Getting random Search query
         ContactData randomContact = before.stream().findAny().get();
-        List<String> listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
-                                                        randomContact.getAllEmails(), randomContact.getAllPhones());
-        SecureRandom random = new SecureRandom();
-        int identifier = random.nextInt(4);
-        String randomSearchQuery = listWithRandomData.get(identifier);
 
-        //Finding 'numberOfMatching' between data and Search query
-        int numberOfMatching = 0;
-        for (ContactData contact : before) {
-            if (contact.getFirstName().contains(randomSearchQuery) || contact.getLastName().contains(randomSearchQuery) || contact.getAddress().contains(randomSearchQuery)
-                    || contact.getAllEmails().contains(randomSearchQuery) || contact.getAllPhones().contains(randomSearchQuery)) {
-                numberOfMatching += 1;
-            }
-        }
+        //Getting random 'Search query' from any available Contact
+        String randomSearchQuery = applicationManager.getContactHelper().getRandomSearchQuery(randomContact);
+
+        //Finding 'numberOfMatching' between Contact's data and random 'Search query'
+        int numberOfMatching = applicationManager.getContactHelper().getNumberOfMatching(before, randomSearchQuery);
 
         applicationManager.getContactHelper().performSearch(randomSearchQuery);
 

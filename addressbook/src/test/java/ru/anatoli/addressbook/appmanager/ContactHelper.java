@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.SkipException;
 import ru.anatoli.addressbook.models.ContactData;
-
+import java.security.SecureRandom;
 import java.util.*;
 
 /**
@@ -512,5 +512,24 @@ public class ContactHelper extends HelperBase {
             nameSet.add(element);
         }
         return nameSet;
+    }
+
+    public String getRandomSearchQuery(ContactData randomContact) {
+        List<String> listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
+                                                        randomContact.getAllEmails(), randomContact.getAllPhones());
+        SecureRandom random = new SecureRandom();
+        int identifier = random.nextInt(4);
+        return listWithRandomData.get(identifier);
+    }
+
+    public int getNumberOfMatching(Set<ContactData> before, String randomSearchQuery) {
+        int numberOfMatching = 0;
+        for (ContactData contact : before) {
+            if (contact.getFirstName().contains(randomSearchQuery) || contact.getLastName().contains(randomSearchQuery) || contact.getAddress().contains(randomSearchQuery)
+                    || contact.getAllEmails().contains(randomSearchQuery) || contact.getAllPhones().contains(randomSearchQuery)) {
+                numberOfMatching += 1;
+            }
+        }
+        return numberOfMatching;
     }
 }
