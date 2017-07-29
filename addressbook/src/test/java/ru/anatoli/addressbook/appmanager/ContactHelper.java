@@ -548,8 +548,16 @@ public class ContactHelper extends HelperBase {
         } else {
             System.out.println("ERROR occurred in logic with Emails and Phones");
         }
-        int identifier = new SecureRandom().nextInt(listWithRandomData.size() - 1);
-        return listWithRandomData.get(identifier);
+
+        //Remove empty elements in Collection
+        List<String> contactData = null;
+        if (listWithRandomData != null) {
+            contactData = new ArrayList<String>(listWithRandomData);
+            contactData.removeAll(Collections.singleton(""));
+        }
+
+        int identifier = new SecureRandom().nextInt(contactData.size() - 1);
+        return contactData.get(identifier);
     }
 
     public int getNumberOfMatching(Set<ContactData> before, String randomSearchQuery) {
