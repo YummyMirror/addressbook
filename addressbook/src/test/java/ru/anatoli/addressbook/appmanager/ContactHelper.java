@@ -515,10 +515,25 @@ public class ContactHelper extends HelperBase {
     }
 
     public String getRandomSearchQuery(ContactData randomContact) {
-        List<String> listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
-                                                        randomContact.getAllEmails(), randomContact.getAllPhones());
+        List<String> listWithRandomData = null;
+        String allEmails = randomContact.getAllEmails();
+        if (!allEmails.equals("")) {
+            String arrayEmails[] = allEmails.split("\n");
+            if (arrayEmails.length == 1) {
+                listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
+                                                    arrayEmails[0], randomContact.getAllPhones());
+            } else if (arrayEmails.length == 2) {
+                listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
+                                                    arrayEmails[0], arrayEmails[1], randomContact.getAllPhones());
+            } else if (arrayEmails.length == 3) {
+                listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
+                                                    arrayEmails[0], arrayEmails[1], arrayEmails[2], randomContact.getAllPhones());
+            }
+        } else {
+            listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomContact.getAllPhones());
+        }
         SecureRandom random = new SecureRandom();
-        int identifier = random.nextInt(4);
+        int identifier = random.nextInt(listWithRandomData.size() - 1);
         return listWithRandomData.get(identifier);
     }
 
