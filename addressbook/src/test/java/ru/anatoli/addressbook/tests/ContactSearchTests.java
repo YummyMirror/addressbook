@@ -3,6 +3,7 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
+import java.security.SecureRandom;
 import java.util.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
@@ -16,23 +17,28 @@ public class ContactSearchTests extends TestBase {
         applicationManager.getNavigationHelper().goToHomePage();
     }
     @Test
-    public void testContactSearchByFirstName() {
+    public void testContactSearchByRandomInfo() {
         //Getting Set of ContactData object model BEFORE search
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
-        //Getting random FirstName as Search query
-        String randomFirstName = before.iterator().next().getFirstName();
+        //Getting random Search query
+        ContactData randomContact = before.stream().findAny().get();
+        List<String> listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(),
+                                                        randomContact.getAllEmails(), randomContact.getAllPhones());
+        SecureRandom random = new SecureRandom();
+        int identifier = random.nextInt(4);
+        String randomSearchQuery = listWithRandomData.get(identifier);
 
         //Finding 'numberOfMatching' between data and Search query
         int numberOfMatching = 0;
         for (ContactData contact : before) {
-            if (contact.getFirstName().contains(randomFirstName) || contact.getLastName().contains(randomFirstName) || contact.getAddress().contains(randomFirstName)
-                    || contact.getAllEmails().contains(randomFirstName) || contact.getAllPhones().contains(randomFirstName)) {
+            if (contact.getFirstName().contains(randomSearchQuery) || contact.getLastName().contains(randomSearchQuery) || contact.getAddress().contains(randomSearchQuery)
+                    || contact.getAllEmails().contains(randomSearchQuery) || contact.getAllPhones().contains(randomSearchQuery)) {
                 numberOfMatching += 1;
             }
         }
 
-        applicationManager.getContactHelper().performSearch(randomFirstName);
+        applicationManager.getContactHelper().performSearch(randomSearchQuery);
 
         //Getting Set of ContactData object model AFTER search
         Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
