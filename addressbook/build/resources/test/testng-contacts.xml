@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite2" verbose="1" >
+    <test name="Contacts" >
+        <classes>
+            <class name="ru.anatoli.addressbook.tests.ContactCreationTests" />
+            <class name="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" />
+            <class name="ru.anatoli.addressbook.tests.ContactSearchTests" />
+            <class name="ru.anatoli.addressbook.tests.ContactModificationTests" />
+            <class name="ru.anatoli.addressbook.tests.ContactDeletionTests" />
+            <class name="ru.anatoli.addressbook.tests.ContactAllDeletionTests" />
+        </classes>
+    </test>
+</suite>
