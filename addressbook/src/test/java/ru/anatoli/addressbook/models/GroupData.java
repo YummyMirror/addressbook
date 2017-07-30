@@ -1,12 +1,17 @@
 package ru.anatoli.addressbook.models;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Created by anatoli.anukevich on 6/25/2017.
  */
 public class GroupData {
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String groupName;
+    @Expose
     private String groupHeader;
+    @Expose
     private String groupFooter;
 
     //Getters

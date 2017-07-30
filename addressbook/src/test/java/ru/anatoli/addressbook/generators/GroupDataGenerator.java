@@ -43,7 +43,7 @@ public class GroupDataGenerator {
     }
 
     public static void saveAsJson(File file, List<GroupData> listWithGroups) throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(listWithGroups);
         FileWriter writer = new FileWriter(file);
         writer.write(json);
