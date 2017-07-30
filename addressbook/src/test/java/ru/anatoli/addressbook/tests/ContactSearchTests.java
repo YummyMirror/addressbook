@@ -3,6 +3,7 @@ package ru.anatoli.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
+import java.io.File;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
@@ -14,6 +15,43 @@ public class ContactSearchTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToHomePage();
+
+        ContactData contactData = new ContactData().withFirstName("FirstName")
+                                                    .withMiddleName(null)
+                                                    .withLastName("LastName")
+                                                    .withNickname(null)
+                                                    .withPhoto(new File("src/test/resources/NBA.jpeg"))
+                                                    .withTitle(null)
+                                                    .withCompany(null)
+                                                    .withAddress("Address")
+                                                    .withHomePhone("111")
+                                                    .withMobilePhone("222")
+                                                    .withWorkPhone("333")
+                                                    .withFax(null)
+                                                    .withEmail("1@mail.ru")
+                                                    .withEmail2("2@mail.ru")
+                                                    .withEmail3("3@mail.ru")
+                                                    .withHomepage(null)
+                                                    .withBirthDay(null)
+                                                    .withBirthMonth(null)
+                                                    .withBirthYear(null)
+                                                    .withAnniversaryDay(null)
+                                                    .withAnniversaryMonth(null)
+                                                    .withAnniversaryYear(null)
+                                                    .withSecondaryAddress(null)
+                                                    .withSecondaryPhone("444")
+                                                    .withSecondaryNotes(null);
+
+        int contactNumber = applicationManager.getContactHelper().getContactSet().size();
+        if (contactNumber == 0) {
+            for (int i = 0; i < 3; i++) {
+                applicationManager.getContactHelper().createContact(contactData);
+            }
+        } else if (contactNumber < 3) {
+            for (int i = 0; i < 2; i++) {
+                applicationManager.getContactHelper().createContact(contactData);
+            }
+        }
     }
     @Test
     public void testContactSearchByRandomInfo() {
