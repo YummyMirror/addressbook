@@ -16,7 +16,7 @@ public class GroupDataGenerator {
         String format = args[3];
         File file = new File(pathToFile + fileName);
 
-        List<GroupData> listWithGroups = generateGroups(5);
+        List<GroupData> listWithGroups = generateGroups(numberOfGroups);
     }
 
     public static List<GroupData> generateGroups(int numberOfGroups) {
