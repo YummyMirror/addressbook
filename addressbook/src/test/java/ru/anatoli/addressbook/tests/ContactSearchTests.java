@@ -40,7 +40,7 @@ public class ContactSearchTests extends TestBase {
         } else if (after.size() > numberOfMatching) {
             assertNotEquals(numberOfMatching, after.size());
         } else {
-            System.out.println("ERROR occurred in logic with comparing maxMatchValue and after.size()");
+            System.out.println("ERROR occurred in logic with comparing numberOfMatching and after.size()");
         }
     }
 }

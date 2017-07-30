@@ -522,24 +522,24 @@ public class ContactHelper extends HelperBase {
         if (!allEmails.equals("") && !allPhones.equals("")) {
             //Getting random Email
             int numberOfEmails = allEmails.split("\n").length;
-            int getEmailById = new SecureRandom().nextInt(numberOfEmails - 1);
+            int getEmailById = new SecureRandom().nextInt(numberOfEmails);
             String randomEmail = allEmails.split("\n")[getEmailById];
 
             //Getting random Phone
             int numberOfPhones = allPhones.split("\n").length;
-            int getPhoneById = new SecureRandom().nextInt(numberOfPhones - 1);
+            int getPhoneById = new SecureRandom().nextInt(numberOfPhones);
             String randomPhone = allPhones.split("\n")[getPhoneById];
 
             listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomEmail, randomPhone);
         } else if (!allEmails.equals("") && allPhones.equals("")) {
             int numberOfEmails = allEmails.split("\n").length;
-            int getEmailById = new SecureRandom().nextInt(numberOfEmails - 1);
+            int getEmailById = new SecureRandom().nextInt(numberOfEmails);
             String randomEmail = allEmails.split("\n")[getEmailById];
 
             listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomEmail);
         } else if (allEmails.equals("") && !allPhones.equals("")) {
             int numberOfPhones = allPhones.split("\n").length;
-            int getPhoneById = new SecureRandom().nextInt(numberOfPhones - 1);
+            int getPhoneById = new SecureRandom().nextInt(numberOfPhones);
             String randomPhone = allPhones.split("\n")[getPhoneById];
 
             listWithRandomData = Arrays.asList(randomContact.getFirstName(), randomContact.getLastName(), randomContact.getAddress(), randomPhone);
@@ -556,7 +556,7 @@ public class ContactHelper extends HelperBase {
             contactData.removeAll(Collections.singleton(""));
         }
 
-        int identifier = new SecureRandom().nextInt(contactData.size() - 1);
+        int identifier = new SecureRandom().nextInt(contactData.size());
         return contactData.get(identifier);
     }
 
