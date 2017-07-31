@@ -1,7 +1,27 @@
 [
-  {},
-  {},
-  {},
-  {},
-  {}
+  {
+    "groupName": "GroupName 1",
+    "groupHeader": "GroupHeader 1",
+    "groupFooter": "GroupFooter 1"
+  },
+  {
+    "groupName": "GroupName 2",
+    "groupHeader": "GroupHeader 2",
+    "groupFooter": "GroupFooter 2"
+  },
+  {
+    "groupName": "GroupName 3",
+    "groupHeader": "GroupHeader 3",
+    "groupFooter": "GroupFooter 3"
+  },
+  {
+    "groupName": "GroupName 4",
+    "groupHeader": "GroupHeader 4",
+    "groupFooter": "GroupFooter 4"
+  },
+  {
+    "groupName": "GroupName 5",
+    "groupHeader": "GroupHeader 5",
+    "groupFooter": "GroupFooter 5"
+  }
 ]
