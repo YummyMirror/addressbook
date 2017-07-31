@@ -2,14 +2,17 @@ package ru.anatoli.addressbook.generators;
 
 import ru.anatoli.addressbook.models.ContactData;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UnknownFormatConversionException;
 
 /**
  * Created by anatoli.anukevich on 7/31/2017.
  */
 public class ContactDataGenerator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int numberOfContacts = Integer.parseInt(args[0]);
         String pathToFile = args[1];
         String fileName = args[2];
@@ -17,6 +20,48 @@ public class ContactDataGenerator {
         File file = new File(pathToFile + fileName + "." + format);
 
         List<ContactData> listWithContacts = generateContacts(numberOfContacts);
+
+        if (format.equals("csv")) {
+            saveAsCsv(file, listWithContacts);
+        } else if (format.equals("json")) {
+
+        } else {
+            System.out.println("Unknown format is input " + format);
+            throw new UnknownFormatConversionException("Unknown format is input " + format);
+        }
+    }
+
+    public static void saveAsCsv(File file, List<ContactData> listWithContacts) throws IOException {
+        FileWriter writer = new FileWriter(file);
+        for (ContactData contact : listWithContacts) {
+            writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstName(),
+                                                                                                                        contact.getMiddleName(),
+                                                                                                                        contact.getLastName(),
+                                                                                                                        contact.getNickname(),
+                                                                                                                        contact.getPhoto().getAbsoluteFile(),
+                                                                                                                        contact.getTitle(),
+                                                                                                                        contact.getCompany(),
+                                                                                                                        contact.getAddress(),
+                                                                                                                        contact.getHomePhone(),
+                                                                                                                        contact.getMobilePhone(),
+                                                                                                                        contact.getWorkPhone(),
+                                                                                                                        contact.getFax(),
+                                                                                                                        contact.getEmail(),
+                                                                                                                        contact.getEmail2(),
+                                                                                                                        contact.getEmail3(),
+                                                                                                                        contact.getHomepage(),
+                                                                                                                        contact.getBirthDay(),
+                                                                                                                        contact.getBirthMonth(),
+                                                                                                                        contact.getBirthYear(),
+                                                                                                                        contact.getAnniversaryDay(),
+                                                                                                                        contact.getAnniversaryMonth(),
+                                                                                                                        contact.getAnniversaryYear(),
+                                                                                                                        contact.getSecondaryAddress(),
+                                                                                                                        contact.getSecondaryPhone(),
+                                                                                                                        contact.getSecondaryNotes()));
+        }
+        writer.flush();
+        writer.close();
     }
 
     public static List<ContactData> generateContacts(int numberOfContacts) {
