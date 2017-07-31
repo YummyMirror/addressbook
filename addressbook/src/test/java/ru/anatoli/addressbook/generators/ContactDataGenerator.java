@@ -1,5 +1,7 @@
 package ru.anatoli.addressbook.generators;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ru.anatoli.addressbook.models.ContactData;
 import java.io.File;
 import java.io.FileWriter;
@@ -24,7 +26,7 @@ public class ContactDataGenerator {
         if (format.equals("csv")) {
             saveAsCsv(file, listWithContacts);
         } else if (format.equals("json")) {
-
+            saveAsJson(file, listWithContacts);
         } else {
             System.out.println("Unknown format is input " + format);
             throw new UnknownFormatConversionException("Unknown format is input " + format);
@@ -60,6 +62,15 @@ public class ContactDataGenerator {
                                                                                                                         contact.getSecondaryPhone(),
                                                                                                                         contact.getSecondaryNotes()));
         }
+        writer.flush();
+        writer.close();
+    }
+
+    public static void saveAsJson(File file, List<ContactData> listWithContacts) throws IOException {
+        Gson gson = new Gson();
+        String json = gson.toJson(listWithContacts);
+        FileWriter writer = new FileWriter(file);
+        writer.write(json);
         writer.flush();
         writer.close();
     }
