@@ -1,5 +1,6 @@
 package ru.anatoli.addressbook.models;
 
+import com.google.gson.annotations.Expose;
 import java.io.File;
 
 /**
@@ -7,32 +8,59 @@ import java.io.File;
  */
 public class ContactData {
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String firstName;
+    @Expose
     private String middleName;
+    @Expose
     private String lastName;
+    @Expose
     private String nickname;
+    @Expose
     private String photo;
+    @Expose
     private String title;
+    @Expose
     private String company;
+    @Expose
     private String address;
+    @Expose
     private String allPhones;
+    @Expose
     private String homePhone;
+    @Expose
     private String mobilePhone;
+    @Expose
     private String workPhone;
+    @Expose
     private String fax;
+    @Expose
     private String allEmails;
+    @Expose
     private String email;
+    @Expose
     private String email2;
+    @Expose
     private String email3;
+    @Expose
     private String homepage;
+    @Expose
     private String birthDay;
+    @Expose
     private String birthMonth;
+    @Expose
     private String birthYear;
+    @Expose
     private String anniversaryDay;
+    @Expose
     private String anniversaryMonth;
+    @Expose
     private String anniversaryYear;
+    @Expose
     private String secondaryAddress;
+    @Expose
     private String secondaryPhone;
+    @Expose
     private String secondaryNotes;
 
     //Getters
