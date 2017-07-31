@@ -26,8 +26,11 @@ public class GroupCreationTests extends TestBase {
                                                     .withGroupFooter(splitData[2])});
             line = bufferedReader.readLine();
         }
+        bufferedReader.close();
+        reader.close();
         return list.iterator();
     }
+
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToGroupsPage();
