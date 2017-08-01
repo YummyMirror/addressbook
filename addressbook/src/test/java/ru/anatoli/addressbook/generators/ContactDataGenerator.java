@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UnknownFormatConversionException;
 
@@ -77,6 +78,17 @@ public class ContactDataGenerator {
 
     public static List<ContactData> generateContacts(int numberOfContacts) {
         List<ContactData> listWithContacts = new ArrayList<ContactData>();
+
+        //Lists with DAYS and MONTHS
+        List<String> daysInMonth = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                                                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                                                "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31");
+        List<String> monthsInYear = Arrays.asList("January", "February", "March", "April", "May", "June",
+                                                    "July", "August", "September", "October", "November", "December");
+
+        //Getting random item for DAYS and MONTHS
+        String randomDay = daysInMonth.stream().findAny().get();
+        String randomMonth = monthsInYear.stream().findAny().get();
         int id = 1;
         for (int i = 0; i < numberOfContacts; i++) {
             listWithContacts.add(new ContactData().withFirstName(String.format("firstName %s", id))
@@ -95,11 +107,11 @@ public class ContactDataGenerator {
                                                     .withEmail2(String.format("%s" + 1 + "@mail.ru", id))
                                                     .withEmail3(String.format("%s" + 2 + "@mail.ru", id))
                                                     .withHomepage(String.format("Homepage %s", id))
-                                                    .withBirthDay("8")
-                                                    .withBirthMonth("June")
+                                                    .withBirthDay(randomDay)
+                                                    .withBirthMonth(randomMonth)
                                                     .withBirthYear("1990")
-                                                    .withAnniversaryDay("12")
-                                                    .withAnniversaryMonth("July")
+                                                    .withAnniversaryDay(randomDay)
+                                                    .withAnniversaryMonth(randomMonth)
                                                     .withAnniversaryYear("1998")
                                                     .withSecondaryAddress(String.format("Secondary Address %s", id))
                                                     .withSecondaryPhone("444")

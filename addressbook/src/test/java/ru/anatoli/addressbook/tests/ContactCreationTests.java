@@ -1,65 +1,68 @@
 package ru.anatoli.addressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 import static org.testng.Assert.assertEquals;
 
 /**
  * Created by anatoli.anukevich on 6/27/2017.
  */
 public class ContactCreationTests extends TestBase {
+    @DataProvider
+    public Iterator<Object[]> validDataForContactCreationFromCsv() throws IOException {
+        List<Object[]> list = new ArrayList<Object[]>();
+        File file = new File("src/test/resources/contactFile.csv");
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        while (line != null) {
+            String[] splitData = line.split(";");
+            list.add(new Object[] {new ContactData().withFirstName(splitData[0])
+                                                    .withMiddleName(splitData[1])
+                                                    .withLastName(splitData[2])
+                                                    .withNickname(splitData[3])
+                                                    .withPhoto(new File(splitData[4]))
+                                                    .withTitle(splitData[5])
+                                                    .withCompany(splitData[6])
+                                                    .withAddress(splitData[7])
+                                                    .withHomePhone(splitData[8])
+                                                    .withMobilePhone(splitData[9])
+                                                    .withWorkPhone(splitData[10])
+                                                    .withFax(splitData[11])
+                                                    .withEmail(splitData[12])
+                                                    .withEmail2(splitData[13])
+                                                    .withEmail3(splitData[14])
+                                                    .withHomepage(splitData[15])
+                                                    .withBirthDay(splitData[16])
+                                                    .withBirthMonth(splitData[17])
+                                                    .withBirthYear(splitData[18])
+                                                    .withAnniversaryDay(splitData[19])
+                                                    .withAnniversaryMonth(splitData[20])
+                                                    .withAnniversaryYear(splitData[21])
+                                                    .withSecondaryAddress(splitData[22])
+                                                    .withSecondaryPhone(splitData[23])
+                                                    .withSecondaryNotes(splitData[24])});
+            line = bufferedReader.readLine();
+        }
+        bufferedReader.close();
+        reader.close();
+        return list.iterator();
+    }
+
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToHomePage();
     }
 
-    @Test(enabled = true)
-    public void testContactCreation() {
+    @Test(enabled = true, dataProvider = "validDataForContactCreationFromCsv")
+    public void testContactCreation(ContactData contactData) {
         //Getting Set of ContactData object model BEFORE creation
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
-        //Lists with DAYS and MONTHS
-        List<String> daysInMonth = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                                                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-                                                "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31");
-        List<String> monthsInYear = Arrays.asList("January", "February", "March", "April", "May", "June",
-                                                    "July", "August", "September", "October", "November", "December");
-
-        //Getting random item for DAYS and MONTHS
-        String randomDay = daysInMonth.iterator().next();
-        String randomMonth = monthsInYear.iterator().next();
-
-        //Creating new CONTACT
-        ContactData contactData = new ContactData().withFirstName("firstName")
-                                                    .withMiddleName("middleName")
-                                                    .withLastName("lastName")
-                                                    .withNickname("nickname")
-                                                    .withPhoto(new File("src/test/resources/NBA.jpeg"))
-                                                    .withTitle("Lead department")
-                                                    .withCompany("Google")
-                                                    .withAddress("California, LA")
-                                                    .withHomePhone("111-222-333")
-                                                    .withMobilePhone("123/123/123")
-                                                    .withWorkPhone("123-456-789")
-                                                    .withFax("111222333")
-                                                    .withEmail("1@mail.ru")
-                                                    .withEmail2("2@mail.ru")
-                                                    .withEmail3("3@mail.ru")
-                                                    .withHomepage("www.google.com")
-                                                    .withBirthDay(randomDay)
-                                                    .withBirthMonth(randomMonth)
-                                                    .withBirthYear("1900")
-                                                    .withAnniversaryDay(randomDay)
-                                                    .withAnniversaryMonth(randomMonth)
-                                                    .withAnniversaryYear("1950")
-                                                    .withSecondaryAddress("secondary Address")
-                                                    .withSecondaryPhone("secondary Home")
-                                                    .withSecondaryNotes("secondary Notes");
         applicationManager.getContactHelper().createContact(contactData);
 
         //Getting Set of ContactData object model AFTER creation
