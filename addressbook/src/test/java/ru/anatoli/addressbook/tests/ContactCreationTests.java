@@ -1,10 +1,13 @@
 package ru.anatoli.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.*;
 import static org.testng.Assert.assertEquals;
 
@@ -53,12 +56,31 @@ public class ContactCreationTests extends TestBase {
         return list.iterator();
     }
 
+    @DataProvider
+    public Iterator<Object[]> validDataForContactCreationFromJson() throws IOException {
+        File file = new File("src/test/resources/contactFile.json");
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        String json = "";
+        while (line != null) {
+            json += line;
+            line = bufferedReader.readLine();
+        }
+        Gson gson = new Gson();
+        Type collectionType = new TypeToken<List<ContactData>>(){}.getType(); //List<ContactData>.class
+        List<ContactData> list = gson.fromJson(json, collectionType);
+        bufferedReader.close();
+        reader.close();
+        return list.stream().map((contact) -> new Object[] {contact}).iterator();
+    }
+
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToHomePage();
     }
 
-    @Test(enabled = true, dataProvider = "validDataForContactCreationFromCsv")
+    @Test(enabled = true, dataProvider = "validDataForContactCreationFromJson")
     public void testContactCreation(ContactData contactData) {
         //Getting Set of ContactData object model BEFORE creation
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
