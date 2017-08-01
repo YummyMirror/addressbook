@@ -1,14 +1,14 @@
 package ru.anatoli.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.GroupData;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.lang.reflect.Type;
+import java.util.*;
 import static org.testng.Assert.assertEquals;
 
 public class GroupCreationTests extends TestBase {
@@ -31,12 +31,31 @@ public class GroupCreationTests extends TestBase {
         return list.iterator();
     }
 
+    @DataProvider
+    public Iterator<Object[]> validDataForGroupCreationFromJson() throws IOException {
+        File file = new File("src/test/resources/groupFile.json");
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        String json = "";
+        while (line != null) {
+            json += line;
+            line = bufferedReader.readLine();
+        }
+        Gson gson = new Gson();
+        Type collectionType = new TypeToken<List<GroupData>>(){}.getType(); //List<GroupData>.class
+        List<GroupData> list = gson.fromJson(json, collectionType);
+        bufferedReader.close();
+        reader.close();
+        return list.stream().map((group) -> new Object[]{group}).iterator();
+    }
+
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToGroupsPage();
     }
     
-    @Test(dataProvider = "validDataForGroupCreationFromCsv")
+    @Test(dataProvider = "validDataForGroupCreationFromJson")
     public void testGroupCreation(GroupData groupData) {
         //Getting Set of GroupData object model BEFORE creation
         Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
