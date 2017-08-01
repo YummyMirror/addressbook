@@ -6,6 +6,7 @@ import ru.anatoli.addressbook.models.ContactData;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -87,8 +88,10 @@ public class ContactDataGenerator {
                                                     "July", "August", "September", "October", "November", "December");
 
         //Getting random item for DAYS and MONTHS
-        String randomDay = daysInMonth.stream().findAny().get();
-        String randomMonth = monthsInYear.stream().findAny().get();
+        int randomNumberOfDay = new SecureRandom().nextInt(daysInMonth.size());
+        int randomNumberOfMonth = new SecureRandom().nextInt(monthsInYear.size());
+        String randomDay = daysInMonth.get(randomNumberOfDay);
+        String randomMonth = monthsInYear.get(randomNumberOfMonth);
         int id = 1;
         for (int i = 0; i < numberOfContacts; i++) {
             listWithContacts.add(new ContactData().withFirstName(String.format("firstName %s", id))
