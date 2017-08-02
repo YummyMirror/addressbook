@@ -1,1 +1,22 @@
-[{"userName":"admin","password":"secret"},{"userName":"admin","password":"secret"},{"userName":"admin","password":"secret"},{"userName":"admin","password":"secret"},{"userName":"admin","password":"secret"}]
+[
+  {
+    "userName": "admin",
+    "password": "secret"
+  },
+  {
+    "userName": "admin",
+    "password": "secret"
+  },
+  {
+    "userName": "admin",
+    "password": "secret"
+  },
+  {
+    "userName": "admin",
+    "password": "secret"
+  },
+  {
+    "userName": "admin",
+    "password": "secret"
+  }
+]

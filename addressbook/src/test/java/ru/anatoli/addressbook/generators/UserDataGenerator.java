@@ -1,6 +1,7 @@
 package ru.anatoli.addressbook.generators;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ru.anatoli.addressbook.models.UserData;
 import java.io.File;
 import java.io.FileWriter;
@@ -42,7 +43,7 @@ public class UserDataGenerator {
     }
 
     public static void saveAsJson(File file, List<UserData> listWithUsers) throws IOException {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(listWithUsers);
         FileWriter writer = new FileWriter(file);
         writer.write(json);

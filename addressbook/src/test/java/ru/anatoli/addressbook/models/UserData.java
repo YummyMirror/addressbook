@@ -1,7 +1,11 @@
 package ru.anatoli.addressbook.models;
 
+import com.google.gson.annotations.Expose;
+
 public class UserData {
+    @Expose
     private String userName;
+    @Expose
     private String password;
 
     //Getters
