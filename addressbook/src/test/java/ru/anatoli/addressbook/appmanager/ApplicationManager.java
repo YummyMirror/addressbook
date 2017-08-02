@@ -6,7 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import ru.anatoli.addressbook.models.UserData;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -18,6 +21,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
+    private Properties properties;
     private String browser;
 
     //Constructor
@@ -25,7 +29,7 @@ public class ApplicationManager {
         this.browser = browser;
     }
 
-    public void init() {
+    public void init() throws IOException {
         System.setProperty("webdriver.gecko.driver", "E:\\Private\\Programs\\geckodriver\\geckodriver.exe");
 
         //Choosing the Browser
@@ -36,18 +40,22 @@ public class ApplicationManager {
         } else if (browser.equals(BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
+        //Initializing of Helpers
         navigationHelper = new NavigationHelper(wd);
         groupHelper = new GroupHelper(wd);
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
 
-        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        //Getting values of necessary attributes from 'local.properties' file
+        File file = new File("src/test/resources/local.properties");
+        FileReader reader = new FileReader(file);
+        properties = new Properties();
+        properties.load(reader);
 
-        UserData userData = new UserData().withUserName("admin")
-                                            .withPassword("secret");
-        getUrl("http://localhost/addressbook/");
-        sessionHelper.login(userData);
+        getUrl(properties.getProperty("baseUrl"));
+        sessionHelper.login(properties.getProperty("user"), properties.getProperty("password"));
     }
 
     public void getUrl(String url) {

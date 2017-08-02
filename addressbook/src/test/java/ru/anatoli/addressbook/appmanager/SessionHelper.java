@@ -2,7 +2,6 @@ package ru.anatoli.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.anatoli.addressbook.models.UserData;
 
 /**
  * Created by anatoli.anukevich on 6/25/2017.
@@ -13,9 +12,9 @@ public class SessionHelper extends HelperBase {
         super(wd);
     }
 
-    public void login(UserData userData) {
-        input(By.name("user"), userData.getUserName());
-        input(By.name("pass"), userData.getPassword());
+    public void login(String login, String password) {
+        input(By.name("user"), login);
+        input(By.name("pass"), password);
         submitLoginForm();
     }
 
