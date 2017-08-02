@@ -66,15 +66,6 @@ public class ApplicationManager {
         wd.quit();
     }
 
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
     //Getters of Delegates
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
