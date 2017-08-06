@@ -14,6 +14,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
@@ -24,7 +26,7 @@ public class LoginLogoutTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validDataForLoginFromCsv() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File file = new File("src/test/resources/userFile.csv");
+        File file = new File("src/test/resources/userFileValid.csv");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
@@ -41,7 +43,7 @@ public class LoginLogoutTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validDataForLoginFromJson() throws IOException {
-        File file = new File("src/test/resources/userFile.json");
+        File file = new File("src/test/resources/userFileValid.json");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
@@ -58,7 +60,7 @@ public class LoginLogoutTests extends TestBase {
         return list.stream().map((user) -> new Object[] {user}).iterator();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testLogout() {
         applicationManager.getSessionHelper().logout();
 
@@ -81,5 +83,10 @@ public class LoginLogoutTests extends TestBase {
 
         //Asserting by NOT presence of Login button
         assertFalse(applicationManager.getSessionHelper().isElementPresent(By.xpath("//input[@value = 'Login']")));
+
+        String loggedUserName = applicationManager.getSessionHelper().loggedUserName();
+
+        //Asserting by Logged User
+        assertEquals(loggedUserName, user.getUserName());
     }
 }

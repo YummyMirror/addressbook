@@ -33,4 +33,9 @@ public class SessionHelper extends HelperBase {
         input(By.name("pass"), user.getPassword());
         submitLoginForm();
     }
+
+    public String loggedUserName() {
+        String loggedUser = wd.findElement(By.xpath("//form[@class = 'header']/b[1]")).getText();
+        return loggedUser.replaceAll("[()]", "");
+    }
 }
