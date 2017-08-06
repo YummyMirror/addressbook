@@ -6,7 +6,10 @@ import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.UserData;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,7 +58,7 @@ public class LoginLogoutTests extends TestBase {
         return list.stream().map((user) -> new Object[] {user}).iterator();
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testLogout() {
         applicationManager.getSessionHelper().logout();
 
@@ -66,5 +69,17 @@ public class LoginLogoutTests extends TestBase {
 
         //Asserting by NOT presence of Logout button
         assertFalse(applicationManager.getSessionHelper().isElementPresent(By.linkText("Logout")));
+    }
+
+    @Test(enabled = true, dataProvider = "validDataForLoginFromJson")
+    public void testLoginWithValidCreds(UserData user) {
+        applicationManager.getSessionHelper().logout();
+        applicationManager.getSessionHelper().loginViaObjectModel(user);
+
+        //Asserting by presence of Logout button
+        assertTrue(applicationManager.getSessionHelper().isElementPresent(By.linkText("Logout")));
+
+        //Asserting by NOT presence of Login button
+        assertFalse(applicationManager.getSessionHelper().isElementPresent(By.xpath("//input[@value = 'Login']")));
     }
 }
