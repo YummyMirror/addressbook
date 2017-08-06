@@ -1,10 +1,13 @@
 package ru.anatoli.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.UserData;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +34,25 @@ public class LoginLogoutTests extends TestBase {
         bufferedReader.close();
         reader.close();
         return list.iterator();
+    }
+
+    @DataProvider
+    public Iterator<Object[]> validDataForLoginFromJson() throws IOException {
+        File file = new File("src/test/resources/userFile.json");
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        String json = "";
+        while (line != null) {
+            json += line;
+            line = bufferedReader.readLine();
+        }
+        Gson gson = new Gson();
+        Type collectionType = new TypeToken<List<UserData>>(){}.getType(); //List<UserData>.class
+        List<UserData> list = gson.fromJson(json, collectionType);
+        bufferedReader.close();
+        reader.close();
+        return list.stream().map((user) -> new Object[] {user}).iterator();
     }
 
     @Test(enabled = true)
