@@ -6,10 +6,8 @@ import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.UserData;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,6 +42,25 @@ public class LoginLogoutTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validDataForLoginFromJson() throws IOException {
         File file = new File("src/test/resources/userFileValid.json");
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        String json = "";
+        while (line != null) {
+            json += line;
+            line = bufferedReader.readLine();
+        }
+        Gson gson = new Gson();
+        Type collectionType = new TypeToken<List<UserData>>(){}.getType(); //List<UserData>.class
+        List<UserData> list = gson.fromJson(json, collectionType);
+        bufferedReader.close();
+        reader.close();
+        return list.stream().map((user) -> new Object[] {user}).iterator();
+    }
+
+    @DataProvider
+    public Iterator<Object[]> invalidDataForLoginFromJson() throws IOException {
+        File file = new File("scr/test/resources/userFileInvalid");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
