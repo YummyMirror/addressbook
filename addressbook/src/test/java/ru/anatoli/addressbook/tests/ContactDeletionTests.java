@@ -20,7 +20,7 @@ public class ContactDeletionTests extends TestBase {
                                                         .withMiddleName(null)
                                                         .withLastName("Temp last name")
                                                         .withNickname(null)
-                                                        .withPhoto(new File("src/test/resources/NBA.jpeg"))
+                                                        .withPhoto(new File(""))
                                                         .withTitle(null)
                                                         .withCompany(null)
                                                         .withAddress(null)

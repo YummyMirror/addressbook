@@ -20,7 +20,7 @@ public class ContactSearchTests extends TestBase {
                                                     .withMiddleName(null)
                                                     .withLastName("LastName")
                                                     .withNickname(null)
-                                                    .withPhoto(new File("src/test/resources/NBA.jpeg"))
+                                                    .withPhoto(new File(""))
                                                     .withTitle(null)
                                                     .withCompany(null)
                                                     .withAddress("Address")

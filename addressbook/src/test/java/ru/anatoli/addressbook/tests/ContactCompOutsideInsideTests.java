@@ -19,7 +19,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
                                                         .withMiddleName(null)
                                                         .withLastName("LastName")
                                                         .withNickname(null)
-                                                        .withPhoto(new File("src/test/resources/Kobe.jpg"))
+                                                        .withPhoto(new File(""))
                                                         .withCompany("Google")
                                                         .withTitle("Lead")
                                                         .withAddress("Test Address")

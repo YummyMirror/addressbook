@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.UserData;
 import java.io.*;
 import java.lang.reflect.Type;
