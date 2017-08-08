@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.SkipException;
 import ru.anatoli.addressbook.models.ContactData;
+import java.io.File;
 import java.security.SecureRandom;
 import java.util.*;
 
@@ -35,7 +36,11 @@ public class ContactHelper extends HelperBase {
         input(By.name("middlename"), contactData.getMiddleName());
         input(By.name("lastname"), contactData.getLastName());
         input(By.name("nickname"), contactData.getNickname());
-        attach(By.name("photo"), contactData.getPhoto());
+
+        if (!contactData.getPhoto().getPath().equals("")) {
+            attach(By.name("photo"), contactData.getPhoto());
+        }
+
         input(By.name("title"), contactData.getTitle());
         input(By.name("company"), contactData.getCompany());
         input(By.name("address"), contactData.getAddress());
