@@ -6,13 +6,11 @@ import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.UserData;
-
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
@@ -60,7 +58,7 @@ public class LoginLogoutTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> invalidDataForLoginFromJson() throws IOException {
-        File file = new File("scr/test/resources/userFileInvalid");
+        File file = new File("src/test/resources/userFileInvalid.json");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
@@ -77,7 +75,7 @@ public class LoginLogoutTests extends TestBase {
         return list.stream().map((user) -> new Object[] {user}).iterator();
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testLogout() {
         applicationManager.getSessionHelper().logout();
 
@@ -90,7 +88,7 @@ public class LoginLogoutTests extends TestBase {
         assertFalse(applicationManager.getSessionHelper().isElementPresent(By.linkText("Logout")));
     }
 
-    @Test(enabled = true, dataProvider = "validDataForLoginFromJson")
+    @Test(enabled = false, dataProvider = "validDataForLoginFromJson")
     public void testLoginWithValidCreds(UserData user) {
         applicationManager.getSessionHelper().logout();
         applicationManager.getSessionHelper().loginViaObjectModel(user);
@@ -105,5 +103,19 @@ public class LoginLogoutTests extends TestBase {
 
         //Asserting by Logged User
         assertEquals(loggedUserName, user.getUserName());
+    }
+
+    @Test(enabled = true, dataProvider = "invalidDataForLoginFromJson")
+    public void testLoginWithInvalidCreds(UserData user) {
+        if (applicationManager.getSessionHelper().isElementPresent(By.linkText("Logout"))) {
+            applicationManager.getSessionHelper().logout();
+        }
+        applicationManager.getSessionHelper().loginViaObjectModel(user);
+
+        //Asserting by NOT presence of Logout button
+        assertFalse(applicationManager.getSessionHelper().isElementPresent(By.linkText("Logout")));
+
+        //Asserting by presence of Login button
+        assertTrue(applicationManager.getSessionHelper().isElementPresent(By.xpath("//input[@value = 'Login']")));
     }
 }
