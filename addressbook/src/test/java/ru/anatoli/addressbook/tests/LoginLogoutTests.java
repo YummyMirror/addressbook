@@ -75,7 +75,7 @@ public class LoginLogoutTests extends TestBase {
         return list.stream().map((user) -> new Object[] {user}).iterator();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testLogout() {
         applicationManager.getSessionHelper().logout();
 
@@ -88,7 +88,7 @@ public class LoginLogoutTests extends TestBase {
         assertFalse(applicationManager.getSessionHelper().isElementPresent(By.linkText("Logout")));
     }
 
-    @Test(enabled = false, dataProvider = "validDataForLoginFromJson")
+    @Test(enabled = true, dataProvider = "validDataForLoginFromJson")
     public void testLoginWithValidCreds(UserData user) {
         applicationManager.getSessionHelper().logout();
         applicationManager.getSessionHelper().loginViaObjectModel(user);
