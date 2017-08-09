@@ -97,40 +97,15 @@ public class ContactModificationTests extends TestBase {
         assertEquals(before, after);
     }
 
-    @Test(enabled = true)
-    public void testContactModificationFromDetailsPage() {
+    @Test(enabled = true, dataProvider = "validDataForContactModificationFromJson")
+    public void testContactModificationFromDetailsPage(ContactData contactData) {
         //Getting Set of ContactData object model BEFORE modification
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
         //Choosing the random Contact that will be modified
         ContactData modifiedContact = before.iterator().next();
 
-        ContactData contactData = new ContactData().withContactId(modifiedContact.getContactId())
-                                                    .withFirstName("Modified FirstName")
-                                                    .withMiddleName(null)
-                                                    .withLastName("Modified LastName")
-                                                    .withNickname(null)
-                                                    .withPhoto(new File(""))
-                                                    .withTitle(null)
-                                                    .withCompany(null)
-                                                    .withAddress(null)
-                                                    .withHomePhone(null)
-                                                    .withMobilePhone(null)
-                                                    .withWorkPhone(null)
-                                                    .withFax(null)
-                                                    .withEmail(null)
-                                                    .withEmail2(null)
-                                                    .withEmail3(null)
-                                                    .withHomepage(null)
-                                                    .withBirthDay(null)
-                                                    .withBirthMonth(null)
-                                                    .withBirthYear(null)
-                                                    .withAnniversaryDay(null)
-                                                    .withAnniversaryMonth(null)
-                                                    .withAnniversaryYear(null)
-                                                    .withSecondaryAddress(null)
-                                                    .withSecondaryPhone(null)
-                                                    .withSecondaryNotes(null);
+        contactData.withContactId(modifiedContact.getContactId());
 
         applicationManager.getContactHelper().modifyContactFromDetailsPage(contactData);
 
