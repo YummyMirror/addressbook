@@ -1,0 +1,29 @@
+[
+  {
+    "firstName": "firstName 1",
+    "middleName": "middleName 1",
+    "lastName": "lastName 1",
+    "nickname": "nickname 1",
+    "photo": "src\\test\\resources\\NBA.jpeg",
+    "title": "Title 1",
+    "company": "Company 1",
+    "address": "Address 1",
+    "homePhone": "111-111-111",
+    "mobilePhone": "222.222.222",
+    "workPhone": "333/444(555) 777",
+    "fax": "123",
+    "email": "1@mail.ru",
+    "email2": "11@mail.ru",
+    "email3": "12@mail.ru",
+    "homepage": "Homepage 1",
+    "birthDay": "12",
+    "birthMonth": "September",
+    "birthYear": "1990",
+    "anniversaryDay": "12",
+    "anniversaryMonth": "September",
+    "anniversaryYear": "1998",
+    "secondaryAddress": "Secondary Address 1",
+    "secondaryPhone": "444",
+    "secondaryNotes": "Secondary Notes 1"
+  }
+]

@@ -18,7 +18,7 @@ public class ContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validDataForContactCreationFromCsv() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File file = new File("src/test/resources/contactFile.csv");
+        File file = new File("src/test/resources/contactFileCreation.csv");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
@@ -58,7 +58,7 @@ public class ContactCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validDataForContactCreationFromJson() throws IOException {
-        File file = new File("src/test/resources/contactFile.json");
+        File file = new File("src/test/resources/contactFileCreation.json");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
