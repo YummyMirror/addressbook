@@ -1,17 +1,31 @@
 package ru.anatoli.addressbook.models;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by anatoli.anukevich on 6/25/2017.
  */
+@Entity
+@Table(name = "group_list")
 public class GroupData {
+    @Id
+    @Column(name = "group_id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name = "group_name")
     private String groupName;
     @Expose
+    @Column(name = "group_header")
+    @Type(type = "text")
     private String groupHeader;
     @Expose
+    @Column(name = "group_footer")
+    @Type(type = "text")
     private String groupFooter;
 
     //Getters
