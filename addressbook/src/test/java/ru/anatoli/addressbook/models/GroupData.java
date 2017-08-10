@@ -15,9 +15,11 @@ import javax.persistence.Table;
 public class GroupData {
     @Id
     @Column(name = "group_id")
+    @Type(type = "int")
     private int id = Integer.MAX_VALUE;
     @Expose
     @Column(name = "group_name")
+    @Type(type = "string")
     private String groupName;
     @Expose
     @Column(name = "group_header")

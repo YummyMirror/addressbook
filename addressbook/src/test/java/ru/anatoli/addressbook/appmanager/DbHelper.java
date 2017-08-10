@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class DbHelper {
     private SessionFactory sessionFactory;
+    private Session session;
 
     public DbHelper() {
         // A SessionFactory is set up once for an application!
@@ -21,5 +22,14 @@ public class DbHelper {
                                                                                     .configure() // configures settings from hibernate.cfg.xml
                                                                                     .build();
         sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+    }
+
+    public List<GroupData> getGroupList() {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<GroupData> list = session.createQuery( "from GroupData" ).list();
+        session.getTransaction().commit();
+        session.close();
+        return list;
     }
 }
