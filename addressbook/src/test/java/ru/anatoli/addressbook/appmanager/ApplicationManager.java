@@ -20,6 +20,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
+    private DbHelper dbHelper;
     private Properties properties;
     private String browser;
 
@@ -31,6 +32,7 @@ public class ApplicationManager {
     public void init() throws IOException {
         System.setProperty("webdriver.gecko.driver", "E:\\Private\\Programs\\geckodriver\\geckodriver.exe");
 
+        dbHelper = new DbHelper();
         //Choosing the Browser
         if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
@@ -80,5 +82,9 @@ public class ApplicationManager {
 
     public ContactHelper getContactHelper() {
         return contactHelper;
+    }
+
+    public DbHelper getDbHelper() {
+        return dbHelper;
     }
 }

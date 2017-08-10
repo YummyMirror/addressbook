@@ -1,10 +1,13 @@
 package ru.anatoli.addressbook.appmanager;
 
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import ru.anatoli.addressbook.models.GroupData;
+import java.util.List;
 
 /**
  * Created by anatoli.anukevich on 8/10/2017.
