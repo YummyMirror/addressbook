@@ -14,6 +14,12 @@ dependencies {
 
     //Including GSON library to work with JSON format
     compile 'com.google.code.gson:gson:2.8.1'
+
+    //Including driver for MySQL DB
+    compile 'mysql:mysql-connector-java:8.0.7-dmr'
+
+    //Including Hibernate ORM
+    compile 'org.hibernate:hibernate-core:5.2.10.Final'
 }
 
 test {
