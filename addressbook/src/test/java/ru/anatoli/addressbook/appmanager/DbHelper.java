@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.GroupData;
 import java.util.List;
 
@@ -28,6 +29,15 @@ public class DbHelper {
         session = sessionFactory.openSession();
         session.beginTransaction();
         List<GroupData> list = session.createQuery( "from GroupData" ).list();
+        session.getTransaction().commit();
+        session.close();
+        return list;
+    }
+
+    public List<ContactData> getContactList() {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> list = session.createQuery( "from ContactData" ).list();
         session.getTransaction().commit();
         session.close();
         return list;
