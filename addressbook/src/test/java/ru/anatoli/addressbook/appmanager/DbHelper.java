@@ -37,7 +37,7 @@ public class DbHelper {
     public List<ContactData> getContactList() {
         session = sessionFactory.openSession();
         session.beginTransaction();
-        List<ContactData> list = session.createQuery( "from ContactData" ).list();
+        List<ContactData> list = session.createQuery( "from ContactData WHERE deprecated = '0000-00-00 00:00:00'" ).list();
         session.getTransaction().commit();
         session.close();
         return list;

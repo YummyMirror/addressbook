@@ -105,8 +105,7 @@ public class ContactData {
     private String homepage;
 
     @Expose
-    @Column(name = "bday")
-    @Type(type = "int")
+    @Transient
     private String birthDay;
 
     @Expose
@@ -120,8 +119,7 @@ public class ContactData {
     private String birthYear;
 
     @Expose
-    @Column(name = "aday")
-    @Type(type = "int")
+    @Transient
     private String anniversaryDay;
 
     @Expose
