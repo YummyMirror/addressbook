@@ -57,7 +57,7 @@ public class ContactData {
     private String address;
 
     @Expose
-    @Transient
+    @Transient //Ignoring
     private String allPhones;
 
     @Expose
@@ -81,7 +81,7 @@ public class ContactData {
     private String fax;
 
     @Expose
-    @Transient
+    @Transient //Ignoring
     private String allEmails;
 
     @Expose
@@ -105,7 +105,7 @@ public class ContactData {
     private String homepage;
 
     @Expose
-    @Transient
+    @Column(name = "bday", columnDefinition = "TINYINT")
     private String birthDay;
 
     @Expose
@@ -119,7 +119,7 @@ public class ContactData {
     private String birthYear;
 
     @Expose
-    @Transient
+    @Column(name = "aday", columnDefinition = "TINYINT")
     private String anniversaryDay;
 
     @Expose
