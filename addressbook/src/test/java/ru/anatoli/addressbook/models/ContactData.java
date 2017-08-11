@@ -1,66 +1,152 @@
 package ru.anatoli.addressbook.models;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
+import javax.persistence.*;
 import java.io.File;
 
 /**
  * Created by anatoli.anukevich on 6/27/2017.
  */
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+    @Id
+    @Column(name = "id")
+    @Type(type = "int")
     private int id = Integer.MAX_VALUE;
+
     @Expose
+    @Column(name = "firstname")
+    @Type(type = "string")
     private String firstName;
+
     @Expose
+    @Column(name = "middlename")
+    @Type(type = "string")
     private String middleName;
+
     @Expose
+    @Column(name = "lastname")
+    @Type(type = "string")
     private String lastName;
+
     @Expose
+    @Column(name = "nickname")
+    @Type(type = "string")
     private String nickname;
+
     @Expose
+    @Column(name = "photo")
+    @Type(type = "text")
     private String photo;
+
     @Expose
+    @Column(name = "title")
+    @Type(type = "string")
     private String title;
+
     @Expose
+    @Column(name = "company")
+    @Type(type = "string")
     private String company;
+
     @Expose
+    @Column(name = "address")
+    @Type(type = "text")
     private String address;
+
     @Expose
+    @Transient
     private String allPhones;
+
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String homePhone;
+
     @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String mobilePhone;
+
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String workPhone;
+
     @Expose
+    @Column(name = "fax")
+    @Type(type = "text")
     private String fax;
+
     @Expose
+    @Transient
     private String allEmails;
+
     @Expose
+    @Column(name = "email")
+    @Type(type = "text")
     private String email;
+
     @Expose
+    @Column(name = "email2")
+    @Type(type = "text")
     private String email2;
+
     @Expose
+    @Column(name = "email3")
+    @Type(type = "text")
     private String email3;
+
     @Expose
+    @Column(name = "homepage")
+    @Type(type = "text")
     private String homepage;
+
     @Expose
+    @Column(name = "bday")
+    @Type(type = "int")
     private String birthDay;
+
     @Expose
+    @Column(name = "bmonth")
+    @Type(type = "string")
     private String birthMonth;
+
     @Expose
+    @Column(name = "byear")
+    @Type(type = "string")
     private String birthYear;
+
     @Expose
+    @Column(name = "aday")
+    @Type(type = "int")
     private String anniversaryDay;
+
     @Expose
+    @Column(name = "amonth")
+    @Type(type = "string")
     private String anniversaryMonth;
+
     @Expose
+    @Column(name = "ayear")
+    @Type(type = "string")
     private String anniversaryYear;
+
     @Expose
+    @Column(name = "address2")
+    @Type(type = "text")
     private String secondaryAddress;
+
     @Expose
+    @Column(name = "phone2")
+    @Type(type = "text")
     private String secondaryPhone;
+
     @Expose
+    @Column(name = "notes")
+    @Type(type = "text")
     private String secondaryNotes;
 
     //Getters
