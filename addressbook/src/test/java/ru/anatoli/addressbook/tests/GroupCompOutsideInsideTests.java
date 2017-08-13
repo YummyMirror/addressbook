@@ -13,7 +13,7 @@ public class GroupCompOutsideInsideTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToGroupsPage();
-        if (applicationManager.getGroupHelper().getGroupSet().size() == 0) {
+        if (applicationManager.getDbHelper().getGroupSet().size() == 0) {
             GroupData groupData = new GroupData().withGroupName("Forced created groupName")
                                                     .withGroupHeader("Forced created groupHeader")
                                                     .withGroupFooter("Forced created groupFooter");
@@ -24,7 +24,7 @@ public class GroupCompOutsideInsideTests extends TestBase {
     @Test
     public void testGroupCompOutsideInside() {
         //Getting Set of GroupData object model BEFORE test execution
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Choosing the random Group that will be compared as OUTSIDE data
         GroupData outsideData = before.iterator().next();
