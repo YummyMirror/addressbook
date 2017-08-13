@@ -13,7 +13,7 @@ public class GroupDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToGroupsPage();
-        if (applicationManager.getGroupHelper().getGroupSet().size() == 0) {
+        if (applicationManager.getDbHelper().getGroupSet().size() == 0) {
             GroupData groupData = new GroupData().withGroupName("Temp name")
                                                 .withGroupHeader(null)
                                                 .withGroupFooter(null);
@@ -24,7 +24,7 @@ public class GroupDeletionTests extends TestBase {
     @Test(enabled = true)
     public void testGroupDeletion() {
         //Getting Set of GroupData object model BEFORE deletion
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Choosing the random Group that will be removed
         GroupData removedGroup = before.iterator().next();
@@ -32,7 +32,7 @@ public class GroupDeletionTests extends TestBase {
         applicationManager.getGroupHelper().deleteGroup(removedGroup);
 
         //Getting Set of GroupData object model AFTER deletion
-        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> after = applicationManager.getDbHelper().getGroupSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size() - 1, after.size());
@@ -46,7 +46,7 @@ public class GroupDeletionTests extends TestBase {
     @Test(enabled = true)
     public void testGroupDeletionWithoutSelection() {
         //Getting Set of GroupData object model BEFORE deletion
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         applicationManager.getGroupHelper().deleteSelectedGroup();
         String noticeTitle = applicationManager.getGroupHelper().getErrorMessageDuringDeletionAndModification();
@@ -57,7 +57,7 @@ public class GroupDeletionTests extends TestBase {
         applicationManager.getGroupHelper().returnToGroupsPage();
 
         //Getting Set of GroupData object model AFTER deletion
-        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> after = applicationManager.getDbHelper().getGroupSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
