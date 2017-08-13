@@ -17,8 +17,7 @@ public class GroupAllDeletionTests extends TestBase {
         GroupData groupData = new GroupData().withGroupName("Test name")
                                             .withGroupHeader(null)
                                             .withGroupFooter(null);
-
-        int groupNumber = applicationManager.getGroupHelper().getGroupSet().size();
+        int groupNumber = applicationManager.getDbHelper().getGroupSet().size();
         if (groupNumber == 0) {
             for (int i = 0; i < 3; i++) {
                 applicationManager.getGroupHelper().createGroup(groupData);
@@ -33,12 +32,12 @@ public class GroupAllDeletionTests extends TestBase {
     @Test(enabled = true)
     public void testGroupAllDeletion() {
         //Getting Set of GroupData object model BEFORE deletion
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         applicationManager.getGroupHelper().deleteAllSelectedGroups(before);
 
         //Getting Set of GroupData object model AFTER deletion
-        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> after = applicationManager.getDbHelper().getGroupSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size() + before.size());
