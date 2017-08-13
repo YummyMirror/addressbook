@@ -58,13 +58,13 @@ public class GroupCreationTests extends TestBase {
     @Test(dataProvider = "validDataForGroupCreationFromJson")
     public void testGroupCreation(GroupData groupData) {
         //Getting Set of GroupData object model BEFORE creation
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Creating new GROUPs
         applicationManager.getGroupHelper().createGroup(groupData);
 
         //Getting Set of GroupData object model AFTER creation
-        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> after = applicationManager.getDbHelper().getGroupSet();
 
         //Asserting collections by SIZE
         assertEquals(after.size(), before.size() + 1);

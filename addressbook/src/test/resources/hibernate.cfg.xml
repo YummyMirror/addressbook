@@ -8,11 +8,8 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-
 <hibernate-configuration>
-
     <session-factory>
-
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost/addressbook</property>
@@ -37,7 +34,5 @@
         <!-- Names the annotated entity class -->
         <mapping class="ru.anatoli.addressbook.models.ContactData"/>
         <mapping class="ru.anatoli.addressbook.models.GroupData"/>
-
     </session-factory>
-
 </hibernate-configuration>
