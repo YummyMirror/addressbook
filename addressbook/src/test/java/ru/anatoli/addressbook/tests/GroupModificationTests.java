@@ -13,7 +13,7 @@ public class GroupModificationTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToGroupsPage();
-        if (applicationManager.getGroupHelper().getGroupSet().size() == 0) {
+        if (applicationManager.getDbHelper().getGroupSet().size() == 0) {
             GroupData groupData = new GroupData().withGroupName("Temp name")
                                                 .withGroupHeader("Temp header")
                                                 .withGroupFooter(null);
@@ -24,7 +24,7 @@ public class GroupModificationTests extends TestBase {
     @Test(enabled = true)
     public void testGroupModification() {
         //Getting Set of GroupData object model BEFORE modification
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Choosing the random Group that will be modified
         GroupData modifiedGroup = before.iterator().next();
@@ -36,7 +36,7 @@ public class GroupModificationTests extends TestBase {
         applicationManager.getGroupHelper().modifyGroup(groupData);
 
         //Getting Set of GroupData object model AFTER modification
-        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> after = applicationManager.getDbHelper().getGroupSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
@@ -51,7 +51,7 @@ public class GroupModificationTests extends TestBase {
     @Test(enabled = true)
     public void testGroupModificationWithoutSelection() {
         //Getting Set of GroupData object model BEFORE modification
-        Set<GroupData> before = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         applicationManager.getGroupHelper().initiateGroupModification();
         String noticeTitle = applicationManager.getGroupHelper().getErrorMessageDuringDeletionAndModification();
@@ -72,7 +72,7 @@ public class GroupModificationTests extends TestBase {
         applicationManager.getGroupHelper().returnToGroupsPage();
 
         //Getting Set of GroupData object model AFTER modification
-        Set<GroupData> after = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> after = applicationManager.getDbHelper().getGroupSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
