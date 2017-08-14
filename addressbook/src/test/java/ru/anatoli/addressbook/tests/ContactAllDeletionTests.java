@@ -42,7 +42,7 @@ public class ContactAllDeletionTests extends TestBase {
                                                     .withSecondaryPhone(null)
                                                     .withSecondaryNotes(null);
 
-        int contactNumber = applicationManager.getContactHelper().getContactSet().size();
+        int contactNumber = applicationManager.getDbHelper().getContactSet().size();
         if (contactNumber == 0) {
             for (int i = 0; i < 3; i++) {
                 applicationManager.getContactHelper().createContact(contactData);
@@ -58,7 +58,7 @@ public class ContactAllDeletionTests extends TestBase {
     public void testContactAllDeletion() {
         applicationManager.getContactHelper().deleteAllSelectedContacts();
 
-        int after = applicationManager.getContactHelper().getContactSet().size();
+        int after = applicationManager.getDbHelper().getContactSet().size();
 
         //Asserting by SIZE
         assertTrue(after == 0);
@@ -67,12 +67,12 @@ public class ContactAllDeletionTests extends TestBase {
     @Test(enabled = true)
     public void testContactDeletionAllWithoutSelection() {
         //Getting Set of ContactData object model BEFORE clicking 'Select ALL'
-        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         applicationManager.getContactHelper().deleteAllContactsWithoutSelection();
 
         //Getting Set of ContactData object model AFTER clicking 'Select ALL'
-        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
@@ -84,12 +84,12 @@ public class ContactAllDeletionTests extends TestBase {
     @Test(enabled = true)
     public void testContactDeletionAllCancel() {
         //Getting Set of ContactData object model BEFORE clicking 'Select ALL'
-        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         applicationManager.getContactHelper().cancelDeletionAllSelectedContacts();
 
         //Getting Set of ContactData object model AFTER clicking 'Select ALL'
-        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
