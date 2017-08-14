@@ -83,12 +83,12 @@ public class ContactCreationTests extends TestBase {
     @Test(enabled = true, dataProvider = "validDataForContactCreationFromJson")
     public void testContactCreation(ContactData contactData) {
         //Getting Set of ContactData object model BEFORE creation
-        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         applicationManager.getContactHelper().createContact(contactData);
 
         //Getting Set of ContactData object model AFTER creation
-        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size() + 1, after.size());
@@ -107,7 +107,7 @@ public class ContactCreationTests extends TestBase {
     @Test(enabled = true)
     public void testContactCreationOneByOne() {
         //Getting Set of ContactData object model BEFORE creation
-        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         //Creating new CONTACT
         ContactData contactData = new ContactData().withFirstName("firstName")
@@ -164,7 +164,7 @@ public class ContactCreationTests extends TestBase {
         applicationManager.getContactHelper().createContactsOneByOne(contactData, contactData2);
 
         //Getting Set of ContactData object model AFTER creation
-        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size() + 2, after.size());
