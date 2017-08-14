@@ -42,7 +42,7 @@ public class ContactModificationTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToHomePage();
-        if (applicationManager.getContactHelper().getContactSet().size() == 0) {
+        if (applicationManager.getDbHelper().getContactSet().size() == 0) {
             ContactData contactData = new ContactData().withFirstName("Forced created FirstName")
                                                         .withMiddleName("Forced created MiddleName")
                                                         .withLastName("Forced created LastName")
@@ -75,7 +75,7 @@ public class ContactModificationTests extends TestBase {
     @Test(enabled = true, dataProvider = "validDataForContactModificationFromJson")
     public void testContactModification(ContactData contactData) {
         //Getting Set of ContactData object model BEFORE modification
-        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         //Choosing the random Contact that will be modified
         ContactData modifiedContact = before.iterator().next();
@@ -85,7 +85,7 @@ public class ContactModificationTests extends TestBase {
         applicationManager.getContactHelper().modifyContact(contactData);
 
         //Getting Set of ContactData object model AFTER modification
-        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
@@ -100,7 +100,7 @@ public class ContactModificationTests extends TestBase {
     @Test(enabled = true, dataProvider = "validDataForContactModificationFromJson")
     public void testContactModificationFromDetailsPage(ContactData contactData) {
         //Getting Set of ContactData object model BEFORE modification
-        Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         //Choosing the random Contact that will be modified
         ContactData modifiedContact = before.iterator().next();
@@ -110,7 +110,7 @@ public class ContactModificationTests extends TestBase {
         applicationManager.getContactHelper().modifyContactFromDetailsPage(contactData);
 
         //Getting Set of ContactData object model AFTER modification
-        Set<ContactData> after = applicationManager.getContactHelper().getContactSet();
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSet();
 
         //Asserting collections by SIZE
         assertEquals(before.size(), after.size());
