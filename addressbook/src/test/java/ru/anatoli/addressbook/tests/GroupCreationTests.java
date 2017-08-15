@@ -79,5 +79,12 @@ public class GroupCreationTests extends TestBase {
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);
+
+        //Asserting UI data vs DB data
+        Set<GroupData> uiData = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> dbData = applicationManager.getDbHelper().getGroupSet();
+
+        assertEquals(uiData.size(), dbData.size());
+        assertEquals(uiData, dbData);
     }
 }
