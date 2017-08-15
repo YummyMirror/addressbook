@@ -18,7 +18,7 @@ public class GroupCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validDataForGroupCreationFromCsv() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File file = new File("src/test/resources/groupFile.csv");
+        File file = new File("src/test/resources/groupFileCreation.csv");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
@@ -36,7 +36,7 @@ public class GroupCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validDataForGroupCreationFromJson() throws IOException {
-        File file = new File("src/test/resources/groupFile.json");
+        File file = new File("src/test/resources/groupFileCreation.json");
         FileReader reader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String line = bufferedReader.readLine();
