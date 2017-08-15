@@ -87,11 +87,9 @@ public class GroupCreationTests extends TestBase {
         Set<GroupData> uiData = applicationManager.getGroupHelper().getGroupSet();
         Set<GroupData> dbData = applicationManager.getDbHelper().getGroupSet();
 
-        //Making DB data similar to the UI data
-        Set<GroupData> truncatedDbData = dbData.stream().map((group) -> new GroupData().withGroupId(group.getGroupId())
-                .withGroupName(group.getGroupName())).collect(Collectors.toSet());
-
-        assertEquals(uiData.size(), truncatedDbData.size());
-        assertEquals(uiData, truncatedDbData);
+        assertEquals(uiData, dbData.stream()
+                                   .map((group) -> new GroupData().withGroupId(group.getGroupId())
+                                                                  .withGroupName(group.getGroupName()))
+                                   .collect(Collectors.toSet()));
     }
 }
