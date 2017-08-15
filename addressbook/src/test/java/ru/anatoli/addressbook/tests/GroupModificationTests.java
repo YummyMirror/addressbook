@@ -1,17 +1,42 @@
 package ru.anatoli.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.GroupData;
+import java.io.*;
+import java.lang.reflect.Type;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import static org.testng.Assert.assertEquals;
 
 /**
  * Created by anatoli.anukevich on 6/27/2017.
  */
 public class GroupModificationTests extends TestBase {
+    @DataProvider
+    public Iterator<Object[]> validDataForGroupModificationFromJson() throws IOException {
+        File file = new File("src/test/resources/groupFileModification.json");
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        String json = "";
+        while (line != null) {
+            json += line;
+            line = bufferedReader.readLine();
+        }
+        Gson gson = new Gson();
+        Type collectionType = new TypeToken<List<GroupData>>(){}.getType(); //List<GroupData>.class
+        List<GroupData> list = gson.fromJson(json, collectionType);
+        bufferedReader.close();
+        reader.close();
+        return list.stream().map((group) -> new Object[] {group}).iterator();
+    }
+
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToGroupsPage();
