@@ -48,18 +48,16 @@ public class GroupModificationTests extends TestBase {
         }
     }
 
-    @Test(enabled = true)
-    public void testGroupModification() {
+    @Test(enabled = true, dataProvider = "validDataForGroupModificationFromJson")
+    public void testGroupModification(GroupData groupData) {
         //Getting Set of GroupData object model BEFORE modification
         Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Choosing the random Group that will be modified
         GroupData modifiedGroup = before.iterator().next();
 
-        GroupData groupData = new GroupData().withGroupId(modifiedGroup.getGroupId())
-                                            .withGroupName("GroupName")
-                                            .withGroupHeader("Header")
-                                            .withGroupFooter("Footer");
+        groupData.withGroupId(modifiedGroup.getGroupId());
+
         applicationManager.getGroupHelper().modifyGroup(groupData);
 
         //Getting Set of GroupData object model AFTER modification
