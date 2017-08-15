@@ -9,6 +9,9 @@ import ru.anatoli.addressbook.models.GroupData;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.testng.Assert.assertEquals;
 
 public class GroupCreationTests extends TestBase {
@@ -84,7 +87,11 @@ public class GroupCreationTests extends TestBase {
         Set<GroupData> uiData = applicationManager.getGroupHelper().getGroupSet();
         Set<GroupData> dbData = applicationManager.getDbHelper().getGroupSet();
 
-        assertEquals(uiData.size(), dbData.size());
-        assertEquals(uiData, dbData);
+        //Making DB data similar to the UI data
+        Set<GroupData> truncatedDbData = dbData.stream().map((group) -> new GroupData().withGroupId(group.getGroupId())
+                .withGroupName(group.getGroupName())).collect(Collectors.toSet());
+
+        assertEquals(uiData.size(), truncatedDbData.size());
+        assertEquals(uiData, truncatedDbData);
     }
 }
