@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.GroupData;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import static org.testng.Assert.assertEquals;
 
 /**
