@@ -42,7 +42,7 @@ public class ContactSearchTests extends TestBase {
                                                     .withSecondaryPhone("444")
                                                     .withSecondaryNotes(null);
 
-        int contactNumber = applicationManager.getContactHelper().getContactSet().size();
+        int contactNumber = applicationManager.getDbHelper().getContactSet().size();
         if (contactNumber == 0) {
             for (int i = 0; i < 3; i++) {
                 applicationManager.getContactHelper().createContact(contactData);

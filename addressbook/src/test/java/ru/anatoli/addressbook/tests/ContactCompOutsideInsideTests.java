@@ -14,7 +14,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToHomePage();
-        if (applicationManager.getContactHelper().getContactSet().size() == 0) {
+        if (applicationManager.getDbHelper().getContactSet().size() == 0) {
             ContactData contactData = new ContactData().withFirstName("FirstName")
                                                         .withMiddleName(null)
                                                         .withLastName("LastName")
@@ -99,7 +99,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
         ContactData outsideData = before.iterator().next();
 
         //If at least one field is empty in the Edit form - Ignore Test execution
-        //applicationManager.getContactHelper().skipTestIfFormNotAllFilled(outsideData);
+        applicationManager.getContactHelper().skipTestIfFormNotAllFilled(outsideData);
 
         //Getting INSIDE data from details page
         ContactData dataFromDetailsPage = applicationManager.getContactHelper().getContactDataFromDetailsForm(outsideData);
