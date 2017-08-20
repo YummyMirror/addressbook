@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.GroupData;
 import java.util.Set;
-import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -44,13 +43,7 @@ public class GroupDeletionTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        Set<GroupData> uiData = applicationManager.getGroupHelper().getGroupSet();
-        Set<GroupData> dbData = applicationManager.getDbHelper().getGroupSet();
-
-        assertEquals(uiData, dbData.stream()
-                                   .map((group) -> new GroupData().withGroupId(group.getGroupId())
-                                                                  .withGroupName(group.getGroupName()))
-                                   .collect(Collectors.toSet()));
+        compareUiVsDbGroupData();
     }
 
     @Test(enabled = true)
@@ -76,12 +69,6 @@ public class GroupDeletionTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        Set<GroupData> uiData = applicationManager.getGroupHelper().getGroupSet();
-        Set<GroupData> dbData = applicationManager.getDbHelper().getGroupSet();
-
-        assertEquals(uiData, dbData.stream()
-                                   .map((group) -> new GroupData().withGroupId(group.getGroupId())
-                                                                  .withGroupName(group.getGroupName()))
-                                   .collect(Collectors.toSet()));
+        compareUiVsDbGroupData();
     }
 }
