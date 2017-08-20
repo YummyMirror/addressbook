@@ -7,6 +7,7 @@ import org.testng.SkipException;
 import ru.anatoli.addressbook.models.ContactData;
 import java.security.SecureRandom;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by anatoli.anukevich on 6/27/2017.
@@ -569,5 +570,37 @@ public class ContactHelper extends HelperBase {
             }
         }
         return numberOfMatching;
+    }
+
+    public Set<ContactData> removeEmptyElementsFromUiCollection(Set<ContactData> ui)  {
+        Set<ContactData> ui2 = ui.stream().map((contact) -> new ContactData().withFirstName(contact.getFirstName())
+                                                                            .withLastName(contact.getLastName())
+                                                                            .withAddress(contact.getAddress())
+                                                                            .withHomePhone(contact.getHomePhone())
+                                                                            .withMobilePhone(contact.getMobilePhone())
+                                                                            .withWorkPhone(contact.getWorkPhone())
+                                                                            .withEmail(contact.getEmail())
+                                                                            .withEmail2(contact.getEmail2())
+                                                                            .withEmail3(contact.getEmail3())
+                                                                            .withSecondaryPhone(contact.getSecondaryPhone()))
+                                    .collect(Collectors.toSet());
+
+        Set<ContactData> setWithRemovedElements = new HashSet<ContactData>();
+        for (ContactData contact : ui) {
+            List<String> list = new ArrayList<String>();
+            list.add(contact.getFirstName());
+            list.add(contact.getLastName());
+            list.add(contact.getAddress());
+            list.add(contact.getHomePhone());
+            list.add(contact.getMobilePhone());
+            list.add(contact.getWorkPhone());
+            list.add(contact.getEmail());
+            list.add(contact.getEmail2());
+            list.add(contact.getEmail3());
+            list.add(contact.getSecondaryPhone());
+
+            list.removeAll(Collections.singleton(""));
+        }
+        return setWithRemovedElements;
     }
 }
