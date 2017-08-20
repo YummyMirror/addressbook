@@ -110,7 +110,7 @@ public class ContactCreationTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        compareUiVsDbData();
+        compareUiVsDbContactData();
     }
 
     @Test(enabled = true)
@@ -197,6 +197,6 @@ public class ContactCreationTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        compareUiVsDbData();
+        compareUiVsDbContactData();
     }
 }

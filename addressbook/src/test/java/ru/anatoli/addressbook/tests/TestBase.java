@@ -5,6 +5,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.anatoli.addressbook.appmanager.ApplicationManager;
 import ru.anatoli.addressbook.models.ContactData;
+import ru.anatoli.addressbook.models.GroupData;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
@@ -25,7 +27,16 @@ public class TestBase {
         applicationManager.stop();
     }
 
-    public void compareUiVsDbData() {
+    public void compareUiVsDbGroupData() {
+        Set<GroupData> ui = applicationManager.getGroupHelper().getGroupSet();
+        Set<GroupData> db = applicationManager.getDbHelper().getGroupSet().stream()
+                                                                          .map((group) -> new GroupData().withGroupId(group.getGroupId())
+                                                                                                        .withGroupName(group.getGroupName()))
+                                                                          .collect(Collectors.toSet());
+        assertEquals(ui, db);
+    }
+
+    public void compareUiVsDbContactData() {
         Set<ContactData> ui = applicationManager.getContactHelper().getContactSet().stream()
                                                                                    .map((contact) -> new ContactData().withContactId(contact.getContactId())
                                                                                                                       .withFirstName(contact.getFirstName())

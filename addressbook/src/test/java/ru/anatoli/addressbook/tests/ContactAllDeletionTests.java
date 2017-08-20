@@ -64,7 +64,7 @@ public class ContactAllDeletionTests extends TestBase {
         assertTrue(after == 0);
 
         //Asserting UI data vs DB data
-        compareUiVsDbData();
+        compareUiVsDbContactData();
     }
 
     @Test(enabled = true)
@@ -84,7 +84,7 @@ public class ContactAllDeletionTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        compareUiVsDbData();
+        compareUiVsDbContactData();
     }
 
     @Test(enabled = true)
@@ -104,6 +104,6 @@ public class ContactAllDeletionTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        compareUiVsDbData();
+        compareUiVsDbContactData();
     }
 }

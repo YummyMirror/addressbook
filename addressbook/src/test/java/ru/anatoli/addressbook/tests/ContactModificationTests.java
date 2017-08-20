@@ -97,7 +97,7 @@ public class ContactModificationTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        compareUiVsDbData();
+        compareUiVsDbContactData();
     }
 
     @Test(enabled = true, dataProvider = "validDataForContactModificationFromJson")
@@ -125,6 +125,6 @@ public class ContactModificationTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        compareUiVsDbData();
+        compareUiVsDbContactData();
     }
 }
