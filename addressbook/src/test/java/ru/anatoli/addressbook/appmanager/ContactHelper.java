@@ -1,5 +1,6 @@
 package ru.anatoli.addressbook.appmanager;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
