@@ -6,10 +6,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -192,18 +197,6 @@ public class ContactCreationTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        Set<ContactData> ui = applicationManager.getContactHelper().getContactSet().stream()
-                                                                                   .map((contact) -> new ContactData().withContactId(contact.getContactId())
-                                                                                                                      .withFirstName(contact.getFirstName())
-                                                                                                                      .withLastName(contact.getLastName())
-                                                                                                                      .withAddress(contact.getAddress()))
-                                                                                   .collect(Collectors.toSet());
-        Set<ContactData> db = applicationManager.getDbHelper().getContactSet().stream()
-                                                                             .map((contact) -> new ContactData().withContactId(contact.getContactId())
-                                                                                                                .withFirstName(contact.getFirstName())
-                                                                                                                .withLastName(contact.getLastName())
-                                                                                                                .withAddress(contact.getAddress()))
-                                                                             .collect(Collectors.toSet());
-        assertEquals(ui, db);
+        compareUiVsDbData();
     }
 }

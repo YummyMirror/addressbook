@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import java.io.File;
 import java.util.Set;
-import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -67,19 +66,7 @@ public class ContactDeletionTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        Set<ContactData> ui = applicationManager.getContactHelper().getContactSet().stream()
-                                                                                   .map((contact) -> new ContactData().withContactId(contact.getContactId())
-                                                                                                                      .withFirstName(contact.getFirstName())
-                                                                                                                      .withLastName(contact.getLastName())
-                                                                                                                      .withAddress(contact.getAddress()))
-                                                                                   .collect(Collectors.toSet());
-        Set<ContactData> db = applicationManager.getDbHelper().getContactSet().stream()
-                                                                              .map((contact) -> new ContactData().withContactId(contact.getContactId())
-                                                                                                                 .withFirstName(contact.getFirstName())
-                                                                                                                 .withLastName(contact.getLastName())
-                                                                                                                 .withAddress(contact.getAddress()))
-                                                                              .collect(Collectors.toSet());
-        assertEquals(ui, db);
+        compareUiVsDbData();
     }
 
     @Test(enabled = true)
@@ -104,18 +91,6 @@ public class ContactDeletionTests extends TestBase {
         assertEquals(before, after);
 
         //Asserting UI data vs DB data
-        Set<ContactData> ui = applicationManager.getContactHelper().getContactSet().stream()
-                                                                                   .map((contact) -> new ContactData().withContactId(contact.getContactId())
-                                                                                                                      .withFirstName(contact.getFirstName())
-                                                                                                                      .withLastName(contact.getLastName())
-                                                                                                                      .withAddress(contact.getAddress()))
-                                                                                   .collect(Collectors.toSet());
-        Set<ContactData> db = applicationManager.getDbHelper().getContactSet().stream()
-                                                                              .map((contact) -> new ContactData().withContactId(contact.getContactId())
-                                                                                                                 .withFirstName(contact.getFirstName())
-                                                                                                                 .withLastName(contact.getLastName())
-                                                                                                                 .withAddress(contact.getAddress()))
-                                                                              .collect(Collectors.toSet());
-        assertEquals(ui, db);
+        compareUiVsDbData();
     }
 }
