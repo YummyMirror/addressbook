@@ -95,6 +95,21 @@ public class ContactAllDeletionTests extends TestBase {
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);
+
+        //Asserting UI data vs DB data
+        Set<ContactData> ui = applicationManager.getContactHelper().getContactSet().stream()
+                                                                                   .map((contact) -> new ContactData().withContactId(contact.getContactId())
+                                                                                                                      .withFirstName(contact.getFirstName())
+                                                                                                                      .withLastName(contact.getLastName())
+                                                                                                                      .withAddress(contact.getAddress()))
+                                                                                   .collect(Collectors.toSet());
+        Set<ContactData> db = applicationManager.getDbHelper().getContactSet().stream()
+                                                                              .map((contact) -> new ContactData().withContactId(contact.getContactId())
+                                                                                                                 .withFirstName(contact.getFirstName())
+                                                                                                                 .withLastName(contact.getLastName())
+                                                                                                                 .withAddress(contact.getAddress()))
+                                                                              .collect(Collectors.toSet());
+        assertEquals(ui, db);
     }
 
     @Test(enabled = true)
