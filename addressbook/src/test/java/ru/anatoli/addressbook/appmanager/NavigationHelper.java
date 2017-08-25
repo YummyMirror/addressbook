@@ -23,4 +23,8 @@ public class NavigationHelper extends HelperBase {
     public void goToHomePage() {
         click(By.linkText("home"));
     }
+
+    public void goToNextBirthdaysPage() {
+        wd.findElement(By.linkText("next birthdays")).click();
+    }
 }

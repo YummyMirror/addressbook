@@ -43,4 +43,16 @@ public class DbHelper {
         session.close();
         return new HashSet<ContactData>(list);
     }
+
+    public Set<ContactData> getContactSetWithBirthdays() {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> list = session.createQuery( "FROM ContactData " +
+                                                                 "WHERE deprecated = '0000-00-00 00:00:00' AND " +
+                                                                 "bday != '0' AND " +
+                                                                 "bmonth != null" ).list();
+        session.getTransaction().commit();
+        session.close();
+        return new HashSet<ContactData>(list);
+    }
 }
