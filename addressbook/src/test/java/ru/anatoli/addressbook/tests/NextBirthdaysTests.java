@@ -21,5 +21,8 @@ public class NextBirthdaysTests extends TestBase {
 
         //Asserting collections by SIZE
         assertEquals(contactSetWithBirthdays.size(), birthDays.size());
+
+        //Asserting by COLLECTIONS
+        assertEquals(contactSetWithBirthdays, birthDays);
     }
 }

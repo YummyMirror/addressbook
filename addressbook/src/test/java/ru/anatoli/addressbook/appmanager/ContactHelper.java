@@ -259,12 +259,13 @@ public class ContactHelper extends HelperBase {
         List<WebElement> elements = wd.findElements(By.xpath("//tr[@class = 'odd' or @class = 'even']"));
         for (WebElement rows : elements) {
             List<WebElement> cells = rows.findElements(By.tagName("td"));
-            String day = cells.get(0).getText().replace(".", "");
+            String link = cells.get(6).findElement(By.tagName("a")).getAttribute("href");
+            int id = Integer.parseInt(link.substring(41));
             String firstName = cells.get(2).getText();
-            String age = cells.get(3).getText().replaceAll("[()]", "");
             String email = cells.get(4).getText();
             String phone = cells.get(5).getText();
-            ContactData contact = new ContactData().withFirstName(firstName)
+            ContactData contact = new ContactData().withContactId(id)
+                                                   .withFirstName(firstName)
                                                    .withEmail(email)
                                                    .withHomePhone(phone);
             birthDays.add(contact);
