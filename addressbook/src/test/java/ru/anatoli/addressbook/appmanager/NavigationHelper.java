@@ -25,6 +25,11 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToNextBirthdaysPage() {
-        wd.findElement(By.linkText("next birthdays")).click();
+        String nameOfPage = wd.findElement(By.xpath("//div[@id = 'content']")).getText().split("\n")[0];
+        if (nameOfPage.equals("Next birthdays")) {
+            return;
+        } else {
+            click(By.linkText("next birthdays"));
+        }
     }
 }
