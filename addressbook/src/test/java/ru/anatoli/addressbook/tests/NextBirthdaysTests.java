@@ -28,6 +28,13 @@ public class NextBirthdaysTests extends TestBase {
             int randomMonthInt = new SecureRandom().nextInt(months.size());
             String randomMonth = months.get(randomMonthInt);
 
+            //Choosing the random BirthYear
+            List<String> years = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+            int randomYearInt = new SecureRandom().nextInt(years.size());
+            int randomYearInt2 = new SecureRandom().nextInt(years.size());
+            String randomYear = years.get(randomYearInt);
+            String randomYear2 = years.get(randomYearInt2);
+
             ContactData contactData = new ContactData().withFirstName("Temp first name")
                                                         .withMiddleName(null)
                                                         .withLastName("")
@@ -46,7 +53,7 @@ public class NextBirthdaysTests extends TestBase {
                                                         .withHomepage(null)
                                                         .withBirthDay(randomDay)
                                                         .withBirthMonth(randomMonth)
-                                                        .withBirthYear(null)
+                                                        .withBirthYear("19" + randomYear + randomYear2)
                                                         .withAnniversaryDay(null)
                                                         .withAnniversaryMonth(null)
                                                         .withAnniversaryYear(null)
