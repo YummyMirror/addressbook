@@ -21,7 +21,12 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToHomePage() {
-        click(By.linkText("home"));
+        String nameOfPage = wd.findElement(By.xpath("//div[@id = 'content']")).getText().split("\n")[0];
+        if (nameOfPage.contains("Number of results")) {
+            return;
+        } else {
+            click(By.linkText("home"));
+        }
     }
 
     public void goToNextBirthdaysPage() {
