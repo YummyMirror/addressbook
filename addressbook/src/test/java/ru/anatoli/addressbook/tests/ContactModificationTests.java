@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -43,9 +45,20 @@ public class ContactModificationTests extends TestBase {
     public void ensurePrecondition() {
         applicationManager.getNavigationHelper().goToHomePage();
         if (applicationManager.getDbHelper().getContactSet().size() == 0) {
-            ContactData contactData = new ContactData().withFirstName("Forced created FirstName")
-                                                        .withMiddleName("Forced created MiddleName")
-                                                        .withLastName("Forced created LastName")
+            //Choosing the random BirthDay
+            List<String> days = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                                                "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31");
+            int randomDayInt = new SecureRandom().nextInt(days.size());
+            String randomDay = days.get(randomDayInt);
+
+            //Choosing the random BirthMonth
+            List<String> months = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            int randomMonthInt = new SecureRandom().nextInt(months.size());
+            String randomMonth = months.get(randomMonthInt);
+
+            ContactData contactData = new ContactData().withFirstName("Temp first name")
+                                                        .withMiddleName(null)
+                                                        .withLastName("")
                                                         .withNickname(null)
                                                         .withPhoto(new File(""))
                                                         .withTitle(null)
@@ -59,8 +72,8 @@ public class ContactModificationTests extends TestBase {
                                                         .withEmail2(null)
                                                         .withEmail3(null)
                                                         .withHomepage(null)
-                                                        .withBirthDay(null)
-                                                        .withBirthMonth(null)
+                                                        .withBirthDay(randomDay)
+                                                        .withBirthMonth(randomMonth)
                                                         .withBirthYear(null)
                                                         .withAnniversaryDay(null)
                                                         .withAnniversaryMonth(null)
@@ -120,6 +133,35 @@ public class ContactModificationTests extends TestBase {
 
         before.remove(modifiedContact);
         before.add(contactData);
+
+        //Asserting by COLLECTIONS
+        assertEquals(before, after);
+
+        //Asserting UI data vs DB data
+        compareUiVsDbContactData();
+    }
+
+    @Test(enabled = true, dataProvider = "validDataForContactModificationFromJson")
+    public void testContactModificationFromBirthdaysPage(ContactData contactData) {
+        //Getting Set of ContactData object model BEFORE modification
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
+
+        //Getting Set of ContactData object model with BirthDays and BirthMonths BEFORE modification
+        Set<ContactData> birthDaysSet = applicationManager.getDbHelper().getContactSetWithBirthdays();
+
+        //Choosing the random Contact that will be modified
+        ContactData modifiedContact = birthDaysSet.iterator().next();
+
+        contactData.withContactId(modifiedContact.getContactId());
+
+        applicationManager.getNavigationHelper().goToNextBirthdaysPage();
+        applicationManager.getContactHelper().modifyContact(contactData);
+
+        //Getting Set of ContactData object model AFTER modification
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSet();
+
+        //Asserting collections by SIZE
+        assertEquals(before.size(), after.size());
 
         //Asserting by COLLECTIONS
         assertEquals(before, after);

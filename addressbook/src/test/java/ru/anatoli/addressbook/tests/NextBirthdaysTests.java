@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import java.io.File;
-import java.lang.reflect.Array;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;

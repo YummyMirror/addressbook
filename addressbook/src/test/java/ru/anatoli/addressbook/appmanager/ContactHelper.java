@@ -1,6 +1,5 @@
 package ru.anatoli.addressbook.appmanager;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +7,6 @@ import org.testng.SkipException;
 import ru.anatoli.addressbook.models.ContactData;
 import java.security.SecureRandom;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by anatoli.anukevich on 6/27/2017.
