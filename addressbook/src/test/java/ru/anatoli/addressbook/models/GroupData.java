@@ -2,10 +2,10 @@ package ru.anatoli.addressbook.models;
 
 import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.Type;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by anatoli.anukevich on 6/25/2017.
@@ -17,18 +17,24 @@ public class GroupData {
     @Column(name = "group_id")
     @Type(type = "int")
     private int id = Integer.MAX_VALUE;
+
     @Expose
     @Column(name = "group_name")
     @Type(type = "string")
     private String groupName;
+
     @Expose
     @Column(name = "group_header")
     @Type(type = "text")
     private String groupHeader;
+
     @Expose
     @Column(name = "group_footer")
     @Type(type = "text")
     private String groupFooter;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "groups")
+    private Set<ContactData> contacts = new HashSet<ContactData>(0);
 
     //Getters
     public int getGroupId() {
@@ -45,6 +51,10 @@ public class GroupData {
 
     public String getGroupFooter() {
         return groupFooter;
+    }
+
+    public Set<ContactData> getContacts() {
+        return contacts;
     }
 
     //Setters
@@ -66,6 +76,10 @@ public class GroupData {
     public GroupData withGroupFooter(String groupFooter) {
         this.groupFooter = groupFooter;
         return this;
+    }
+
+    public void setContacts(Set<ContactData> contacts) {
+        this.contacts = contacts;
     }
 
     @Override

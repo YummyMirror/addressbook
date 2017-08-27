@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by anatoli.anukevich on 6/27/2017.
@@ -147,6 +149,12 @@ public class ContactData {
     @Type(type = "text")
     private String secondaryNotes;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+               joinColumns = @JoinColumn(name = "id"),
+               inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>(0);
+
     //Getters
     public int getContactId() {
         return id;
@@ -258,6 +266,10 @@ public class ContactData {
 
     public String getSecondaryNotes() {
         return secondaryNotes;
+    }
+
+    public Set<GroupData> getGroups() {
+        return groups;
     }
 
     //Setters
@@ -399,6 +411,10 @@ public class ContactData {
     public ContactData withSecondaryNotes(String secondaryNotes) {
         this.secondaryNotes = secondaryNotes;
         return this;
+    }
+
+    public void setGroups(Set<GroupData> groups) {
+        this.groups = groups;
     }
 
     @Override
