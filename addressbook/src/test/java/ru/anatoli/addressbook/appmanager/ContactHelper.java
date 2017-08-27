@@ -3,6 +3,7 @@ package ru.anatoli.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.SkipException;
 import ru.anatoli.addressbook.models.ContactData;
 import java.security.SecureRandom;
@@ -222,6 +223,22 @@ public class ContactHelper extends HelperBase {
             System.out.println("Test is ignored due to the ALL fields are filled in Edit form");
             throw new SkipException("Test is ignored due to the ALL fields are filled in Edit form");
         }
+    }
+
+    public void selectValueInDropDownList(By locator, String value) {
+        new Select(wd.findElement(locator)).selectByVisibleText(value);
+    }
+
+    public void addContactToGroup() {
+        click(By.name("add"));
+    }
+
+    public void goToGroupPageAfretContactAddition() {
+        click(By.partialLinkText("group page"));
+    }
+
+    public String getCurrentGroup() {
+        return wd.findElement(By.name("group")).getText().split(" ")[0];
     }
 
     private Set<ContactData> contactCache = null;
@@ -588,5 +605,12 @@ public class ContactHelper extends HelperBase {
             }
         }
         return numberOfMatching;
+    }
+
+    public void addContactToGroup(ContactData movedContact, String randomGroupName) {
+        selectRemovedContactById(movedContact.getContactId());
+        selectValueInDropDownList(By.name("to_group"), randomGroupName);
+        addContactToGroup();
+        goToGroupPageAfretContactAddition();
     }
 }
