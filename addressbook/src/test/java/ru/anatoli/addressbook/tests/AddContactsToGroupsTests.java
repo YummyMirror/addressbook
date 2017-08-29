@@ -1,18 +1,62 @@
 package ru.anatoli.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
-import static org.testng.Assert.assertEquals;
+import ru.anatoli.addressbook.models.GroupData;
+import java.io.File;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by anatoli.anukevich on 8/27/2017.
  */
 public class AddContactsToGroupsTests extends TestBase {
-    @Test(enabled = true)
-    public void testAddContactToGroup() {
-        //TODO Precondition, Moving without selection, Removing from group, Add more good assertions
+    @BeforeMethod
+    public void ensurePrecondition() {
+        if (applicationManager.getDbHelper().getGroupSet().size() == 0) {
+            GroupData groupData = new GroupData().withGroupName("Test GroupName")
+                                                 .withGroupHeader(null)
+                                                 .withGroupFooter(null);
+            applicationManager.getNavigationHelper().goToGroupsPage();
+            applicationManager.getGroupHelper().createGroup(groupData);
+        }
+
+        if (applicationManager.getDbHelper().getContactSet().size() == 0) {
+            ContactData contactData = new ContactData().withFirstName("Temp first name")
+                                                        .withMiddleName(null)
+                                                        .withLastName("")
+                                                        .withNickname(null)
+                                                        .withPhoto(new File(""))
+                                                        .withTitle(null)
+                                                        .withCompany(null)
+                                                        .withAddress(null)
+                                                        .withHomePhone(null)
+                                                        .withMobilePhone(null)
+                                                        .withWorkPhone(null)
+                                                        .withFax(null)
+                                                        .withEmail(null)
+                                                        .withEmail2(null)
+                                                        .withEmail3(null)
+                                                        .withHomepage(null)
+                                                        .withBirthDay(null)
+                                                        .withBirthMonth(null)
+                                                        .withBirthYear(null)
+                                                        .withAnniversaryDay(null)
+                                                        .withAnniversaryMonth(null)
+                                                        .withAnniversaryYear(null)
+                                                        .withSecondaryAddress(null)
+                                                        .withSecondaryPhone(null)
+                                                        .withSecondaryNotes(null);
+            applicationManager.getContactHelper().initiateContactCreation();
+            applicationManager.getContactHelper().createContact(contactData);
+        }
 
         applicationManager.getNavigationHelper().goToHomePage();
+    }
+
+    @Test(enabled = true)
+    public void testAddContactToGroup() {
+        //TODO Moving without selection, Removing from group
 
         //Choosing the random Contact that will be moved
         ContactData movedContact = applicationManager.getContactHelper().getContactSet().iterator().next();
@@ -25,11 +69,11 @@ public class AddContactsToGroupsTests extends TestBase {
         String currentGroup = applicationManager.getContactHelper().getCurrentGroup();
 
         //Asserting by GroupNames
-        assertEquals(currentGroup, randomGroupName);
+        assertTrue(randomGroupName.contains(currentGroup));
 
         String removeFromGroupButtonName = applicationManager.getContactHelper().getRemoveFromGroupButtonName();
 
         //Asserting by 'Remove from group' button
-        assertEquals(removeFromGroupButtonName, "Remove from \"" + currentGroup + "\"");
+        assertTrue(removeFromGroupButtonName.contains(currentGroup));
     }
 }
