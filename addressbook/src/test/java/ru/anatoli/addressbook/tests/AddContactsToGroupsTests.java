@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.GroupData;
 import java.io.File;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
@@ -71,6 +70,23 @@ public class AddContactsToGroupsTests extends TestBase {
 
         String currentGroup = applicationManager.getContactHelper().getCurrentGroup();
 
+        //Asserting by GroupNames
+        assertTrue(randomGroupName.contains(currentGroup));
+
+        String removeFromGroupButtonName = applicationManager.getContactHelper().getRemoveFromGroupButtonName();
+
+        //Asserting by 'Remove from group' button
+        assertTrue(removeFromGroupButtonName.contains(currentGroup));
+    }
+
+    @Test(enabled = true)
+    public void testAddAllContactsToGroup() {
+        //Getting the random GroupData name
+        String randomGroupName = applicationManager.getDbHelper().getGroupSet().iterator().next().getGroupName();
+
+        applicationManager.getContactHelper().addAllContactsToGroup(randomGroupName);
+
+        String currentGroup = applicationManager.getContactHelper().getCurrentGroup();
         //Asserting by GroupNames
         assertTrue(randomGroupName.contains(currentGroup));
 

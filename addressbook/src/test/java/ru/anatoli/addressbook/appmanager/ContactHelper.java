@@ -621,4 +621,11 @@ public class ContactHelper extends HelperBase {
         addContactToGroup();
         goToGroupPageAfretContactAddition();
     }
+
+    public void addAllContactsToGroup(String randomGroupName) {
+        selectAllContacts();
+        selectValueInDropDownList(By.name("to_group"), randomGroupName);
+        addContactToGroup();
+        goToGroupPageAfretContactAddition();
+    }
 }
