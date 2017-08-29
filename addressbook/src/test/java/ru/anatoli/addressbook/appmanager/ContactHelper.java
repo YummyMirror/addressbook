@@ -245,6 +245,10 @@ public class ContactHelper extends HelperBase {
         return wd.findElement(By.name("group")).getText().split(" ")[0];
     }
 
+    public String getErrorMessageWhileAddContactToGroupWithoutSelection() {
+        return wd.findElement(By.className("msgbox")).getText().replaceAll("\n", " ");
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {

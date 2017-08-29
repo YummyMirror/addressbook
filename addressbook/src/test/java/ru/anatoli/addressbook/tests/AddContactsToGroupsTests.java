@@ -1,10 +1,15 @@
 package ru.anatoli.addressbook.tests;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.GroupData;
 import java.io.File;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -56,8 +61,6 @@ public class AddContactsToGroupsTests extends TestBase {
 
     @Test(enabled = true)
     public void testAddContactToGroup() {
-        //TODO Moving without selection, Removing from group
-
         //Choosing the random Contact that will be moved
         ContactData movedContact = applicationManager.getContactHelper().getContactSet().iterator().next();
 
@@ -75,5 +78,22 @@ public class AddContactsToGroupsTests extends TestBase {
 
         //Asserting by 'Remove from group' button
         assertTrue(removeFromGroupButtonName.contains(currentGroup));
+    }
+
+    @Test(enabled = true)
+    public void testAddContactToGroupWithoutSelection() {
+        //Getting the random GroupData name
+        String randomGroupName = applicationManager.getDbHelper().getGroupSet().iterator().next().getGroupName();
+
+        applicationManager.getContactHelper().selectValueInDropDownList(By.name("to_group"), randomGroupName);
+        applicationManager.getContactHelper().addContactToGroup();
+
+        String errorMessage = applicationManager.getContactHelper().getErrorMessageWhileAddContactToGroupWithoutSelection();
+
+        //Asserting by Error message
+        assertEquals(errorMessage, "No users selected. Please use the checkbox to select a user.");
+
+        //Asserting by not presenting the 'Remove from group' button
+        assertFalse(applicationManager.getContactHelper().isElementPresent(By.name("remove")));
     }
 }
