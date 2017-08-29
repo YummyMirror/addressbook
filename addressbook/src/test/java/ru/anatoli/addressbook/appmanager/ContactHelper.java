@@ -229,6 +229,10 @@ public class ContactHelper extends HelperBase {
         new Select(wd.findElement(locator)).selectByVisibleText(value);
     }
 
+    public String getRemoveFromGroupButtonName() {
+        return wd.findElement(By.name("remove")).getAttribute("value");
+    }
+
     public void addContactToGroup() {
         click(By.name("add"));
     }

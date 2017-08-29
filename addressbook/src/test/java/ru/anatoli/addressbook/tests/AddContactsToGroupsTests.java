@@ -10,6 +10,8 @@ import static org.testng.Assert.assertEquals;
 public class AddContactsToGroupsTests extends TestBase {
     @Test(enabled = true)
     public void testAddContactToGroup() {
+        //TODO Precondition, Moving without selection, Removing from group, Add more good assertions
+
         applicationManager.getNavigationHelper().goToHomePage();
 
         //Choosing the random Contact that will be moved
@@ -24,5 +26,10 @@ public class AddContactsToGroupsTests extends TestBase {
 
         //Asserting by GroupNames
         assertEquals(currentGroup, randomGroupName);
+
+        String removeFromGroupButtonName = applicationManager.getContactHelper().getRemoveFromGroupButtonName();
+
+        //Asserting by 'Remove from group' button
+        assertEquals(removeFromGroupButtonName, "Remove from \"" + currentGroup + "\"");
     }
 }
