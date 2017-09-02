@@ -628,4 +628,13 @@ public class ContactHelper extends HelperBase {
         addContactToGroup();
         goToGroupPageAfretContactAddition();
     }
+
+    public void addAllContactsWithoutGroupsToGroup(Set<ContactData> before, String randomGroupName) {
+        for (ContactData contact : before) {
+            selectRemovedContactById(contact.getContactId());
+        }
+        selectValueInDropDownList(By.name("to_group"), randomGroupName);
+        addContactToGroup();
+        goToGroupPageAfretContactAddition();
+    }
 }

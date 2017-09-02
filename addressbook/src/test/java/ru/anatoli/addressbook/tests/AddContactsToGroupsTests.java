@@ -5,6 +5,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.GroupData;
+import sun.security.krb5.internal.APOptions;
+
 import java.io.File;
 import java.util.Set;
 
@@ -95,6 +97,30 @@ public class AddContactsToGroupsTests extends TestBase {
         applicationManager.getContactHelper().addAllContactsToGroup(randomGroupName);
 
         String currentGroup = applicationManager.getContactHelper().getCurrentGroup();
+
+        //Asserting by GroupNames
+        assertTrue(randomGroupName.contains(currentGroup));
+
+        String removeFromGroupButtonName = applicationManager.getContactHelper().getRemoveFromGroupButtonName();
+
+        //Asserting by 'Remove from group' button
+        assertTrue(removeFromGroupButtonName.contains(currentGroup));
+
+        assertEquals(applicationManager.getDbHelper().getContactSetNotAddedToGroups().size(), 0);
+    }
+
+    @Test(enabled = true)
+    public void testAddAllContactsWithoutGroupsToGroup() {
+        //Getting Set of ContactData object model without Groups BEFORE moving
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
+
+        //Getting the random GroupData name
+        String randomGroupName = applicationManager.getDbHelper().getGroupSet().stream().findAny().get().getGroupName();
+
+        applicationManager.getContactHelper().addAllContactsWithoutGroupsToGroup(before, randomGroupName);
+
+        String currentGroup = applicationManager.getContactHelper().getCurrentGroup();
+
         //Asserting by GroupNames
         assertTrue(randomGroupName.contains(currentGroup));
 
