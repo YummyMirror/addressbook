@@ -5,14 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.GroupData;
-import sun.security.krb5.internal.APOptions;
-
 import java.io.File;
 import java.util.Set;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 /**
  * Created by anatoli.anukevich on 8/27/2017.
@@ -134,18 +129,26 @@ public class AddContactsToGroupsTests extends TestBase {
 
     @Test(enabled = true)
     public void testAddContactToGroupWithoutSelection() {
+        //Getting Set of ContactData object model without Groups BEFORE moving
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
+
         //Getting the random GroupData name
-        String randomGroupName = applicationManager.getDbHelper().getGroupSet().iterator().next().getGroupName();
+        String randomGroupName = applicationManager.getDbHelper().getGroupSet().stream().findAny().get().getGroupName();
 
         applicationManager.getContactHelper().selectValueInDropDownList(By.name("to_group"), randomGroupName);
         applicationManager.getContactHelper().addContactToGroup();
 
-        String errorMessage = applicationManager.getContactHelper().getErrorMessageWhileAddContactToGroupWithoutSelection();
+        //Getting Set of ContactData object model without Groups AFTER moving
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
 
         //Asserting by Error message
-        assertEquals(errorMessage, "No users selected. Please use the checkbox to select a user.");
+        assertEquals(applicationManager.getContactHelper().getErrorMessageWhileAddContactToGroupWithoutSelection(),
+                "No users selected. Please use the checkbox to select a user.");
 
         //Asserting by not presenting the 'Remove from group' button
         assertFalse(applicationManager.getContactHelper().isElementPresent(By.name("remove")));
+
+        //Asserting by SIZE of collections
+        assertEquals(before.size(), after.size());
     }
 }
