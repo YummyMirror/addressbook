@@ -26,7 +26,7 @@ public class AddContactsToGroupsTests extends TestBase {
             applicationManager.getGroupHelper().createGroup(groupData);
         }
 
-        if (applicationManager.getDbHelper().getContactSet().size() == 0) {
+        if (applicationManager.getDbHelper().getContactSetNotAddedToGroups().size() == 0) {
             ContactData contactData = new ContactData().withFirstName("Temp first name")
                                                         .withMiddleName(null)
                                                         .withLastName("")
