@@ -1,7 +1,6 @@
 package ru.anatoli.addressbook.tests;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
@@ -62,8 +61,11 @@ public class AddContactsToGroupsTests extends TestBase {
 
     @Test(enabled = true)
     public void testAddContactToGroup() {
+        //Getting Set of ContactData object model without Groups BEFORE moving
+        Set<ContactData> before = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
+
         //Choosing the random Contact that will be moved
-        ContactData movedContact = applicationManager.getContactHelper().getContactSet().iterator().next();
+        ContactData movedContact = before.stream().findAny().get();
 
         //Getting the random GroupData name
         String randomGroupName = applicationManager.getDbHelper().getGroupSet().iterator().next().getGroupName();
@@ -75,10 +77,14 @@ public class AddContactsToGroupsTests extends TestBase {
         //Asserting by GroupNames
         assertTrue(randomGroupName.contains(currentGroup));
 
-        String removeFromGroupButtonName = applicationManager.getContactHelper().getRemoveFromGroupButtonName();
-
         //Asserting by 'Remove from group' button
-        assertTrue(removeFromGroupButtonName.contains(currentGroup));
+        assertTrue(applicationManager.getContactHelper().getRemoveFromGroupButtonName().contains(currentGroup));
+
+        //Getting Set of ContactData object model without Groups AFTER moving
+        Set<ContactData> after = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
+
+        //Asserting by number of Contacts without Groups
+        assertEquals(before.size()- 1, after.size());
     }
 
     @Test(enabled = true)

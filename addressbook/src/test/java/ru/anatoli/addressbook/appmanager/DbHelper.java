@@ -56,12 +56,12 @@ public class DbHelper {
         return new HashSet<ContactData>(list);
     }
 
-    public Set<ContactData> getContactSetAddedToGroups() {
+    public Set<ContactData> getContactSetNotAddedToGroups() {
         session = sessionFactory.openSession();
         session.beginTransaction();
         List<ContactData> list = session.createQuery( "FROM ContactData " +
                                                                  "WHERE deprecated = '0000-00-00 00:00:00' AND " +
-                                                                 "groups.size != '0'").list();
+                                                                 "groups.size = '0'").list();
         session.getTransaction().commit();
         session.close();
         return new HashSet<ContactData>(list);
