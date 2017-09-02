@@ -102,6 +102,8 @@ public class AddContactsToGroupsTests extends TestBase {
 
         //Asserting by 'Remove from group' button
         assertTrue(removeFromGroupButtonName.contains(currentGroup));
+
+        assertEquals(applicationManager.getDbHelper().getContactSetNotAddedToGroups().size(), 0);
     }
 
     @Test(enabled = true)
