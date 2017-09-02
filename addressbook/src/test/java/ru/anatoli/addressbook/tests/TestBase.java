@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeSuite;
 import ru.anatoli.addressbook.appmanager.ApplicationManager;
 import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.GroupData;
-
 import java.util.Set;
 import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
