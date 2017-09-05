@@ -1,7 +1,10 @@
 package ru.anatoli.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
+import ru.anatoli.addressbook.models.GroupData;
+import java.io.File;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
@@ -9,10 +12,64 @@ import static org.testng.Assert.assertEquals;
  * Created by anatoli.anukevich on 9/5/2017.
  */
 public class RemoveContactsFromGroupTests extends TestBase {
+    @BeforeMethod
+    public void ensurePrecondition() {
+        if (applicationManager.getDbHelper().getGroupSet().size() == 0) {
+            GroupData groupData = new GroupData().withGroupName("Test GroupName")
+                                                 .withGroupHeader(null)
+                                                 .withGroupFooter(null);
+            applicationManager.getNavigationHelper().goToGroupsPage();
+            applicationManager.getGroupHelper().createGroup(groupData);
+        }
+
+        if (applicationManager.getDbHelper().getContactSet().size() == 0) {
+            ContactData contactData = new ContactData().withFirstName("Temp first name")
+                                                       .withMiddleName(null)
+                                                       .withLastName("")
+                                                       .withNickname(null)
+                                                       .withPhoto(new File(""))
+                                                       .withTitle(null)
+                                                       .withCompany(null)
+                                                       .withAddress(null)
+                                                       .withHomePhone(null)
+                                                       .withMobilePhone(null)
+                                                       .withWorkPhone(null)
+                                                       .withFax(null)
+                                                       .withEmail(null)
+                                                       .withEmail2(null)
+                                                       .withEmail3(null)
+                                                       .withHomepage(null)
+                                                       .withBirthDay(null)
+                                                       .withBirthMonth(null)
+                                                       .withBirthYear(null)
+                                                       .withAnniversaryDay(null)
+                                                       .withAnniversaryMonth(null)
+                                                       .withAnniversaryYear(null)
+                                                       .withSecondaryAddress(null)
+                                                       .withSecondaryPhone(null)
+                                                       .withSecondaryNotes(null);
+            applicationManager.getContactHelper().initiateContactCreation();
+            applicationManager.getContactHelper().createContact(contactData);
+        }
+
+        if (applicationManager.getDbHelper().getContactSetAddedToGroups().size() == 0) {
+            //Getting Set of ContactData object model without Groups BEFORE moving
+            Set<ContactData> before = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
+
+            //Choosing the random Contact that will be moved
+            ContactData movedContact = before.stream().findAny().get();
+
+            //Getting the random GroupData name
+            String randomGroupName = applicationManager.getDbHelper().getGroupSet().stream().findAny().get().getGroupName();
+
+            applicationManager.getContactHelper().addContactToGroup(movedContact, randomGroupName);
+        }
+
+        applicationManager.getNavigationHelper().goToHomePage();
+    }
+
     @Test(enabled = true)
     public void testRemoveContactFromGroup() {
-        applicationManager.getNavigationHelper().goToHomePage();
-
         //Getting Set of ContactData object model without Groups BEFORE removing
         Set<ContactData> beforeWithoutGroups = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
 
