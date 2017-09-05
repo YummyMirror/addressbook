@@ -1,5 +1,6 @@
 package ru.anatoli.addressbook.tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
@@ -91,5 +92,30 @@ public class RemoveContactsFromGroupTests extends TestBase {
         assertEquals(beforeWithoutGroups.size() + 1, afterWithoutGroups.size());
 
         assertEquals(beforeWithGroups.size() - 1, afterWithGroups.size());
+    }
+
+    @Test(enabled = true)
+    public void testRemoveContactFromGroupWithoutSelection() {
+        //Getting Set of ContactData object model without Groups BEFORE removing
+        Set<ContactData> beforeWithoutGroups = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
+
+        //Getting Set of ContactData object model with Groups BEFORE removing
+        Set<ContactData> beforeWithGroups = applicationManager.getDbHelper().getContactSetAddedToGroups();
+
+        String groupWithContacts = beforeWithGroups.stream().findAny().get().getGroups().stream().findAny().get().getGroupName();
+
+        applicationManager.getContactHelper().selectValueInDropDownList(By.name("group"), groupWithContacts);
+        applicationManager.getContactHelper().clickRemoveFromGroupButton();
+        applicationManager.getContactHelper().getErrorMessageWhileRemoveContactFromGroupWithoutSelection();
+
+        //Getting Set of ContactData object model without Groups AFTER removing
+        Set<ContactData> afterWithoutGroups = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
+
+        //Getting Set of ContactData object model with Groups AFTER removing
+        Set<ContactData> afterWithGroups = applicationManager.getDbHelper().getContactSetAddedToGroups();
+
+        assertEquals(beforeWithGroups.size(), afterWithGroups.size());
+
+        assertEquals(beforeWithoutGroups.size(), afterWithoutGroups.size());
     }
 }

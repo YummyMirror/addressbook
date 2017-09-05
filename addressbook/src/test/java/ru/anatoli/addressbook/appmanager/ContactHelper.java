@@ -253,6 +253,10 @@ public class ContactHelper extends HelperBase {
         click(By.name("remove"));
     }
 
+    public String getErrorMessageWhileRemoveContactFromGroupWithoutSelection() {
+        return wd.findElement(By.xpath("//div[@id = 'content']/b[1]")).getText();
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
