@@ -652,4 +652,10 @@ public class ContactHelper extends HelperBase {
         clickRemoveFromGroupButton();
         goToGroupPageAfretContactAddition();
     }
+
+    public void removeContactFromGroupWithoutSelection(String groupWithContacts) {
+        selectValueInDropDownList(By.name("group"), groupWithContacts);
+        clickRemoveFromGroupButton();
+        getErrorMessageWhileRemoveContactFromGroupWithoutSelection();
+    }
 }

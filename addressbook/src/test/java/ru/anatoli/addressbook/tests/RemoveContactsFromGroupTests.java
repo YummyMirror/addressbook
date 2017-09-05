@@ -104,9 +104,7 @@ public class RemoveContactsFromGroupTests extends TestBase {
 
         String groupWithContacts = beforeWithGroups.stream().findAny().get().getGroups().stream().findAny().get().getGroupName();
 
-        applicationManager.getContactHelper().selectValueInDropDownList(By.name("group"), groupWithContacts);
-        applicationManager.getContactHelper().clickRemoveFromGroupButton();
-        applicationManager.getContactHelper().getErrorMessageWhileRemoveContactFromGroupWithoutSelection();
+        applicationManager.getContactHelper().removeContactFromGroupWithoutSelection(groupWithContacts);
 
         //Getting Set of ContactData object model without Groups AFTER removing
         Set<ContactData> afterWithoutGroups = applicationManager.getDbHelper().getContactSetNotAddedToGroups();
