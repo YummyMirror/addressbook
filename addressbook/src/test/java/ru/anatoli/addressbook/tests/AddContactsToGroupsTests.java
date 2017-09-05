@@ -135,8 +135,7 @@ public class AddContactsToGroupsTests extends TestBase {
         //Getting the random GroupData name
         String randomGroupName = applicationManager.getDbHelper().getGroupSet().stream().findAny().get().getGroupName();
 
-        applicationManager.getContactHelper().selectValueInDropDownList(By.name("to_group"), randomGroupName);
-        applicationManager.getContactHelper().addContactToGroup();
+        applicationManager.getContactHelper().addContactToGroupWithoutSelection(randomGroupName);
 
         //Getting Set of ContactData object model without Groups AFTER moving
         Set<ContactData> after = applicationManager.getDbHelper().getContactSetNotAddedToGroups();

@@ -646,6 +646,11 @@ public class ContactHelper extends HelperBase {
         goToGroupPageAfretContactAddition();
     }
 
+    public void addContactToGroupWithoutSelection(String randomGroupName) {
+        selectValueInDropDownList(By.name("to_group"), randomGroupName);
+        addContactToGroup();
+    }
+
     public void removeContactFromGroup(ContactData removedContact, String groupWithContacts) {
         selectValueInDropDownList(By.name("group"), groupWithContacts);
         selectRemovedContactById(removedContact.getContactId());
