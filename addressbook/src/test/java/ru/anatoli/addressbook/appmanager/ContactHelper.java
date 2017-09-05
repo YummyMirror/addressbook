@@ -249,6 +249,10 @@ public class ContactHelper extends HelperBase {
         return wd.findElement(By.className("msgbox")).getText().replaceAll("\n", " ");
     }
 
+    public void clickRemoveFromGroupButton() {
+        click(By.name("remove"));
+    }
+
     private Set<ContactData> contactCache = null;
 
     public Set<ContactData> getContactSet() {
@@ -635,6 +639,13 @@ public class ContactHelper extends HelperBase {
         }
         selectValueInDropDownList(By.name("to_group"), randomGroupName);
         addContactToGroup();
+        goToGroupPageAfretContactAddition();
+    }
+
+    public void removeContactFromGroup(ContactData removedContact, String groupWithContacts) {
+        selectValueInDropDownList(By.name("group"), groupWithContacts);
+        selectRemovedContactById(removedContact.getContactId());
+        clickRemoveFromGroupButton();
         goToGroupPageAfretContactAddition();
     }
 }

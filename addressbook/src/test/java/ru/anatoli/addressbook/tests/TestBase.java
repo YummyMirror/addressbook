@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
  * Created by anatoli.anukevich on 6/25/2017.
  */
 public class TestBase {
-    protected static final ApplicationManager applicationManager = new ApplicationManager(BrowserType.IE);
+    protected static final ApplicationManager applicationManager = new ApplicationManager(BrowserType.CHROME);
 
     @BeforeSuite
     public void setUp() throws Exception {
