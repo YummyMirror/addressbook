@@ -9,6 +9,9 @@
             <class name="ru.anatoli.addressbook.tests.ContactModificationTests" />
             <class name="ru.anatoli.addressbook.tests.ContactDeletionTests" />
             <class name="ru.anatoli.addressbook.tests.ContactAllDeletionTests" />
+            <class name="ru.anatoli.addressbook.tests.AddContactsToGroupsTests" />
+            <class name="ru.anatoli.addressbook.tests.RemoveContactsFromGroupTests" />
+            <class name="ru.anatoli.addressbook.tests.NextBirthdaysTests" />
         </classes>
     </test>
 </suite>
