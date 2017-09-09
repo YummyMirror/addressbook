@@ -53,6 +53,7 @@ public class ContactSearchTests extends TestBase {
             }
         }
     }
+
     @Test
     public void testContactSearchByRandomInfo() {
         //Getting Set of ContactData object model BEFORE search
