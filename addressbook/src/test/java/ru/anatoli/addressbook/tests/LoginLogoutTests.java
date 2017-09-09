@@ -23,56 +23,47 @@ public class LoginLogoutTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validDataForLoginFromCsv() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File file = new File("src/test/resources/userFileValid.csv");
-        FileReader reader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        String line = bufferedReader.readLine();
-        while (line != null) {
-            String splitData[] = line.split(";");
-            list.add(new Object[] {new UserData().withUserName(splitData[0])
-                                                    .withPassword(splitData[1])});
-            line = bufferedReader.readLine();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/test/resources/userFileValid.csv")))) {
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                String splitData[] = line.split(";");
+                list.add(new Object[] {new UserData().withUserName(splitData[0])
+                        .withPassword(splitData[1])});
+                line = bufferedReader.readLine();
+            }
         }
-        bufferedReader.close();
-        reader.close();
         return list.iterator();
     }
 
     @DataProvider
     public Iterator<Object[]> validDataForLoginFromJson() throws IOException {
-        File file = new File("src/test/resources/userFileValid.json");
-        FileReader reader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        String line = bufferedReader.readLine();
         String json = "";
-        while (line != null) {
-            json += line;
-            line = bufferedReader.readLine();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/test/resources/userFileValid.json")))) {
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                json += line;
+                line = bufferedReader.readLine();
+            }
         }
         Gson gson = new Gson();
         Type collectionType = new TypeToken<List<UserData>>(){}.getType(); //List<UserData>.class
         List<UserData> list = gson.fromJson(json, collectionType);
-        bufferedReader.close();
-        reader.close();
         return list.stream().map((user) -> new Object[] {user}).iterator();
     }
 
     @DataProvider
     public Iterator<Object[]> invalidDataForLoginFromJson() throws IOException {
-        File file = new File("src/test/resources/userFileInvalid.json");
-        FileReader reader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        String line = bufferedReader.readLine();
         String json = "";
-        while (line != null) {
-            json += line;
-            line = bufferedReader.readLine();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/test/resources/userFileInvalid.json")))) {
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                json += line;
+                line = bufferedReader.readLine();
+            }
         }
         Gson gson = new Gson();
         Type collectionType = new TypeToken<List<UserData>>(){}.getType(); //List<UserData>.class
         List<UserData> list = gson.fromJson(json, collectionType);
-        bufferedReader.close();
-        reader.close();
         return list.stream().map((user) -> new Object[] {user}).iterator();
     }
 
