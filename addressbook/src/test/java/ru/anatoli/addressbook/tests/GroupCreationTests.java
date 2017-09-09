@@ -21,38 +21,32 @@ public class GroupCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validDataForGroupCreationFromCsv() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File file = new File("src/test/resources/groupFileCreation.csv");
-        FileReader reader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        String line = bufferedReader.readLine();
-        while (line != null) {
-            String[] splitData = line.split(";");
-            list.add(new Object[] {new GroupData().withGroupName(splitData[0])
-                                                    .withGroupHeader(splitData[1])
-                                                    .withGroupFooter(splitData[2])});
-            line = bufferedReader.readLine();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/test/resources/groupFileCreation.csv")))) {
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                String[] splitData = line.split(";");
+                list.add(new Object[] {new GroupData().withGroupName(splitData[0])
+                                                      .withGroupHeader(splitData[1])
+                                                      .withGroupFooter(splitData[2])});
+                line = bufferedReader.readLine();
+            }
         }
-        bufferedReader.close();
-        reader.close();
         return list.iterator();
     }
 
     @DataProvider
     public Iterator<Object[]> validDataForGroupCreationFromJson() throws IOException {
-        File file = new File("src/test/resources/groupFileCreation.json");
-        FileReader reader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        String line = bufferedReader.readLine();
         String json = "";
-        while (line != null) {
-            json += line;
-            line = bufferedReader.readLine();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/test/resources/groupFileCreation.json")))) {
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                json += line;
+                line = bufferedReader.readLine();
+            }
         }
         Gson gson = new Gson();
         Type collectionType = new TypeToken<List<GroupData>>(){}.getType(); //List<GroupData>.class
         List<GroupData> list = gson.fromJson(json, collectionType);
-        bufferedReader.close();
-        reader.close();
         return list.stream().map((group) -> new Object[]{group}).iterator();
     }
 

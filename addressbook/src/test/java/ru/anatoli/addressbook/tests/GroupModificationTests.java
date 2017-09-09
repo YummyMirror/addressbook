@@ -22,20 +22,17 @@ import static org.testng.Assert.assertEquals;
 public class GroupModificationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validDataForGroupModificationFromJson() throws IOException {
-        File file = new File("src/test/resources/groupFileModification.json");
-        FileReader reader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        String line = bufferedReader.readLine();
         String json = "";
-        while (line != null) {
-            json += line;
-            line = bufferedReader.readLine();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/test/resources/groupFileModification.json")))) {
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                json += line;
+                line = bufferedReader.readLine();
+            }
         }
         Gson gson = new Gson();
         Type collectionType = new TypeToken<List<GroupData>>(){}.getType(); //List<GroupData>.class
         List<GroupData> list = gson.fromJson(json, collectionType);
-        bufferedReader.close();
-        reader.close();
         return list.stream().map((group) -> new Object[] {group}).iterator();
     }
 
