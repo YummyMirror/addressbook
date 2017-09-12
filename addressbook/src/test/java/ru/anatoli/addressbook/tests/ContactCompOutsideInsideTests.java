@@ -177,37 +177,37 @@ public class ContactCompOutsideInsideTests extends TestBase {
     public String mergeAllItemsInside(String item, String item2, String item3, String item4) {
         String mergedItems = "";
 
-        if (!item.equals("") && !item2.equals("") && !item3.equals("") && !item4.equals("")) {
+        if (!item.isEmpty() && !item2.isEmpty() && !item3.isEmpty() && !item4.isEmpty()) {
             mergedItems = item + " " + item2 + " " + item3 + " " + item4;
-        } else if (item.equals("") && !item2.equals("") && !item3.equals("") && !item4.equals("")) {
+        } else if (item.isEmpty() && !item2.isEmpty() && !item3.isEmpty() && !item4.isEmpty()) {
             mergedItems = item2 + " " + item3 + " " + item4;
-        } else if (item2.equals("") && !item.equals("") && !item3.equals("") && !item4.equals("")) {
+        } else if (item2.isEmpty() && !item.isEmpty() && !item3.isEmpty() && !item4.isEmpty()) {
             mergedItems = item + " " + item3 + " " + item4;
-        } else if (item3.equals("") && !item.equals("") && !item2.equals("") && !item4.equals("")) {
+        } else if (item3.isEmpty() && !item.isEmpty() && !item2.isEmpty() && !item4.isEmpty()) {
             mergedItems = item + " " + item2 + " " + item4;
-        } else if (item4.equals("") && !item.equals("") && !item2.equals("") && !item3.equals("")) {
+        } else if (item4.isEmpty() && !item.isEmpty() && !item2.isEmpty() && !item3.isEmpty()) {
             mergedItems = item + " " + item2 + " " + item3;
-        } else if (item.equals("") && item2.equals("") && !item3.equals("") && !item4.equals("")) {
+        } else if (item.isEmpty() && item2.isEmpty() && !item3.isEmpty() && !item4.isEmpty()) {
             mergedItems = item3 + " " + item4;
-        } else if (item.equals("") && item3.equals("") && !item2.equals("") && !item4.equals("")) {
+        } else if (item.isEmpty() && item3.isEmpty() && !item2.isEmpty() && !item4.isEmpty()) {
             mergedItems = item2 + " " + item4;
-        } else if (item3.equals("") && item4.equals("") && !item.equals("") && !item2.equals("")) {
+        } else if (item3.isEmpty() && item4.isEmpty() && !item.isEmpty() && !item2.isEmpty()) {
             mergedItems = item + " " + item2;
-        } else if (item2.equals("") && item4.equals("") && !item.equals("") && !item3.equals("")) {
+        } else if (item2.isEmpty() && item4.isEmpty() && !item.isEmpty() && !item3.isEmpty()) {
             mergedItems = item + " " + item3;
-        } else if (item2.equals("") && item3.equals("") && !item.equals("") && !item4.equals("")) {
+        } else if (item2.isEmpty() && item3.isEmpty() && !item.isEmpty() && !item4.isEmpty()) {
             mergedItems = item + " " + item4;
-        } else if (item.equals("") && item4.equals("") && !item2.equals("") && !item3.equals("")) {
+        } else if (item.isEmpty() && item4.isEmpty() && !item2.isEmpty() && !item3.isEmpty()) {
             mergedItems = item2 + " " + item3;
-        } else if (item2.equals("") && item3.equals("") && item4.equals("") && !item.equals("")) {
+        } else if (item2.isEmpty() && item3.isEmpty() && item4.isEmpty() && !item.isEmpty()) {
             mergedItems = item;
-        } else if (item.equals("") && item3.equals("") && item4.equals("") && !item2.equals("")) {
+        } else if (item.isEmpty() && item3.isEmpty() && item4.isEmpty() && !item2.isEmpty()) {
             mergedItems = item2;
-        } else if (item.equals("") && item2.equals("") && item4.equals("") && !item3.equals("")) {
+        } else if (item.isEmpty() && item2.isEmpty() && item4.isEmpty() && !item3.isEmpty()) {
             mergedItems = item3;
-        } else if (item.equals("") && item2.equals("") && item3.equals("") && !item4.equals("")) {
+        } else if (item.isEmpty() && item2.isEmpty() && item3.isEmpty() && !item4.isEmpty()) {
             mergedItems = item4;
-        } else if (item.equals("") && item2.equals("") && item3.equals("") && item4.equals("")) {
+        } else if (item.isEmpty() && item2.isEmpty() && item3.isEmpty() && item4.isEmpty()) {
             mergedItems = "";
         } else {
             System.out.println("ERROR occurred. Investigation is needed!");
