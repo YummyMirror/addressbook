@@ -53,7 +53,7 @@ public class GroupModificationTests extends TestBase {
         Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Choosing the random Group that will be modified
-        GroupData modifiedGroup = before.iterator().next();
+        GroupData modifiedGroup = before.stream().findAny().get();
 
         groupData.withGroupId(modifiedGroup.getGroupId());
 

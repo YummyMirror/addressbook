@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.anatoli.addressbook.models.ContactData;
 import java.io.File;
+import java.util.Collection;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
@@ -50,7 +51,7 @@ public class ContactDeletionTests extends TestBase {
         Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         //Choosing the random Contact that will be removed
-        ContactData removedContact = before.iterator().next();
+        ContactData removedContact = before.stream().findAny().get();
 
         applicationManager.getContactHelper().removeContact(removedContact);
 
@@ -75,7 +76,7 @@ public class ContactDeletionTests extends TestBase {
         Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         //Choosing the random Contact that will be removed
-        ContactData removedContact = before.iterator().next();
+        ContactData removedContact = before.stream().findAny().get();
 
         applicationManager.getContactHelper().removeContactFromUpdateForm(removedContact);
 

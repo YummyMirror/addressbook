@@ -95,7 +95,7 @@ public class ContactModificationTests extends TestBase {
         Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         //Choosing the random Contact that will be modified
-        ContactData modifiedContact = before.iterator().next();
+        ContactData modifiedContact = before.stream().findAny().get();
 
         contactData.withContactId(modifiedContact.getContactId());
 
@@ -123,7 +123,7 @@ public class ContactModificationTests extends TestBase {
         Set<ContactData> before = applicationManager.getDbHelper().getContactSet();
 
         //Choosing the random Contact that will be modified
-        ContactData modifiedContact = before.iterator().next();
+        ContactData modifiedContact = before.stream().findAny().get();
 
         contactData.withContactId(modifiedContact.getContactId());
 
@@ -154,7 +154,7 @@ public class ContactModificationTests extends TestBase {
         Set<ContactData> birthDaysSet = applicationManager.getDbHelper().getContactSetWithBirthdays();
 
         //Choosing the random Contact that will be modified
-        ContactData modifiedContact = birthDaysSet.iterator().next();
+        ContactData modifiedContact = birthDaysSet.stream().findAny().get();
 
         contactData.withContactId(modifiedContact.getContactId());
 

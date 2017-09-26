@@ -50,7 +50,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
         //Choosing the random Contact that will be compared as OUTSIDE data
-        ContactData outsideData = before.iterator().next();
+        ContactData outsideData = before.stream().findAny().get();
 
         //Getting INSIDE data from edit form
         ContactData insideData = applicationManager.getContactHelper().getContactDataFromEditForm(outsideData);
@@ -96,7 +96,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
         //Choosing the random Contact that will be compared as OUTSIDE data
-        ContactData outsideData = before.iterator().next();
+        ContactData outsideData = before.stream().findAny().get();
 
         //If at least one field is empty in the Edit form - Ignore Test execution
         applicationManager.getContactHelper().skipTestIfFormNotAllFilled(outsideData);
@@ -151,7 +151,7 @@ public class ContactCompOutsideInsideTests extends TestBase {
         Set<ContactData> before = applicationManager.getContactHelper().getContactSet();
 
         //Choosing the random Contact
-        ContactData randomContact = before.iterator().next();
+        ContactData randomContact = before.stream().findAny().get();
 
         //If all Edit form is filled in - Ignore Test execution
         applicationManager.getContactHelper().skipTestIfFormIsAllFilled(randomContact);

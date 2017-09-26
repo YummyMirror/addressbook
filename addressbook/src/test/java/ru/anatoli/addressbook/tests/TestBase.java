@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
  * Created by anatoli.anukevich on 6/25/2017.
  */
 public class TestBase {
-    protected static final ApplicationManager applicationManager = new ApplicationManager(BrowserType.CHROME);
+    protected static final ApplicationManager applicationManager = new ApplicationManager(BrowserType.IE);
 
     @BeforeSuite
     public void setUp() throws Exception {
@@ -30,7 +30,7 @@ public class TestBase {
         Set<GroupData> ui = applicationManager.getGroupHelper().getGroupSet();
         Set<GroupData> db = applicationManager.getDbHelper().getGroupSet().stream()
                                                                           .map((group) -> new GroupData().withGroupId(group.getGroupId())
-                                                                                                        .withGroupName(group.getGroupName()))
+                                                                                                         .withGroupName(group.getGroupName()))
                                                                           .collect(Collectors.toSet());
         assertEquals(ui, db);
     }

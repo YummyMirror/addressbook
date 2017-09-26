@@ -27,7 +27,7 @@ public class GroupCompOutsideInsideTests extends TestBase {
         Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Choosing the random Group that will be compared as OUTSIDE data
-        GroupData outsideData = before.iterator().next();
+        GroupData outsideData = before.stream().findAny().get();
 
         //Getting INSIDE data from edit form
         GroupData insideData = applicationManager.getGroupHelper().getGroupDataFromEditForm(outsideData);

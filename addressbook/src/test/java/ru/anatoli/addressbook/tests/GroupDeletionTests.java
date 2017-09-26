@@ -27,7 +27,7 @@ public class GroupDeletionTests extends TestBase {
         Set<GroupData> before = applicationManager.getDbHelper().getGroupSet();
 
         //Choosing the random Group that will be removed
-        GroupData removedGroup = before.iterator().next();
+        GroupData removedGroup = before.stream().findAny().get();
 
         applicationManager.getGroupHelper().deleteGroup(removedGroup);
 
