@@ -57,8 +57,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="1" lean-forward="true" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+            <state relative-caret-position="935">
+              <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -262,8 +262,8 @@
     <option name="modificationStamps">
       <map>
         <entry key="E:/Private/Work/Repositories/st_java_course/addressbook" value="1497986888733" />
-        <entry key="$PROJECT_DIR$" value="3005896592632" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="1241269042" />
+        <entry key="$PROJECT_DIR$" value="3005897065795" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="1621519337" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1364,8 +1364,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="1" lean-forward="true" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+        <state relative-caret-position="935">
+          <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
           <folding />
         </state>
       </provider>

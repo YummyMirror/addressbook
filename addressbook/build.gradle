@@ -5,6 +5,10 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    agent
+}
+
 dependencies {
     //Including TestNG framework
     compile 'org.testng:testng:6.11'
@@ -20,8 +24,17 @@ dependencies {
 
     //Including Hibernate ORM
     compile 'org.hibernate:hibernate-core:5.2.10.Final'
+
+    //For Allure report
+    agent "org.aspectj:aspectjweaver:1.8.0"
+    compile "ru.yandex.qatools.allure:allure-testng-adaptor:1.4.0.RC4"
 }
 
+test {
+    useTestNG()
+}
+
+    //Tasks to run tests from CMD
 task testGroups(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng-groups.xml'
@@ -38,4 +51,17 @@ task testLogin(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng-login.xml'
     }
+}
+
+    //Agents for Allure report
+testGroups.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
+testContacts.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
+testLogin.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
 }
