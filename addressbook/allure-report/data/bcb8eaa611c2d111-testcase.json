@@ -1,0 +1,35 @@
+{
+  "uid" : "bcb8eaa611c2d111",
+  "name" : "testContactModificationFromBirthdaysPage[ru.anatoli.addressbook.models.ContactData@38d6028d]",
+  "title" : "Test contact modification from birthdays page [ru.anatoli.addressbook.models.ContactData@38d6028d]",
+  "time" : {
+    "start" : 1507562458652,
+    "stop" : 1507562472071,
+    "duration" : 13419
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "Suite2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  } ],
+  "parameters" : [ ]
+}

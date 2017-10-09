@@ -1,11 +1,11 @@
 {
-  "uid" : "f45c427b9de656c5",
-  "name" : "testGroupModification[ru.anatoli.addressbook.models.GroupData@7157718]",
-  "title" : "Test group modification [ru.anatoli.addressbook.models.GroupData@7157718]",
+  "uid" : "84086fb1f77d10e1",
+  "name" : "testNextBirthdays",
+  "title" : "Test next birthdays",
   "time" : {
-    "start" : 1507101064790,
-    "stop" : 1507101071800,
-    "duration" : 7010
+    "start" : 1507562575559,
+    "stop" : 1507562575860,
+    "duration" : 301
   },
   "summary" : {
     "attachments" : 0,
@@ -16,9 +16,9 @@
   "severity" : "NORMAL",
   "status" : "PASSED",
   "suite" : {
-    "uid" : "1db5501143328b1f",
-    "name" : "Suite1",
-    "title" : "Suite 1"
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
   },
   "steps" : [ ],
   "attachments" : [ ],
@@ -26,7 +26,7 @@
   "testIds" : [ ],
   "labels" : [ {
     "name" : "suite-name",
-    "value" : "Suite1"
+    "value" : "Suite2"
   }, {
     "name" : "suite-title",
     "value" : null

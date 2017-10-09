@@ -1,8 +1,10 @@
 package ru.anatoli.addressbook.tests;
 
 import org.openqa.selenium.remote.BrowserType;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import ru.anatoli.addressbook.appmanager.ApplicationManager;
 import ru.anatoli.addressbook.models.ContactData;
 import ru.anatoli.addressbook.models.GroupData;
@@ -13,12 +15,14 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by anatoli.anukevich on 6/25/2017.
  */
+@Listeners(TestListener.class)
 public class TestBase {
     protected static final ApplicationManager applicationManager = new ApplicationManager(BrowserType.IE);
 
     @BeforeSuite
-    public void setUp() throws Exception {
+    public void setUp(ITestContext context) throws Exception {
         applicationManager.init();
+        context.setAttribute("applicationManager", applicationManager);
     }
 
     @AfterSuite

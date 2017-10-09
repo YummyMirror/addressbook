@@ -1,11 +1,11 @@
 {
-  "uid" : "f6a22f076ed42b28",
-  "name" : "testGroupDeletion",
-  "title" : "Test group deletion",
+  "uid" : "7e38284a073454c8",
+  "name" : "testContactCompOutsideInsideUpdateAllFields",
+  "title" : "Test contact comp outside inside update all fields",
   "time" : {
-    "start" : 1507101080476,
-    "stop" : 1507101082725,
-    "duration" : 2249
+    "start" : 1507562419631,
+    "stop" : 1507562426318,
+    "duration" : 6687
   },
   "summary" : {
     "attachments" : 0,
@@ -16,9 +16,9 @@
   "severity" : "NORMAL",
   "status" : "PASSED",
   "suite" : {
-    "uid" : "1db5501143328b1f",
-    "name" : "Suite1",
-    "title" : "Suite 1"
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
   },
   "steps" : [ ],
   "attachments" : [ ],
@@ -26,7 +26,7 @@
   "testIds" : [ ],
   "labels" : [ {
     "name" : "suite-name",
-    "value" : "Suite1"
+    "value" : "Suite2"
   }, {
     "name" : "suite-title",
     "value" : null

@@ -1,11 +1,11 @@
 {
-  "uid" : "4b8d0b81f8d341c6",
-  "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@9d8b7e6f]",
-  "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@9d8b7e6f]",
+  "uid" : "d37a8104563961de",
+  "name" : "testAddContactToGroup",
+  "title" : "Test add contact to group",
   "time" : {
-    "start" : 1507101053818,
-    "stop" : 1507101061888,
-    "duration" : 8070
+    "start" : 1507562559494,
+    "stop" : 1507562561535,
+    "duration" : 2041
   },
   "summary" : {
     "attachments" : 0,
@@ -16,9 +16,9 @@
   "severity" : "NORMAL",
   "status" : "PASSED",
   "suite" : {
-    "uid" : "1db5501143328b1f",
-    "name" : "Suite1",
-    "title" : "Suite 1"
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
   },
   "steps" : [ ],
   "attachments" : [ ],
@@ -26,7 +26,7 @@
   "testIds" : [ ],
   "labels" : [ {
     "name" : "suite-name",
-    "value" : "Suite1"
+    "value" : "Suite2"
   }, {
     "name" : "suite-title",
     "value" : null

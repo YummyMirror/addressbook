@@ -1,0 +1,35 @@
+{
+  "uid" : "2a6f051ea2a401d7",
+  "name" : "testRemoveContactFromGroupWithoutSelection",
+  "title" : "Test remove contact from group without selection",
+  "time" : {
+    "start" : 1507562574052,
+    "stop" : 1507562574977,
+    "duration" : 925
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "Suite2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  } ],
+  "parameters" : [ ]
+}

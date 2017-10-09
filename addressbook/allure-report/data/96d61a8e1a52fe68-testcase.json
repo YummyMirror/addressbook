@@ -1,11 +1,11 @@
 {
-  "uid" : "83a5ac3befc90049",
-  "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@80000028]",
-  "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@80000028]",
+  "uid" : "96d61a8e1a52fe68",
+  "name" : "testContactDeletionAllCancel",
+  "title" : "Test contact deletion all cancel",
   "time" : {
-    "start" : 1507101048681,
-    "stop" : 1507101053102,
-    "duration" : 4421
+    "start" : 1507562529376,
+    "stop" : 1507562531966,
+    "duration" : 2590
   },
   "summary" : {
     "attachments" : 0,
@@ -16,9 +16,9 @@
   "severity" : "NORMAL",
   "status" : "PASSED",
   "suite" : {
-    "uid" : "1db5501143328b1f",
-    "name" : "Suite1",
-    "title" : "Suite 1"
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
   },
   "steps" : [ ],
   "attachments" : [ ],
@@ -26,7 +26,7 @@
   "testIds" : [ ],
   "labels" : [ {
     "name" : "suite-name",
-    "value" : "Suite1"
+    "value" : "Suite2"
   }, {
     "name" : "suite-title",
     "value" : null

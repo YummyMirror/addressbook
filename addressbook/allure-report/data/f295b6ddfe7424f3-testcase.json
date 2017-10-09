@@ -1,11 +1,11 @@
 {
-  "uid" : "e7a939e79859a600",
-  "name" : "testGroupCompOutsideInside",
-  "title" : "Test group comp outside inside",
+  "uid" : "f295b6ddfe7424f3",
+  "name" : "testAddAllContactsToGroup",
+  "title" : "Test add all contacts to group",
   "time" : {
-    "start" : 1507101062656,
-    "stop" : 1507101064099,
-    "duration" : 1443
+    "start" : 1507562540584,
+    "stop" : 1507562542205,
+    "duration" : 1621
   },
   "summary" : {
     "attachments" : 0,
@@ -16,9 +16,9 @@
   "severity" : "NORMAL",
   "status" : "PASSED",
   "suite" : {
-    "uid" : "1db5501143328b1f",
-    "name" : "Suite1",
-    "title" : "Suite 1"
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
   },
   "steps" : [ ],
   "attachments" : [ ],
@@ -26,7 +26,7 @@
   "testIds" : [ ],
   "labels" : [ {
     "name" : "suite-name",
-    "value" : "Suite1"
+    "value" : "Suite2"
   }, {
     "name" : "suite-title",
     "value" : null

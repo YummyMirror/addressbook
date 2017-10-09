@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" tests="3" skipped="1" failures="0" errors="0" timestamp="2017-10-09T14:27:34" hostname="aanukevich" time="30.094">
+<testsuite name="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" tests="3" skipped="1" failures="0" errors="0" timestamp="2017-10-09T15:20:02" hostname="aanukevich" time="24.05">
   <properties/>
-  <testcase name="testContactCompEditFormDataWithDetailsPageDataByAllFields" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="8.219">
+  <testcase name="testContactCompEditFormDataWithDetailsPageDataByAllFields" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="6.562">
     <skipped/>
   </testcase>
-  <testcase name="testContactCompEditFormWithDetailsPageDataByNames" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="11.923"/>
-  <testcase name="testContactCompOutsideInsideUpdateAllFields" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="8.972"/>
+  <testcase name="testContactCompEditFormWithDetailsPageDataByNames" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="9.895"/>
+  <testcase name="testContactCompOutsideInsideUpdateAllFields" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="6.687"/>
   <system-out><![CDATA[Test is ignored due to the not all fields are filled in Edit form
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

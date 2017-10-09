@@ -1,100 +1,243 @@
 {
   "testCases" : [ {
-    "uid" : "e86e9f5f6b00ef12",
-    "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@9794225c]",
-    "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@9794225c]",
+    "uid" : "621112e0fe2c96af",
+    "name" : "testContactCreation[ru.anatoli.addressbook.models.ContactData@38d6028d]",
+    "title" : "Test contact creation [ru.anatoli.addressbook.models.ContactData@38d6028d]",
     "time" : {
-      "start" : 1507101041251,
-      "stop" : 1507101047952,
-      "duration" : 6701
+      "start" : 1507562348972,
+      "stop" : 1507562372262,
+      "duration" : 23290
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "83a5ac3befc90049",
-    "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@80000028]",
-    "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@80000028]",
+    "uid" : "a7dc520d1a187557",
+    "name" : "testContactCreation[ru.anatoli.addressbook.models.ContactData@80000047]",
+    "title" : "Test contact creation [ru.anatoli.addressbook.models.ContactData@80000047]",
     "time" : {
-      "start" : 1507101048681,
-      "stop" : 1507101053102,
-      "duration" : 4421
+      "start" : 1507562372527,
+      "stop" : 1507562384046,
+      "duration" : 11519
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "4b8d0b81f8d341c6",
-    "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@9d8b7e6f]",
-    "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@9d8b7e6f]",
+    "uid" : "ae3b3154919b0b4",
+    "name" : "testContactCreationOneByOne",
+    "title" : "Test contact creation one by one",
     "time" : {
-      "start" : 1507101053818,
-      "stop" : 1507101061888,
-      "duration" : 8070
+      "start" : 1507562384266,
+      "stop" : 1507562402001,
+      "duration" : 17735
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "e7a939e79859a600",
-    "name" : "testGroupCompOutsideInside",
-    "title" : "Test group comp outside inside",
+    "uid" : "a856ce4d785f4b60",
+    "name" : "testContactCompEditFormDataWithDetailsPageDataByAllFields",
+    "title" : "Test contact comp edit form data with details page data by all fields",
     "time" : {
-      "start" : 1507101062656,
-      "stop" : 1507101064099,
-      "duration" : 1443
+      "start" : 1507562402268,
+      "stop" : 1507562408835,
+      "duration" : 6567
+    },
+    "severity" : "NORMAL",
+    "status" : "CANCELED"
+  }, {
+    "uid" : "da7e4e81ab4191bd",
+    "name" : "testContactCompEditFormWithDetailsPageDataByNames",
+    "title" : "Test contact comp edit form with details page data by names",
+    "time" : {
+      "start" : 1507562409170,
+      "stop" : 1507562419065,
+      "duration" : 9895
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "f45c427b9de656c5",
-    "name" : "testGroupModification[ru.anatoli.addressbook.models.GroupData@7157718]",
-    "title" : "Test group modification [ru.anatoli.addressbook.models.GroupData@7157718]",
+    "uid" : "7e38284a073454c8",
+    "name" : "testContactCompOutsideInsideUpdateAllFields",
+    "title" : "Test contact comp outside inside update all fields",
     "time" : {
-      "start" : 1507101064790,
-      "stop" : 1507101071800,
-      "duration" : 7010
+      "start" : 1507562419631,
+      "stop" : 1507562426318,
+      "duration" : 6687
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "5675fe70775d8364",
-    "name" : "testGroupModificationWithoutSelection[ru.anatoli.addressbook.models.GroupData@7157718]",
-    "title" : "Test group modification without selection [ru.anatoli.addressbook.models.GroupData@7157718]",
+    "uid" : "4b52a756081c553b",
+    "name" : "testContactSearchByRandomInfo",
+    "title" : "Test contact search by random info",
     "time" : {
-      "start" : 1507101072560,
-      "stop" : 1507101079828,
-      "duration" : 7268
+      "start" : 1507562426651,
+      "stop" : 1507562434893,
+      "duration" : 8242
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "f6a22f076ed42b28",
-    "name" : "testGroupDeletion",
-    "title" : "Test group deletion",
+    "uid" : "d2d0ec8c13fafec1",
+    "name" : "testContactModification[ru.anatoli.addressbook.models.ContactData@38d6028d]",
+    "title" : "Test contact modification [ru.anatoli.addressbook.models.ContactData@38d6028d]",
     "time" : {
-      "start" : 1507101080476,
-      "stop" : 1507101082725,
-      "duration" : 2249
+      "start" : 1507562435092,
+      "stop" : 1507562458378,
+      "duration" : 23286
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "f4e4c343ab7e061f",
-    "name" : "testGroupDeletionWithoutSelection",
-    "title" : "Test group deletion without selection",
+    "uid" : "bcb8eaa611c2d111",
+    "name" : "testContactModificationFromBirthdaysPage[ru.anatoli.addressbook.models.ContactData@38d6028d]",
+    "title" : "Test contact modification from birthdays page [ru.anatoli.addressbook.models.ContactData@38d6028d]",
     "time" : {
-      "start" : 1507101083420,
-      "stop" : 1507101085557,
-      "duration" : 2137
+      "start" : 1507562458652,
+      "stop" : 1507562472071,
+      "duration" : 13419
     },
     "severity" : "NORMAL",
     "status" : "PASSED"
   }, {
-    "uid" : "97ff30564487698e",
-    "name" : "testGroupAllDeletion",
-    "title" : "Test group all deletion",
+    "uid" : "e396219e012d93df",
+    "name" : "testContactModificationFromDetailsPage[ru.anatoli.addressbook.models.ContactData@38d6028d]",
+    "title" : "Test contact modification from details page [ru.anatoli.addressbook.models.ContactData@38d6028d]",
     "time" : {
-      "start" : 1507101086301,
-      "stop" : 1507101088704,
-      "duration" : 2403
+      "start" : 1507562472334,
+      "stop" : 1507562496176,
+      "duration" : 23842
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "cd2d3da94630cd35",
+    "name" : "testContactDeletion",
+    "title" : "Test contact deletion",
+    "time" : {
+      "start" : 1507562496466,
+      "stop" : 1507562497947,
+      "duration" : 1481
+    },
+    "severity" : "NORMAL",
+    "status" : "BROKEN"
+  }, {
+    "uid" : "c6747cad50d05860",
+    "name" : "testContactDeletionFromUpdateForm",
+    "title" : "Test contact deletion from update form",
+    "time" : {
+      "start" : 1507562498605,
+      "stop" : 1507562503082,
+      "duration" : 4477
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "b24b9b6dd03f6967",
+    "name" : "testContactAllDeletion",
+    "title" : "Test contact all deletion",
+    "time" : {
+      "start" : 1507562503314,
+      "stop" : 1507562505229,
+      "duration" : 1915
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "96d61a8e1a52fe68",
+    "name" : "testContactDeletionAllCancel",
+    "title" : "Test contact deletion all cancel",
+    "time" : {
+      "start" : 1507562529376,
+      "stop" : 1507562531966,
+      "duration" : 2590
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "d977bb4d251da663",
+    "name" : "testContactDeletionAllWithoutSelection",
+    "title" : "Test contact deletion all without selection",
+    "time" : {
+      "start" : 1507562532148,
+      "stop" : 1507562533044,
+      "duration" : 896
+    },
+    "severity" : "NORMAL",
+    "status" : "FAILED"
+  }, {
+    "uid" : "f295b6ddfe7424f3",
+    "name" : "testAddAllContactsToGroup",
+    "title" : "Test add all contacts to group",
+    "time" : {
+      "start" : 1507562540584,
+      "stop" : 1507562542205,
+      "duration" : 1621
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "6009513a1156648f",
+    "name" : "testAddAllContactsWithoutGroupsToGroup",
+    "title" : "Test add all contacts without groups to group",
+    "time" : {
+      "start" : 1507562549803,
+      "stop" : 1507562551552,
+      "duration" : 1749
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "d37a8104563961de",
+    "name" : "testAddContactToGroup",
+    "title" : "Test add contact to group",
+    "time" : {
+      "start" : 1507562559494,
+      "stop" : 1507562561535,
+      "duration" : 2041
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "4ddc494e0f42e230",
+    "name" : "testAddContactToGroupWithoutSelection",
+    "title" : "Test add contact to group without selection",
+    "time" : {
+      "start" : 1507562569157,
+      "stop" : 1507562570317,
+      "duration" : 1160
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "b0035a96f5c53d22",
+    "name" : "testRemoveContactFromGroup",
+    "title" : "Test remove contact from group",
+    "time" : {
+      "start" : 1507562570913,
+      "stop" : 1507562573829,
+      "duration" : 2916
+    },
+    "severity" : "NORMAL",
+    "status" : "BROKEN"
+  }, {
+    "uid" : "2a6f051ea2a401d7",
+    "name" : "testRemoveContactFromGroupWithoutSelection",
+    "title" : "Test remove contact from group without selection",
+    "time" : {
+      "start" : 1507562574052,
+      "stop" : 1507562574977,
+      "duration" : 925
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  }, {
+    "uid" : "84086fb1f77d10e1",
+    "name" : "testNextBirthdays",
+    "title" : "Test next birthdays",
+    "time" : {
+      "start" : 1507562575559,
+      "stop" : 1507562575860,
+      "duration" : 301
     },
     "severity" : "NORMAL",
     "status" : "PASSED"

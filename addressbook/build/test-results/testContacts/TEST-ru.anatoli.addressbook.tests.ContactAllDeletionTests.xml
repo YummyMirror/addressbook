@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.anatoli.addressbook.tests.ContactAllDeletionTests" tests="3" skipped="0" failures="1" errors="0" timestamp="2017-10-09T14:29:35" hostname="aanukevich" time="31.226">
+<testsuite name="ru.anatoli.addressbook.tests.ContactAllDeletionTests" tests="3" skipped="0" failures="1" errors="0" timestamp="2017-10-09T15:21:43" hostname="aanukevich" time="29.604">
   <properties/>
-  <testcase name="testContactAllDeletion" classname="ru.anatoli.addressbook.tests.ContactAllDeletionTests" time="1.898"/>
-  <testcase name="testContactDeletionAllCancel" classname="ru.anatoli.addressbook.tests.ContactAllDeletionTests" time="2.698"/>
-  <testcase name="testContactDeletionAllWithoutSelection" classname="ru.anatoli.addressbook.tests.ContactAllDeletionTests" time="0.832">
+  <testcase name="testContactAllDeletion" classname="ru.anatoli.addressbook.tests.ContactAllDeletionTests" time="1.915"/>
+  <testcase name="testContactDeletionAllCancel" classname="ru.anatoli.addressbook.tests.ContactAllDeletionTests" time="2.59"/>
+  <testcase name="testContactDeletionAllWithoutSelection" classname="ru.anatoli.addressbook.tests.ContactAllDeletionTests" time="0.77">
     <failure message="java.lang.AssertionError: expected [0] but found [3]" type="java.lang.AssertionError">java.lang.AssertionError: expected [0] but found [3]
 	at org.testng.Assert.fail(Assert.java:93)
 	at org.testng.Assert.failNotEquals(Assert.java:512)

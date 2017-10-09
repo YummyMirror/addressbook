@@ -3,35 +3,50 @@
   "plugins" : {
     "total" : {
       "statistic" : {
-        "total" : 9,
-        "passed" : 9,
+        "total" : 22,
+        "passed" : 18,
         "pending" : 0,
-        "canceled" : 0,
-        "failed" : 0,
-        "broken" : 0
+        "canceled" : 1,
+        "failed" : 1,
+        "broken" : 2
       },
       "time" : {
-        "start" : 1507101041251,
-        "stop" : 1507101088704,
-        "duration" : 47453
+        "start" : 1507562348972,
+        "stop" : 1507562575860,
+        "duration" : 226888
       }
     },
     "defects" : {
-      "totalCount" : 0,
-      "items" : [ ]
+      "totalCount" : 3,
+      "items" : [ {
+        "count" : 1,
+        "uid" : "fe392874a245dba5",
+        "message" : "AssertionError: expected [0] but found [3]",
+        "status" : "FAILED"
+      }, {
+        "count" : 1,
+        "uid" : "dcd52679bcfad61b",
+        "message" : "NoSuchElementException: Unable to find element with link text == home (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'\nSystem info: host: 'AANUKEVICH', ip: '192.168.88.2', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_144'\nDriver info: org.openqa.selenium.ie.InternetExplorerDriver\nCapabilities [{se:ieOptions={browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, ie.useLegacyFileUploadDialogHandling=false, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, initialBrowserUrl=http://localhost:25586/, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true}, browserName=internet explorer, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss, javascriptEnabled=true, platformName=WINDOWS, version=11, platform=WINDOWS, unexpectedAlertBehaviour=dismiss}]\nSession ID: e79f00a1-f2f7-4140-a316-6c5334bb447e\n*** Element info: {Using=link text, value=home}",
+        "status" : "BROKEN"
+      }, {
+        "count" : 1,
+        "uid" : "a68031e8b8d0fd19",
+        "message" : "NoSuchElementException: Unable to find element with xpath == //input[@id='37'] (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'\nSystem info: host: 'AANUKEVICH', ip: '192.168.88.2', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_144'\nDriver info: org.openqa.selenium.ie.InternetExplorerDriver\nCapabilities [{se:ieOptions={browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, ie.useLegacyFileUploadDialogHandling=false, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, initialBrowserUrl=http://localhost:25586/, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true}, browserName=internet explorer, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss, javascriptEnabled=true, platformName=WINDOWS, version=11, platform=WINDOWS, unexpectedAlertBehaviour=dismiss}]\nSession ID: e79f00a1-f2f7-4140-a316-6c5334bb447e\n*** Element info: {Using=xpath, value=//input[@id='37']}",
+        "status" : "BROKEN"
+      } ]
     },
     "xunit" : {
       "totalCount" : 1,
       "items" : [ {
-        "uid" : "1db5501143328b1f",
-        "title" : "Suite 1",
+        "uid" : "f46d4c3242a4727b",
+        "title" : "Suite 2",
         "statistic" : {
-          "total" : 9,
-          "passed" : 9,
+          "total" : 22,
+          "passed" : 18,
           "pending" : 0,
-          "canceled" : 0,
-          "failed" : 0,
-          "broken" : 0
+          "canceled" : 1,
+          "failed" : 1,
+          "broken" : 2
         }
       } ]
     },
@@ -40,12 +55,12 @@
       "items" : [ {
         "title" : "Without feature",
         "statistic" : {
-          "total" : 9,
-          "passed" : 9,
+          "total" : 22,
+          "passed" : 18,
           "pending" : 0,
-          "canceled" : 0,
-          "failed" : 0,
-          "broken" : 0
+          "canceled" : 1,
+          "failed" : 1,
+          "broken" : 2
         }
       } ]
     },

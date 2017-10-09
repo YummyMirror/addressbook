@@ -1,0 +1,35 @@
+{
+  "uid" : "6009513a1156648f",
+  "name" : "testAddAllContactsWithoutGroupsToGroup",
+  "title" : "Test add all contacts without groups to group",
+  "time" : {
+    "start" : 1507562549803,
+    "stop" : 1507562551552,
+    "duration" : 1749
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "f46d4c3242a4727b",
+    "name" : "Suite2",
+    "title" : "Suite 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "Suite2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  } ],
+  "parameters" : [ ]
+}
