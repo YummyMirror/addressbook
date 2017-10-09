@@ -1,0 +1,35 @@
+{
+  "uid" : "f45c427b9de656c5",
+  "name" : "testGroupModification[ru.anatoli.addressbook.models.GroupData@7157718]",
+  "title" : "Test group modification [ru.anatoli.addressbook.models.GroupData@7157718]",
+  "time" : {
+    "start" : 1507101064790,
+    "stop" : 1507101071800,
+    "duration" : 7010
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "1db5501143328b1f",
+    "name" : "Suite1",
+    "title" : "Suite 1"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "Suite1"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  } ],
+  "parameters" : [ ]
+}

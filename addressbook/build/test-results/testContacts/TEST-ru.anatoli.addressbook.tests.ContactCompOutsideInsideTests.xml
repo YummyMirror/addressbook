@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" tests="3" skipped="1" failures="0" errors="0" timestamp="2017-10-09T14:27:34" hostname="aanukevich" time="30.094">
+  <properties/>
+  <testcase name="testContactCompEditFormDataWithDetailsPageDataByAllFields" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="8.219">
+    <skipped/>
+  </testcase>
+  <testcase name="testContactCompEditFormWithDetailsPageDataByNames" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="11.923"/>
+  <testcase name="testContactCompOutsideInsideUpdateAllFields" classname="ru.anatoli.addressbook.tests.ContactCompOutsideInsideTests" time="8.972"/>
+  <system-out><![CDATA[Test is ignored due to the not all fields are filled in Edit form
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.anatoli.addressbook.tests.NextBirthdaysTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-09T14:30:52" hostname="aanukevich" time="0.306">
+  <properties/>
+  <testcase name="testNextBirthdays" classname="ru.anatoli.addressbook.tests.NextBirthdaysTests" time="0.306"/>
+  <system-out><![CDATA[Hibernate: select contactdat0_.id as id1_1_, contactdat0_.address as address2_1_, contactdat0_.aday as aday3_1_, contactdat0_.amonth as amonth4_1_, contactdat0_.ayear as ayear5_1_, contactdat0_.bday as bday6_1_, contactdat0_.bmonth as bmonth7_1_, contactdat0_.byear as byear8_1_, contactdat0_.company as company9_1_, contactdat0_.email as email10_1_, contactdat0_.email2 as email11_1_, contactdat0_.email3 as email12_1_, contactdat0_.fax as fax13_1_, contactdat0_.firstname as firstna14_1_, contactdat0_.home as home15_1_, contactdat0_.homepage as homepag16_1_, contactdat0_.lastname as lastnam17_1_, contactdat0_.middlename as middlen18_1_, contactdat0_.mobile as mobile19_1_, contactdat0_.nickname as nicknam20_1_, contactdat0_.photo as photo21_1_, contactdat0_.address2 as address22_1_, contactdat0_.notes as notes23_1_, contactdat0_.phone2 as phone24_1_, contactdat0_.title as title25_1_, contactdat0_.work as work26_1_ from addressbook contactdat0_ where deprecated='0000-00-00 00:00:00' and bday<>'0' and (bmonth is not null)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

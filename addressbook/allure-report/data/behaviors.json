@@ -1,0 +1,125 @@
+{
+  "features" : [ {
+    "title" : "Without feature",
+    "statistic" : {
+      "total" : 9,
+      "passed" : 9,
+      "pending" : 0,
+      "canceled" : 0,
+      "failed" : 0,
+      "broken" : 0
+    },
+    "stories" : [ {
+      "uid" : "c10514ea38619df4",
+      "title" : "Without story",
+      "statistic" : {
+        "total" : 9,
+        "passed" : 9,
+        "pending" : 0,
+        "canceled" : 0,
+        "failed" : 0,
+        "broken" : 0
+      },
+      "testCases" : [ {
+        "uid" : "e86e9f5f6b00ef12",
+        "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@9794225c]",
+        "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@9794225c]",
+        "time" : {
+          "start" : 1507101041251,
+          "stop" : 1507101047952,
+          "duration" : 6701
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "83a5ac3befc90049",
+        "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@80000028]",
+        "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@80000028]",
+        "time" : {
+          "start" : 1507101048681,
+          "stop" : 1507101053102,
+          "duration" : 4421
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "4b8d0b81f8d341c6",
+        "name" : "testGroupCreation[ru.anatoli.addressbook.models.GroupData@9d8b7e6f]",
+        "title" : "Test group creation [ru.anatoli.addressbook.models.GroupData@9d8b7e6f]",
+        "time" : {
+          "start" : 1507101053818,
+          "stop" : 1507101061888,
+          "duration" : 8070
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "e7a939e79859a600",
+        "name" : "testGroupCompOutsideInside",
+        "title" : "Test group comp outside inside",
+        "time" : {
+          "start" : 1507101062656,
+          "stop" : 1507101064099,
+          "duration" : 1443
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "f45c427b9de656c5",
+        "name" : "testGroupModification[ru.anatoli.addressbook.models.GroupData@7157718]",
+        "title" : "Test group modification [ru.anatoli.addressbook.models.GroupData@7157718]",
+        "time" : {
+          "start" : 1507101064790,
+          "stop" : 1507101071800,
+          "duration" : 7010
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "5675fe70775d8364",
+        "name" : "testGroupModificationWithoutSelection[ru.anatoli.addressbook.models.GroupData@7157718]",
+        "title" : "Test group modification without selection [ru.anatoli.addressbook.models.GroupData@7157718]",
+        "time" : {
+          "start" : 1507101072560,
+          "stop" : 1507101079828,
+          "duration" : 7268
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "f6a22f076ed42b28",
+        "name" : "testGroupDeletion",
+        "title" : "Test group deletion",
+        "time" : {
+          "start" : 1507101080476,
+          "stop" : 1507101082725,
+          "duration" : 2249
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "f4e4c343ab7e061f",
+        "name" : "testGroupDeletionWithoutSelection",
+        "title" : "Test group deletion without selection",
+        "time" : {
+          "start" : 1507101083420,
+          "stop" : 1507101085557,
+          "duration" : 2137
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "97ff30564487698e",
+        "name" : "testGroupAllDeletion",
+        "title" : "Test group all deletion",
+        "time" : {
+          "start" : 1507101086301,
+          "stop" : 1507101088704,
+          "duration" : 2403
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      } ]
+    } ]
+  } ]
+}
